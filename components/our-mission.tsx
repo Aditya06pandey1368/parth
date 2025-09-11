@@ -9,29 +9,31 @@ const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   transition: { duration: 1.2, delay, ease: "easeOut" },
-  viewport: { once: false, amount: 0.2 }, // 👈 repeat every scroll
+  viewport: { once: false, amount: 0.2 },
 });
 
 function OurMission() {
   return (
-    <div>
+    <div className="bg-white dark:bg-gray-900 transition-colors duration-300">
       {/* Mission Section */}
-      <section className="py-20 md:py-24 bg-light-yellow">
+      <section className="py-20 md:py-24 bg-yellow-50 dark:bg-gray-800">
         <div className="container mx-auto px-6 text-center">
           <div className="max-w-4xl mx-auto">
             <motion.h2
               {...fadeUp(0)}
-              className="text-3xl md:text-4xl font-bold text-dark-gray tracking-tight"
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight"
             >
               Our Mission
             </motion.h2>
             <motion.p
               {...fadeUp(0.2)}
-              className="mt-6 text-2xl md:text-3xl font-medium text-medium-gray leading-snug"
+              className="mt-6 text-2xl md:text-3xl font-medium text-gray-700 dark:text-gray-300 leading-snug"
             >
               &quot;To forge a universal standard of trust for student
               achievements, empowering every learner to showcase their{" "}
-              <span className="font-bold text-dark-gray">verified potential</span>{" "}
+              <span className="font-bold text-gray-900 dark:text-white">
+                verified potential
+              </span>{" "}
               to the world.&quot;
             </motion.p>
           </div>
@@ -39,11 +41,11 @@ function OurMission() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-6">
           <motion.h2
             {...fadeUp(0)}
-            className="text-3xl md:text-4xl font-bold text-dark-gray text-center mb-16 tracking-tight"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-16 tracking-tight"
           >
             The Achievo Advantage
           </motion.h2>
@@ -88,9 +90,9 @@ function OurMission() {
                 key={feature.title}
                 {...fadeUp(i * 0.2)}
                 whileHover={{ scale: 1.05, y: -5 }}
-                className="feature-card bg-white p-8 rounded-xl shadow-md"
+                className="feature-card bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md transition-colors"
               >
-                <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-light-yellow mb-6">
+                <div className="flex items-center justify-center h-16 w-16 rounded-2xl bg-yellow-100 dark:bg-gray-700 mb-6">
                   <svg
                     className="h-8 w-8 text-yellow-500"
                     fill="none"
@@ -101,10 +103,12 @@ function OurMission() {
                     {feature.icon}
                   </svg>
                 </div>
-                <h3 className="font-bold text-xl mb-3 text-dark-gray">
+                <h3 className="font-bold text-xl mb-3 text-gray-900 dark:text-white">
                   {feature.title}
                 </h3>
-                <p className="text-medium-gray">{feature.desc}</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  {feature.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -112,11 +116,11 @@ function OurMission() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 md:py-28 bg-light-gray">
+      <section className="py-20 md:py-28 bg-gray-100 dark:bg-gray-800 transition-colors">
         <div className="container mx-auto px-6">
           <motion.h2
             {...fadeUp(0)}
-            className="text-3xl md:text-4xl font-bold text-dark-gray text-center mb-16 tracking-tight"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-16 tracking-tight"
           >
             Trusted by the Best
           </motion.h2>
@@ -147,10 +151,12 @@ function OurMission() {
                 <p className="text-6xl font-extrabold text-yellow-500">
                   {stat.value}
                 </p>
-                <p className="mt-2 text-xl text-dark-gray font-semibold">
+                <p className="mt-2 text-xl text-gray-900 dark:text-white font-semibold">
                   {stat.label}
                 </p>
-                <p className="text-medium-gray mt-2">{stat.desc}</p>
+                <p className="text-gray-600 dark:text-gray-300 mt-2">
+                  {stat.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -158,24 +164,23 @@ function OurMission() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-20 md:py-28 bg-white dark:bg-gray-900 transition-colors">
         <div className="container mx-auto px-6 text-center">
           <motion.h2
             {...fadeUp(0)}
-            className="text-3xl md:text-4xl font-bold text-dark-gray tracking-tight"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white tracking-tight"
           >
             Meet the Minds Behind Achievo
           </motion.h2>
           <motion.p
             {...fadeUp(0.2)}
-            className="mt-5 max-w-3xl mx-auto text-medium-gray text-lg"
+            className="mt-5 max-w-3xl mx-auto text-gray-600 dark:text-gray-300 text-lg"
           >
             We are a diverse, globally-distributed team united by a passion for
             education and technology. Our collaborative spirit is the engine
             that drives Achievo forward.
           </motion.p>
 
-          {/* Floating Effect on Avatars */}
           <motion.div
             {...fadeUp(0.3)}
             className="mt-12 flex justify-center items-center -space-x-4"
@@ -185,7 +190,7 @@ function OurMission() {
                 key={i}
                 animate={{ y: [0, -8, 0] }}
                 transition={{ repeat: Infinity, duration: 3, delay: i * 0.3 }}
-                className="inline-block ring-4 ring-white rounded-full overflow-hidden z-10"
+                className="inline-block ring-4 ring-white dark:ring-gray-700 rounded-full overflow-hidden z-10"
                 style={{ width: size, height: size }}
               >
                 <Image
@@ -202,17 +207,17 @@ function OurMission() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-yellow-400">
+      <section className="bg-yellow-400 dark:bg-yellow-500 transition-colors">
         <div className="container mx-auto px-6 py-20 md:py-24">
           <motion.div
             {...fadeUp(0)}
             className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left"
           >
             <div className="md:w-2/3">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-900 tracking-tight">
                 Ready to Build Your Verified Future?
               </h2>
-              <p className="mt-4 text-lg text-gray-800">
+              <p className="mt-4 text-lg text-gray-800 dark:text-gray-100">
                 Join thousands of students and leading universities who trust
                 Achievo to validate success and unlock opportunities.
               </p>
@@ -220,7 +225,7 @@ function OurMission() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 href="#"
-                className="cta-button inline-block bg-gray-900 text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg"
+                className="cta-button inline-block bg-gray-900 dark:bg-gray-800 text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg"
               >
                 Sign Up for Free
               </Link>

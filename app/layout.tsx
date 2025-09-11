@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "next-themes"; // 👈 1. Import the provider
+// import { ThemeToggle } from "@/components/theme-toggle"; // If you need ThemeToggle elsewhere, fix the import name
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +25,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // 👇 2. Add suppressHydrationWarning to the <html> tag
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* 👇 3. Wrap your children with the ThemeProvider */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
