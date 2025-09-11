@@ -31,40 +31,6 @@ function Navbar() {
   const navLinks = ["Dashboard", "Features", "For Institutions", "Contact"]
 
   return (
-<<<<<<< HEAD
-    <div>
-      <header
-        className={cn(
-          "sticky top-0 z-50 transition-all duration-300 ease-in-out",
-          isScrolled
-            ? "bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/20"
-            : "bg-gray-50/80 backdrop-blur-lg",
-        )}
-      >
-        <nav className="container mx-auto flex items-center justify-between px-6 py-2">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative">
-             <Image alt="User avatar 1" className=""  src={logo}  width={70} height={60}/>
-              <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
-            </div>
-            <h2 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-[#f9a806]">
-              Parth
-            </h2>
-          </Link>
-
-          <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
-            {["Dashboard", "Features", "For Institutions", "Contact"].map((item) => (
-              <Link
-                key={item}
-                href="#"
-                className="relative py-2 px-1 transition-all duration-300 hover:text-[#f9a806] group"
-              >
-                {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#f9a806] transition-all duration-300 group-hover:w-full" />
-                <span className="absolute inset-0 bg-[#f9a806]/5 rounded-md scale-0 transition-transform duration-300 group-hover:scale-100" />
-              </Link>
-            ))}
-=======
     <header
       className={cn(
         "sticky top-0 z-50 transition-all duration-300 ease-in-out border-b",
@@ -80,7 +46,6 @@ function Navbar() {
           <div className="relative">
             <Image alt="Logo" src={logo} width={45} height={45} />
             <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
->>>>>>> origin/main
           </div>
           {/* Hide name on mobile */}
           <h2 className="hidden lg:block text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-[#f9a806]">
