@@ -44,11 +44,11 @@ function Navbar() {
         <Link href="/" className="flex items-center gap-2 group">
           {/* On mobile only image */}
           <div className="relative">
-            <Image alt="Logo" src={logo} width={45} height={45} />
+            <Image alt="Logo" src={logo} width={60} height={60} />
             <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
           </div>
           {/* Hide name on mobile */}
-          <h2 className="hidden lg:block text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-[#f9a806]">
+          <h2 className="hidden lg:block text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-[#f9a806]">
             Parth
           </h2>
         </Link>
