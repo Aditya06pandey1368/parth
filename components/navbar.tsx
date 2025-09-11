@@ -5,27 +5,33 @@ import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import logo from "../public/logo.png"
+import { ThemeToggle } from "@/components/theme-toggle" // shadcn dark mode toggle
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Menu } from "lucide-react"
+
 function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true) // change this on login
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
+  const navLinks = ["Dashboard", "Features", "For Institutions", "Contact"]
 
   return (
+<<<<<<< HEAD
     <div>
       <header
         className={cn(
@@ -58,109 +64,117 @@ function Navbar() {
                 <span className="absolute inset-0 bg-[#f9a806]/5 rounded-md scale-0 transition-transform duration-300 group-hover:scale-100" />
               </Link>
             ))}
+=======
+    <header
+      className={cn(
+        "sticky top-0 z-50 transition-all duration-300 ease-in-out border-b",
+        isScrolled
+          ? "bg-white/90 dark:bg-gray-900 backdrop-blur-xl shadow-sm"
+          : "bg-gray-50/80 dark:bg-gray-900/80 backdrop-blur-lg",
+      )}
+    >
+      <nav className="container mx-auto flex items-center justify-between px-6 py-2">
+        {/* Left Logo */}
+        <Link href="/" className="flex items-center gap-2 group">
+          {/* On mobile only image */}
+          <div className="relative">
+            <Image alt="Logo" src={logo} width={45} height={45} />
+            <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
+>>>>>>> origin/main
           </div>
+          {/* Hide name on mobile */}
+          <h2 className="hidden lg:block text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-[#f9a806]">
+            Parth
+          </h2>
+        </Link>
 
-          <div className="hidden lg:flex items-center gap-4">
+        {/* Desktop Nav Links */}
+        <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
+          {navLinks.map((item) => (
             <Link
+              key={item}
               href="#"
-              className="px-5 py-2.5 text-sm font-semibold rounded-full text-gray-700 hover:bg-gray-200/60 transition-all duration-300 hover:scale-105 hover:shadow-md"
+              className="relative py-2 px-1 transition-all duration-300 hover:text-[#f9a806] group"
             >
-              Faculty Login
+              {item}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#f9a806] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute inset-0 bg-[#f9a806]/5 rounded-md scale-0 transition-transform duration-300 group-hover:scale-100" />
             </Link>
-            <Link
-              href="#"
-              className="px-5 py-2.5 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-[#f9a806]/25 transform"
-            >
-              Student Signup
-            </Link>
-          </div>
+          ))}
+        </div>
 
-          <button
-            onClick={toggleMenu}
-            className="lg:hidden relative p-2 text-gray-800 hover:bg-gray-100 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#f9a806]/20"
-            aria-label="Toggle menu"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span
-                className={cn(
-                  "block w-5 h-0.5 bg-current transition-all duration-300 ease-in-out",
-                  isMenuOpen ? "rotate-45 translate-y-1" : "-translate-y-1",
-                )}
-              />
-              <span
-                className={cn(
-                  "block w-5 h-0.5 bg-current transition-all duration-300 ease-in-out",
-                  isMenuOpen ? "opacity-0" : "opacity-100",
-                )}
-              />
-              <span
-                className={cn(
-                  "block w-5 h-0.5 bg-current transition-all duration-300 ease-in-out",
-                  isMenuOpen ? "-rotate-45 -translate-y-1" : "translate-y-1",
-                )}
-              />
-            </div>
-          </button>
-        </nav>
+        {/* Right side */}
+        <div className="flex items-center gap-3">
+          {/* Dark/Light Mode */}
+          <ThemeToggle />
 
-        <div
-          className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300 ease-in-out border-t border-gray-200/20",
-            isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
-          )}
-        >
-          <div className="px-6 py-4 bg-white/95 backdrop-blur-xl">
-            <div className="flex flex-col gap-4">
-              {["Dashboard", "Features", "For Institutions", "Contact"].map((item, index) => (
-                <Link
-                  key={item}
-                  href="#"
-                  onClick={closeMenu}
-                  className={cn(
-                    "py-3 px-4 text-gray-700 hover:text-[#f9a806] hover:bg-[#f9a806]/5 rounded-lg transition-all duration-300 transform",
-                    isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0",
-                  )}
-                  style={{
-                    transitionDelay: isMenuOpen ? `${index * 50}ms` : "0ms",
-                  }}
-                >
-                  {item}
-                </Link>
-              ))}
+          {/* If logged in */}
+          {isLoggedIn ? (
+            <>
+              {/* Desktop: Avatar */}
+              <div className="hidden lg:flex">
+                <Avatar className="cursor-pointer">
+                  <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                  <AvatarFallback>U</AvatarFallback>
+                </Avatar>
+              </div>
 
-              <div className="flex flex-col gap-3 pt-4 border-t border-gray-200/30">
+              {/* Mobile: Sidebar with Hamburger */}
+              <div className="lg:hidden">
+                <Sheet>
+                  <SheetTrigger asChild>
+                    <button className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800">
+                      <Menu className="h-6 w-6" />
+                    </button>
+                  </SheetTrigger>
+                  <SheetContent side="right" className="bg-white dark:bg-gray-900">
+                    <div className="flex flex-col gap-4 mt-6">
+                      {navLinks.map((item) => (
+                        <Link
+                          key={item}
+                          href="#"
+                          className="py-2 px-4 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
+                        >
+                          {item}
+                        </Link>
+                      ))}
+                    </div>
+                  </SheetContent>
+                </Sheet>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Before login */}
+              <div className="hidden lg:flex items-center gap-4">
                 <Link
                   href="#"
-                  onClick={closeMenu}
-                  className={cn(
-                    "py-3 px-4 text-center text-gray-700 hover:bg-gray-100 rounded-lg transition-all duration-300 transform",
-                    isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0",
-                  )}
-                  style={{
-                    transitionDelay: isMenuOpen ? "200ms" : "0ms",
-                  }}
+                  className="px-4 py-2 text-sm font-semibold rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-gray-800 transition-all"
                 >
                   Faculty Login
                 </Link>
                 <Link
                   href="#"
-                  onClick={closeMenu}
-                  className={cn(
-                    "py-3 px-4 text-center bg-[#f9a806] text-gray-900 hover:bg-yellow-400 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg",
-                    isMenuOpen ? "translate-x-0 opacity-100" : "translate-x-4 opacity-0",
-                  )}
-                  style={{
-                    transitionDelay: isMenuOpen ? "250ms" : "0ms",
-                  }}
+                  className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
                 >
                   Student Signup
                 </Link>
               </div>
-            </div>
-          </div>
+
+              {/* Mobile: only Get Started button */}
+              <div className="lg:hidden">
+                <Link
+                  href="#"
+                  className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
+                >
+                  Get Started
+                </Link>
+              </div>
+            </>
+          )}
         </div>
-      </header>
-    </div>
+      </nav>
+    </header>
   )
 }
 

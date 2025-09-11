@@ -9,16 +9,15 @@ import Footer from '@/components/footer';
 
 export default function HomePage() {
   return (
-    <div className="bg-gray-50 text-gray-800">
+    // 👇 This is the line that was changed
+    <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       <div className="relative min-h-screen overflow-x-hidden">
         
-<Navbar></Navbar>
+        <Navbar></Navbar>
         <main className="relative">
-        <Hero></Hero>
-
-         <FeatureSection></FeatureSection>
-
-         <AboutSection></AboutSection>
+          <Hero></Hero>
+          <FeatureSection></FeatureSection>
+          <AboutSection></AboutSection>
           <OurMission></OurMission>
         </main>
 
