@@ -9,9 +9,7 @@ function FeatureSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
+        setIsVisible(entry.isIntersecting)
       },
       {
         threshold: 0.1,
@@ -40,13 +38,13 @@ function FeatureSection() {
               className={`relative transform transition-all duration-1000 ease-out ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
-              style={{ transitionDelay: "200ms" }}
+              style={{ transitionDelay: isVisible ? "200ms" : "0ms" }}
             >
               <div
                 className="absolute left-6 top-0 h-full w-0.5 bg-gradient-to-b from-[#f9a806] via-gray-200 to-gray-200 transform transition-all duration-1500 ease-out"
                 style={{
                   height: isVisible ? "100%" : "0%",
-                  transitionDelay: "400ms",
+                  transitionDelay: isVisible ? "400ms" : "0ms",
                 }}
               ></div>
               <div className="space-y-12">
@@ -54,7 +52,7 @@ function FeatureSection() {
                   className={`relative pl-16 group transform transition-all duration-700 ease-out ${
                     isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
                   }`}
-                  style={{ transitionDelay: "600ms" }}
+                  style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
                 >
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-[#f9a806] flex items-center justify-center ring-8 ring-gray-50 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-lg group-hover:shadow-[#f9a806]/30">
                     <svg
@@ -150,7 +148,7 @@ function FeatureSection() {
                     className={`relative pl-16 group cursor-pointer transform transition-all duration-700 ease-out hover:scale-105 ${
                       isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
                     }`}
-                    style={{ transitionDelay: item.delay }}
+                    style={{ transitionDelay: isVisible ? item.delay : "0ms" }}
                   >
                     <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white flex items-center justify-center ring-8 ring-gray-50 border-2 border-gray-300 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-[#f9a806] group-hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
                       {item.icon}
@@ -171,13 +169,13 @@ function FeatureSection() {
               className={`relative transform transition-all duration-1000 ease-out ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
-              style={{ transitionDelay: "400ms" }}
+              style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}
             >
               <div
                 className="absolute left-6 top-0 h-full w-0.5 bg-gradient-to-b from-[#f9a806] via-gray-200 to-gray-200 transform transition-all duration-1500 ease-out"
                 style={{
                   height: isVisible ? "100%" : "0%",
-                  transitionDelay: "600ms",
+                  transitionDelay: isVisible ? "600ms" : "0ms",
                 }}
               ></div>
               <div className="space-y-12">
@@ -185,7 +183,7 @@ function FeatureSection() {
                   className={`relative pl-16 group transform transition-all duration-700 ease-out ${
                     isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
                   }`}
-                  style={{ transitionDelay: "800ms" }}
+                  style={{ transitionDelay: isVisible ? "800ms" : "0ms" }}
                 >
                   <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-[#f9a806] flex items-center justify-center ring-8 ring-gray-50 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-lg group-hover:shadow-[#f9a806]/30">
                     <svg
@@ -281,7 +279,7 @@ function FeatureSection() {
                     className={`relative pl-16 group cursor-pointer transform transition-all duration-700 ease-out hover:scale-105 ${
                       isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
                     }`}
-                    style={{ transitionDelay: item.delay }}
+                    style={{ transitionDelay: isVisible ? item.delay : "0ms" }}
                   >
                     <div className="absolute left-0 top-0 w-12 h-12 rounded-full bg-white flex items-center justify-center ring-8 ring-gray-50 border-2 border-gray-300 transform transition-all duration-500 ease-out group-hover:scale-110 group-hover:border-[#f9a806] group-hover:shadow-lg group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
                       {item.icon}
@@ -302,7 +300,7 @@ function FeatureSection() {
               className={`bg-white py-8 lg:py-16 lg:col-span-1 transform transition-all duration-1000 ease-out ${
                 isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
               }`}
-              style={{ transitionDelay: "600ms" }}
+              style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
             >
               <div className="container mx-auto px-6 text-center">
                 <div className="w-full px-2 sm:px-6 text-center">
