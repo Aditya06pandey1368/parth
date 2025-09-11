@@ -60,7 +60,7 @@ function Navbar() {
               <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
             </div>
             <h2 className="text-xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-[#f9a806]">
-              Achievo
+              Parth
             </h2>
           </Link>
 
