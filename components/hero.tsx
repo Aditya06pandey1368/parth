@@ -47,17 +47,42 @@ function Hero() {
         animate="visible"
       >
         <motion.h1
-          className="text-3xl sm:text-4xl dark:text-gray-100 md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-tight text-gray-900 text-balance"
-          variants={fadeInUp}
-        >
-          From Milestones to Mastery – Your<span className="text-[#f9a806]"> Verified Path</span> Begins Here.
-        </motion.h1>
+  className="text-3xl sm:text-4xl dark:text-gray-100 md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-tight text-gray-900 text-balance"
+  initial="hidden"
+  animate="visible"
+  variants={{
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeOut",
+        staggerChildren: 0.08, // animate words one by one
+      },
+    },
+  }}
+>
+  {["From", "Milestones", "to", "Mastery", "–", "Your", "Verified", "Path", "Begins", "Here."].map((word, index) => (
+    <motion.span
+      key={index}
+      className={word === "Verified" || word === "Path" ? "text-[#f9a806] inline-block mr-2" : "inline-block mr-2"}
+      variants={{
+        hidden: { opacity: 0, y: 20, skewY: 10 },
+        visible: { opacity: 1, y: 0, skewY: 0, transition: { type: "spring", stiffness: 120, damping: 12 } },
+      }}
+    >
+      {word}
+    </motion.span>
+  ))}
+</motion.h1>
+
 
         <motion.p
           className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 text-pretty"
           variants={fadeInUp}
         >
-          Achieve empowers university students to track and verify their academic and extracurricular achievements,
+          Parth empowers university students to track and verify their academic and extracurricular achievements,
           creating a comprehensive digital portfolio for internships, jobs, and accreditations.
         </motion.p>
 
