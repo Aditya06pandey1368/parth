@@ -7,9 +7,9 @@ function Hero() {
     <div>
           <div className="container mx-auto grid min-h-[calc(100vh-80px)] items-center px-6 lg:grid-cols-2 gap-16 lg:gap-8">
             <div className="flex flex-col gap-8 text-center lg:text-left">
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight text-gray-900">Unlock Your Potential. Showcase Every Success. Build Your Verified Future.</h1>
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight text-gray-900">From Milestones to Mastery – Your Verified Path Begins Here.</h1>
               <p className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
-                Achievo empowers university students to track and verify their academic and extracurricular achievements, creating a comprehensive digital portfolio for internships, jobs, and accreditations.
+                Parth empowers university students to track and verify their academic and extracurricular achievements, creating a comprehensive digital portfolio for internships, jobs, and accreditations.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link href="#" className="px-8 py-4 text-base font-bold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-transform transform hover:scale-105">Create Your Portfolio</Link>
