@@ -47,12 +47,10 @@ function Hero() {
         animate="visible"
       >
         <motion.h1
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-tight text-gray-900 text-balance"
+          className="text-3xl sm:text-4xl dark:text-gray-100 md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-tight text-gray-900 text-balance"
           variants={fadeInUp}
         >
-          Unlock Your Potential. <br />
-          Showcase Every Success. <br />
-          Build Your Verified Future.
+          From Milestones to Mastery – Your<span className="text-[#f9a806]"> Verified Path</span> Begins Here.
         </motion.h1>
 
         <motion.p
