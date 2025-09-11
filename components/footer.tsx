@@ -14,7 +14,7 @@ const fadeUp = {
 
 function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-400">
+    <footer className="bg-gray-100 text-gray-700 dark:bg-gray-900 dark:text-gray-400 transition-colors duration-300">
       <div className="container mx-auto px-6 py-12">
         {/* Top Grid */}
         <motion.div
@@ -28,7 +28,7 @@ function Footer() {
           <motion.div variants={fadeUp}>
             <Link href="/" className="flex items-center gap-2">
               <svg
-                className="h-8 w-8 text-yellow-400"
+                className="h-8 w-8 text-yellow-500"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -50,7 +50,9 @@ function Footer() {
                     4.5 0 01-1.238 2.231A4.491 
                     4.491 0 0116.5 12.013z"></path>
               </svg>
-              <h2 className="text-2xl font-bold text-white">Achievo</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Achievo
+              </h2>
             </Link>
             <p className="mt-4 text-sm">
               Verified portfolios for the future of work.
@@ -59,25 +61,25 @@ function Footer() {
 
           {/* Product */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-white font-semibold tracking-wider uppercase">
+            <h3 className="text-gray-900 dark:text-white font-semibold tracking-wider uppercase">
               Product
             </h3>
             <div className="mt-4 space-y-3">
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/features"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Features
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/students"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 For Students
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/universities"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 For Universities
               </Link>
@@ -86,25 +88,25 @@ function Footer() {
 
           {/* Company */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-white font-semibold tracking-wider uppercase">
+            <h3 className="text-gray-900 dark:text-white font-semibold tracking-wider uppercase">
               Company
             </h3>
             <div className="mt-4 space-y-3">
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/about"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 About Us
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/careers"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Careers
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/press"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Press
               </Link>
@@ -113,25 +115,25 @@ function Footer() {
 
           {/* Resources */}
           <motion.div variants={fadeUp}>
-            <h3 className="text-white font-semibold tracking-wider uppercase">
+            <h3 className="text-gray-900 dark:text-white font-semibold tracking-wider uppercase">
               Resources
             </h3>
             <div className="mt-4 space-y-3">
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/blog"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Blog
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/help"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Help Center
               </Link>
               <Link
-                href="#"
-                className="block hover:text-yellow-400 transition-colors"
+                href="/contact"
+                className="block hover:text-yellow-500 transition-colors"
               >
                 Contact Us
               </Link>
@@ -141,7 +143,7 @@ function Footer() {
 
         {/* Bottom Section */}
         <motion.div
-          className="mt-12 border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm"
+          className="mt-12 border-t border-gray-300 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center text-sm"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -149,10 +151,10 @@ function Footer() {
         >
           <p>© 2024 Achievo. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-white">
+            <Link href="/privacy" className="hover:text-gray-900 dark:hover:text-white">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-white">
+            <Link href="/terms" className="hover:text-gray-900 dark:hover:text-white">
               Terms of Service
             </Link>
           </div>
