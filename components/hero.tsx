@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { easeOut, easeInOut, motion } from "framer-motion"
-import heroImg from "../public/heroImg.png"
+import heroImg from "@/public/heroImg.png"
 
 // --- Animation Variants ---
 const staggerContainer = {
@@ -47,25 +47,19 @@ function Hero() {
         animate="visible"
       >
         <motion.h1
-<<<<<<< HEAD
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tighter leading-tight text-gray-900 text-balance"
-=======
-          className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-tight text-gray-900 dark:text-white"
->>>>>>> origin/main
           variants={fadeInUp}
         >
-          From Milestones to Mastery – Your Verified Path Begins Here.
+          Unlock Your Potential. <br />
+          Showcase Every Success. <br />
+          Build Your Verified Future.
         </motion.h1>
 
         <motion.p
-<<<<<<< HEAD
           className="text-base sm:text-lg text-gray-600 max-w-xl mx-auto lg:mx-0 text-pretty"
-=======
-          className="text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0"
->>>>>>> origin/main
           variants={fadeInUp}
         >
-          Parth empowers university students to track and verify their academic and extracurricular achievements,
+          Achieve empowers university students to track and verify their academic and extracurricular achievements,
           creating a comprehensive digital portfolio for internships, jobs, and accreditations.
         </motion.p>
 
@@ -75,22 +69,14 @@ function Hero() {
         >
           <Link
             href="#"
-<<<<<<< HEAD
             className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-transform transform hover:scale-105"
-=======
-            className="px-8 py-4 text-base font-bold rounded-full bg-[#f9a806] text-gray-900 dark:text-gray-900 hover:bg-yellow-400 transition-transform transform hover:scale-105"
->>>>>>> origin/main
             aria-label="Create your digital portfolio with Parth"
           >
             Create Your Portfolio
           </Link>
           <Link
             href="#"
-<<<<<<< HEAD
             className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-gray-200/60 text-gray-700 hover:bg-gray-300/60 transition-transform transform hover:scale-105"
-=======
-            className="px-8 py-4 text-base font-bold rounded-full bg-gray-200/60 text-gray-700 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300/60 dark:hover:bg-gray-600 transition-transform transform hover:scale-105"
->>>>>>> origin/main
             aria-label="Request a demo of Parth"
           >
             Request a Demo
@@ -103,7 +89,6 @@ function Hero() {
           variants={fadeInUp}
         >
           <div className="flex -space-x-2">
-<<<<<<< HEAD
             <Image
               alt="Student 1"
               className="inline-block h-8 w-8 sm:h-10 sm:w-10 rounded-full ring-2 ring-gray-50"
@@ -129,13 +114,6 @@ function Hero() {
           <p className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
             Trusted by students from 100+ universities.
           </p>
-=======
-            <Image alt="Student 1" className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-50 dark:ring-gray-800" src="https://i.pravatar.cc/40?img=1" width={40} height={40} />
-            <Image alt="Student 2" className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-50 dark:ring-gray-800" src="https://i.pravatar.cc/40?img=2" width={40} height={40} />
-            <Image alt="Student 3" className="inline-block h-10 w-10 rounded-full ring-2 ring-gray-50 dark:ring-gray-800" src="https://i.pravatar.cc/40?img=3" width={40} height={40} />
-          </div>
-          <p className="text-sm text-gray-500 dark:text-gray-400">Trusted by students from 100+ universities.</p>
->>>>>>> origin/main
         </motion.div>
       </motion.div>
 
@@ -148,7 +126,6 @@ function Hero() {
           className="relative w-full h-full flex items-center justify-center"
         >
           <motion.div
-<<<<<<< HEAD
             className="relative z-30 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
             animate={floatingAnimation}
           >
@@ -172,22 +149,10 @@ function Hero() {
             <p className="text-xs text-gray-500">Machine Learning</p>
             <div className="mt-1 sm:mt-2 h-1 w-full bg-gray-200 rounded-full">
               <div className="h-1 bg-[#f9a806] rounded-full" style={{ width: "100%" }}></div>
-=======
-            className="absolute top-[10%] left-[15%] w-60 -rotate-12 bg-white/50 dark:bg-gray-800/60 backdrop-blur-md p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-lg"
-            variants={fadeInUp}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-          >
-            <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">Coursera Certificate</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Machine Learning Specialization</p>
-            <div className="mt-2 h-1.5 w-full bg-gray-200 dark:bg-gray-700 rounded-full">
-              <div className="h-1.5 bg-[#f9a806] rounded-full" style={{ width: '100%' }}></div>
->>>>>>> origin/main
             </div>
           </motion.div>
 
           <motion.div
-<<<<<<< HEAD
             className="absolute top-[20%] right-[12%] w-28 sm:w-36 lg:w-44 rotate-8 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
             animate={{ y: [0, -12, 0], rotate: [8, 12, 8] }}
@@ -196,20 +161,9 @@ function Hero() {
             <p className="font-bold text-orange-600 text-xs sm:text-sm">Winner!</p>
             <p className="text-xs text-gray-500">InnovateX 2023</p>
             <p className="text-green-500 text-xs mt-1 font-semibold">✓ Verified</p>
-=======
-            className="absolute top-[25%] right-[5%] w-56 rotate-6 bg-white/50 dark:bg-gray-800/60 backdrop-blur-md p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-lg"
-            variants={fadeInUp}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-          >
-            <p className="font-bold text-yellow-500 text-lg">Hackathon Winner</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">InnovateX 2023 - 1st Place</p>
-            <p className="text-green-500 text-xs mt-2 font-semibold">Verified!</p>
->>>>>>> origin/main
           </motion.div>
 
           <motion.div
-<<<<<<< HEAD
             className="absolute bottom-[40%] left-[12%] w-28 sm:w-32 lg:w-40 rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
             animate={{ y: [0, -8, 0], rotate: [6, 2, 6] }}
@@ -224,23 +178,11 @@ function Hero() {
                   stroke="#f9a806"
                   strokeWidth="2"
                 ></path>
-=======
-            className="absolute bottom-[30%] left-[5%] w-48 rotate-3 bg-white/50 dark:bg-gray-800/60 backdrop-blur-md p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-lg"
-            variants={fadeInUp}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 3.5, ease: 'easeInOut' }}
-          >
-            <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">CGPA: 3.8/4.0</p>
-            <div className="w-full h-16 mt-2">
-              <svg height="100%" viewBox="0 0 100 50" width="100%">
-                <path d="M 0 40 C 20 10, 40 10, 60 30 S 80 45, 100 25" fill="none" stroke="#f9a806" strokeWidth="3"></path>
->>>>>>> origin/main
               </svg>
             </div>
           </motion.div>
 
           <motion.div
-<<<<<<< HEAD
             className="absolute bottom-[15%] right-[8%] w-36 sm:w-44 lg:w-52 -rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
             animate={{ y: [0, -15, 0], rotate: [-6, -2, -6] }}
@@ -252,20 +194,9 @@ function Hero() {
               <div className="h-3 w-3 sm:h-4 sm:w-4 bg-blue-500 rounded-full"></div>
               <p className="text-xs font-semibold text-green-500">✓ Verified</p>
             </div>
-=======
-            className="absolute bottom-[15%] right-[20%] w-64 -rotate-3 bg-white/50 dark:bg-gray-800/60 backdrop-blur-md p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-lg"
-            variants={fadeInUp}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 4.5, ease: 'easeInOut' }}
-          >
-            <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">New Internship Verified!</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Software Engineer Intern at TechCorp</p>
-            <Image alt="TechCorp Logo" className="h-6 w-6 mt-2 rounded-full" src="https://i.pravatar.cc/24?img=4" width={24} height={24} />
->>>>>>> origin/main
           </motion.div>
 
           <motion.div
-<<<<<<< HEAD
             className="absolute top-[50%] left-[15%] w-32 sm:w-36 lg:w-44 rotate-12 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
             animate={{ y: [0, -10, 0], rotate: [12, 16, 12] }}
@@ -275,17 +206,6 @@ function Hero() {
             <p className="text-xs text-gray-500">AI & Robotics Club</p>
             <div className="flex items-center gap-1 mt-1">
               <span className="inline-block h-2 w-2 rounded-full bg-green-500"></span>
-=======
-            className="absolute top-[55%] left-[30%] w-52 rotate-8 bg-white/50 dark:bg-gray-800/60 backdrop-blur-md p-4 rounded-2xl border border-gray-200/80 dark:border-gray-700 shadow-lg"
-            variants={fadeInUp}
-            animate={{ y: [0, -15, 0] }}
-            transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-          >
-            <p className="font-semibold text-sm text-gray-800 dark:text-gray-100">Club Activity</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">President, AI & Robotics Club</p>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="inline-block h-3 w-3 rounded-full bg-green-500"></span>
->>>>>>> origin/main
               <p className="text-xs font-semibold text-green-500">Active</p>
             </div>
           </motion.div>
