@@ -7,6 +7,17 @@ import { Button } from "@/components/ui/button"
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = React.useState(false)
+
+  // Ensures we only render once client-side theme is known
+  React.useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    // Prevent hydration mismatch
+    return null
+  }
 
   return (
     <Button

@@ -28,7 +28,7 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const navLinks = ["Dashboard", "Features", "For Institutions", "Contact"]
+  const navLinks = ["About", "Features", "For Institutions", "Contact"]
 
   return (
     <header

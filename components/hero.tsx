@@ -29,8 +29,10 @@ const fadeInUp = {
 }
 
 const floatingAnimation = {
+  y: [0, -10, 0],
   transition: {
-    duration: 6,
+    
+    duration: 4,
     repeat: Number.POSITIVE_INFINITY,
     ease: easeInOut,
   },
@@ -95,14 +97,14 @@ function Hero() {
             className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-transform transform hover:scale-105"
             aria-label="Create your digital portfolio with Parth"
           >
-            Create Your Portfolio
+            Login
           </Link>
           <Link
             href="#"
             className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-bold rounded-full bg-gray-200/60 text-gray-700 hover:bg-gray-300/60 transition-transform transform hover:scale-105"
             aria-label="Request a demo of Parth"
           >
-            Request a Demo
+            Register Your College
           </Link>
         </motion.div>
 
@@ -165,8 +167,8 @@ function Hero() {
           <motion.div
             className="absolute top-[15%] left-[8%] w-32 sm:w-40 lg:w-48 -rotate-12 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
-            animate={{ y: [0, -10, 0], rotate: [-12, -8, -12] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 4, ease: "easeInOut" }}
+            animate={{ y: [0, -20, 0], rotate: [-12, -8, -12] }}
+            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2, ease: "easeInOut" }}
           >
             <p className="font-semibold text-xs text-gray-800">Coursera Certificate</p>
             <p className="text-xs text-gray-500">Machine Learning</p>
@@ -178,8 +180,8 @@ function Hero() {
           <motion.div
             className="absolute top-[20%] right-[12%] w-28 sm:w-36 lg:w-44 rotate-8 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
             variants={fadeInUp}
-            animate={{ y: [0, -12, 0], rotate: [8, 12, 8] }}
-            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 5, ease: "easeInOut" }}
+            animate={{ y: [0, -25, 0], rotate: [8, 12, 8] }}
+            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 3, ease: "easeInOut" }}
           >
             <p className="font-bold text-orange-600 text-xs sm:text-sm">Winner!</p>
             <p className="text-xs text-gray-500">InnovateX 2023</p>
@@ -187,9 +189,9 @@ function Hero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-[40%] left-[12%] w-28 sm:w-32 lg:w-40 rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
+            className="absolute bottom-[20%] left-[5%] w-28 sm:w-32 lg:w-40 rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-80"
             variants={fadeInUp}
-            animate={{ y: [0, -8, 0], rotate: [6, 2, 6] }}
+            animate={{ y: [0, -20, 0], rotate: [6, 2, 6] }}
             transition={{ repeat: Number.POSITIVE_INFINITY, duration: 3.5, ease: "easeInOut" }}
           >
             <p className="font-semibold text-xs text-gray-800">CGPA: 3.8/4.0</p>
@@ -206,7 +208,7 @@ function Hero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-[15%] right-[8%] w-36 sm:w-44 lg:w-52 -rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-10"
+            className="absolute bottom-[15%] right-[5%] w-36 sm:w-44 lg:w-52 -rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-80"
             variants={fadeInUp}
             animate={{ y: [0, -15, 0], rotate: [-6, -2, -6] }}
             transition={{ repeat: Number.POSITIVE_INFINITY, duration: 4.5, ease: "easeInOut" }}
