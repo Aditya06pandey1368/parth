@@ -59,12 +59,13 @@ export function Sidebar() {
 
       {/* Sidebar */}
       <div
-        className={cn(
-          "fixed inset-y-0 left-0 z-40 w-64 bg-sidebar border-r border-sidebar-border transform transition-transform duration-200 ease-in-out md:translate-x-0",
+        className={cn( 
+          "fixed  inset-y-0 left-0 z-40 w-64 bg-sidebar border-r border-sidebar-border transform transition-transform duration-200 ease-in-out md:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full",
         )}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full bg-gray-100
+">
           {/* Header */}
           <div className="flex items-center gap-3 p-6 border-b border-sidebar-border">
             <div className="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl flex items-center justify-center shadow-md">

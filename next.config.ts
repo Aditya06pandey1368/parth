@@ -17,10 +17,20 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'picsum.photos', // ✅ allow picsum
+        hostname: 'picsum.photos',
+      },
+      // --- ADDED THESE TWO LINES TO FIX THE ISSUE ---
+      {
+        protocol: 'https',
+        hostname: 'miro.medium.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'd12m9erqbesehq.cloudfront.net',
       },
     ],
   },
 };
 
 export default nextConfig;
+

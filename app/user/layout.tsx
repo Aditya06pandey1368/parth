@@ -1,4 +1,4 @@
-import { Sidebar } from "@/components/sidebar";
+import { Sidebar } from "../../components/sidebar"; // Corrected import path
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,15 +12,16 @@ export default function UserLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* This is your fixed sidebar */}
-      <aside className="w-64 flex-shrink-0">
+    // Updated the background color for the main layout wrapper
+    <div className="flex min-h-screen bg-gray-300 dark:bg-gray-900">
+      {/* Fixed Sidebar - kept white for contrast and added a subtle shadow */}
+      <aside className="w-64 flex-shrink-0 bg-white dark:bg-gray-800 shadow-md">
         <Sidebar />
-
       </aside>
 
-      {/* This is the main content area for your pages */}
-      <main className="flex-1 p-6 lg:p-8">
+      {/* Main Content - updated background to match the wrapper */}
+      <main className="flex-1 p-6 lg:p-8 bg-gray-200 
+ dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {children}
       </main>
     </div>
