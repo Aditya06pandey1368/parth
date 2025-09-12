@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Calendar, Clock, MapPin, Users, Plus, ChevronLeft, ChevronRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 const upcomingEvents = [
   {
@@ -115,60 +116,76 @@ export default function ClubEventsPage() {
     location: "",
   })
 
-  const isAdmin = true // This would be determined by user role in real app
+  const isAdmin = true
 
   const handleAddEvent = () => {
-    // Handle adding new event
     console.log("Adding new event:", newEvent)
     setIsAddEventOpen(false)
     setNewEvent({ title: "", description: "", date: "", time: "", location: "" })
   }
 
   const EventCard = ({ event }: { event: any }) => (
-    <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
-      <div className="aspect-[4/3] overflow-hidden">
-        <img
-          src={event.image || "/placeholder.svg"}
-          alt={event.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-        />
-      </div>
-      <CardContent className="p-6">
-        <div className="space-y-4">
-          <div>
-            <h3 className="text-lg font-bold mb-2 line-clamp-2">{event.title}</h3>
-            <p className="text-muted-foreground text-sm line-clamp-2">{event.description}</p>
-          </div>
-
-          <div className="space-y-2 text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>{new Date(event.date).toLocaleDateString()}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Clock className="h-4 w-4" />
-              <span>{event.time}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="h-4 w-4" />
-              <span>{event.location}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Users className="h-4 w-4" />
-              <span>{event.attendees} attendees</span>
-            </div>
-          </div>
-
-          <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black">View Details</Button>
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.03 }}
+    >
+      <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
+        <div className="aspect-[4/3] overflow-hidden">
+          <img
+            src={event.image || "/placeholder.svg"}
+            alt={event.title}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
-      </CardContent>
-    </Card>
+        <CardContent className="p-6">
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold mb-2 line-clamp-2">{event.title}</h3>
+              <p className="text-muted-foreground text-sm line-clamp-2">{event.description}</p>
+            </div>
+
+            <div className="space-y-2 text-sm">
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Calendar className="h-4 w-4" />
+                <span>{new Date(event.date).toLocaleDateString()}</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                <span>{event.time}</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4" />
+                <span>{event.location}</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Users className="h-4 w-4" />
+                <span>{event.attendees} attendees</span>
+              </div>
+            </div>
+
+            <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-black">View Details</Button>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
   )
 
   return (
-    <div className="min-h-screen p-6 space-y-8">
+    <motion.div
+      className="min-h-screen p-6 space-y-8"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <motion.div
+        className="flex items-center justify-between"
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
         <div>
           <h1 className="text-3xl font-bold">Club Events</h1>
           <p className="text-muted-foreground">Stay updated with all club activities and events</p>
@@ -246,10 +263,16 @@ export default function ClubEventsPage() {
             </DialogContent>
           </Dialog>
         )}
-      </div>
+      </motion.div>
 
       {/* Upcoming Events */}
-      <div className="space-y-6">
+      <motion.div
+        className="space-y-6"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Upcoming Events</h2>
           <div className="flex gap-2">
@@ -261,15 +284,29 @@ export default function ClubEventsPage() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
           {upcomingEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Past Events */}
-      <div className="space-y-6">
+      <motion.div
+        className="space-y-6"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold">Past Events</h2>
           <div className="flex gap-2">
@@ -281,12 +318,20 @@ export default function ClubEventsPage() {
             </Button>
           </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } },
+          }}
+        >
           {pastEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   )
 }

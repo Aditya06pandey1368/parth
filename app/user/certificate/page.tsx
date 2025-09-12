@@ -8,15 +8,16 @@ import { Badge } from "@/components/ui/badge"
 import { Eye, Trash2, Plus, Search } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+import { motion } from "framer-motion"
 
 const certificates = [
   {
     id: 1,
-    title: "Certificate Of Full Stack Web Development",
+    title: "Certificate Of Full Stack",
     issuer: "Tech Academy",
     date: "2024-01-15",
     status: "verified",
-    image: "/full-stack-web-development-certificate.jpg",
+    image: "https://marketplace.canva.com/EAFlVDzb7sA/3/0/1600w/canva-white-gold-elegant-modern-certificate-of-participation-Qn4Rei141MM.jpg",
   },
   {
     id: 2,
@@ -24,7 +25,7 @@ const certificates = [
     issuer: "Data Institute",
     date: "2024-02-20",
     status: "verified",
-    image: "/data-science-certificate.png",
+    image: "https://marketplace.canva.com/EAFlVDzb7sA/3/0/1600w/canva-white-gold-elegant-modern-certificate-of-participation-Qn4Rei141MM.jpg",
   },
   {
     id: 3,
@@ -32,7 +33,7 @@ const certificates = [
     issuer: "AI Academy",
     date: "2024-03-10",
     status: "pending",
-    image: "/machine-learning-certificate.jpg",
+    image: "https://marketplace.canva.com/EAFlVDzb7sA/3/0/1600w/canva-white-gold-elegant-modern-certificate-of-participation-Qn4Rei141MM.jpg",
   },
   {
     id: 4,
@@ -40,7 +41,7 @@ const certificates = [
     issuer: "Design School",
     date: "2024-04-05",
     status: "verified",
-    image: "/ux-design-certificate.jpg",
+    image: "https://marketplace.canva.com/EAFlVDzb7sA/3/0/1600w/canva-white-gold-elegant-modern-certificate-of-participation-Qn4Rei141MM.jpg",
   },
 ]
 
@@ -50,30 +51,44 @@ const projects = [
     title: "E-commerce Website Redesign",
     description: "Complete redesign of an e-commerce platform with modern UI/UX",
     status: "completed",
-    image: "/ecommerce-website-design.png",
+    image: "https://as1.ftcdn.net/jpg/01/02/26/88/1000_F_102268826_JMpHgmEJq9RjRpVibF1QngDuXrwOPeXY.jpg",
   },
   {
     id: 2,
     title: "Mobile App Development",
     description: "Cross-platform mobile application for task management",
     status: "in-progress",
-    image: "/mobile-app-development.png",
+    image: "https://as1.ftcdn.net/jpg/01/02/26/88/1000_F_102268826_JMpHgmEJq9RjRpVibF1QngDuXrwOPeXY.jpg",
   },
   {
     id: 3,
     title: "Data Analysis Project",
     description: "Statistical analysis of customer behavior patterns",
     status: "completed",
-    image: "/data-analysis-dashboard.png",
+    image: "https://as1.ftcdn.net/jpg/01/02/26/88/1000_F_102268826_JMpHgmEJq9RjRpVibF1QngDuXrwOPeXY.jpg",
   },
   {
     id: 4,
     title: "Cloud Infrastructure Setup",
     description: "AWS cloud infrastructure for scalable web applications",
     status: "completed",
-    image: "/cloud-infrastructure-diagram.png",
+    image: "https://as1.ftcdn.net/jpg/01/02/26/88/1000_F_102268826_JMpHgmEJq9RjRpVibF1QngDuXrwOPeXY.jpg",
   },
 ]
+
+// Animation Variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 60 } },
+}
 
 export default function CertificatesPage() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -85,9 +100,19 @@ export default function CertificatesPage() {
   )
 
   return (
-    <div className="p-6 space-y-6">
+    <motion.div
+      className="p-6 space-y-6"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <motion.div
+        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+        initial={{ y: -40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 70, delay: 0.2 }}
+      >
         <div>
           <h1 className="text-3xl font-bold">My Certificates & Projects</h1>
           <p className="text-muted-foreground">Manage your academic achievements and project portfolio</p>
@@ -98,10 +123,15 @@ export default function CertificatesPage() {
             Add Certificate
           </Button>
         </Link>
-      </div>
+      </motion.div>
 
       {/* Search */}
-      <div className="flex gap-4">
+      <motion.div
+        className="flex gap-4"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+      >
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -111,89 +141,105 @@ export default function CertificatesPage() {
             className="pl-10"
           />
         </div>
-      </div>
+      </motion.div>
 
       {/* Certificates Grid */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">Certificates</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <h2 className="text-xl font-bold mb-3">Certificates</h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
           {filteredCertificates.map((cert) => (
-            <Card key={cert.id} className="group hover:shadow-lg transition-shadow">
-              <CardContent className="p-4">
-                <div className="aspect-[3/2] bg-muted rounded-lg mb-3 overflow-hidden">
-                  <img
-                    src={cert.image || "/placeholder.svg"}
-                    alt={cert.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <h3 className="font-medium text-sm mb-2 line-clamp-2">{cert.title}</h3>
-                <p className="text-xs text-muted-foreground mb-2">{cert.issuer}</p>
-                <div className="flex items-center justify-between">
-                  <Badge
-                    variant={cert.status === "verified" ? "default" : "secondary"}
-                    className={cn(
-                      cert.status === "verified" && "bg-green-100 text-green-800 hover:bg-green-100",
-                      cert.status === "pending" && "bg-yellow-100 text-yellow-800 hover:bg-yellow-100",
-                    )}
-                  >
-                    {cert.status}
-                  </Badge>
-                  <div className="flex gap-1">
-                    <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
-                      <Eye className="h-3 w-3" />
-                    </Button>
-                    <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+            <motion.div key={cert.id} variants={itemVariants}>
+              <Card className="bg-gray-100 group hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[3/2] bg-muted rounded-lg mb-3 overflow-hidden">
+                    <motion.img
+                      src={cert.image || "/placeholder.svg"}
+                      alt={cert.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      whileHover={{ scale: 1.05 }}
+                    />
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <h3 className="font-medium text-sm mb-2 line-clamp-2">{cert.title}</h3>
+                  <p className="text-xs text-muted-foreground mb-2">{cert.issuer}</p>
+                  <div className="flex items-center justify-between">
+                    <Badge
+                      variant={cert.status === "verified" ? "default" : "secondary"}
+                      className={cn(
+                        cert.status === "verified" && "bg-green-100 text-green-800 hover:bg-green-100",
+                        cert.status === "pending" && "bg-yellow-100 text-yellow-800 hover:bg-yellow-100",
+                      )}
+                    >
+                      {cert.status}
+                    </Badge>
+                    <div className="flex gap-1">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
+                        <Eye className="h-3 w-3" />
+                      </Button>
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* Projects Grid */}
       <div>
-        <h2 className="text-xl font-semibold mb-4">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <h2 className="text-xl font-bold mb-3">Projects</h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
           {projects.map((project) => (
-            <Card key={project.id} className="group hover:shadow-lg transition-shadow">
-              <CardContent className="p-4">
-                <div className="aspect-[4/3] bg-muted rounded-lg mb-3 overflow-hidden">
-                  <img
-                    src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                  />
-                </div>
-                <h3 className="font-medium text-sm mb-2">{project.title}</h3>
-                <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
-                <div className="flex items-center justify-between">
-                  <Badge
-                    variant={project.status === "completed" ? "default" : "secondary"}
-                    className={cn(
-                      project.status === "completed" && "bg-green-100 text-green-800 hover:bg-green-100",
-                      project.status === "in-progress" && "bg-blue-100 text-blue-800 hover:bg-blue-100",
-                    )}
-                  >
-                    {project.status}
-                  </Badge>
-                  <div className="flex gap-1">
-                    <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
-                      <Eye className="h-3 w-3" />
-                    </Button>
-                    <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+            <motion.div key={project.id} variants={itemVariants}>
+              <Card className="bg-gray-100 group hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[4/3] bg-muted rounded-lg mb-3 overflow-hidden">
+                    <motion.img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      whileHover={{ scale: 1.05 }}
+                    />
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <h3 className="font-medium text-sm mb-2">{project.title}</h3>
+                  <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
+                  <div className="flex items-center justify-between">
+                    <Badge
+                      variant={project.status === "completed" ? "default" : "secondary"}
+                      className={cn(
+                        project.status === "completed" && "bg-green-100 text-green-800 hover:bg-green-100",
+                        project.status === "in-progress" && "bg-blue-100 text-blue-800 hover:bg-blue-100",
+                      )}
+                    >
+                      {project.status}
+                    </Badge>
+                    <div className="flex gap-1">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
+                        <Eye className="h-3 w-3" />
+                      </Button>
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   )
 }

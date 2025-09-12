@@ -12,6 +12,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+  import { motion } from "framer-motion"
 import { Search, Plus, Eye, Download, ExternalLink, Calendar, Users, BookOpen, Upload, X } from "lucide-react"
 
 const researchPapers = [
@@ -23,7 +24,7 @@ const researchPapers = [
     year: 2024,
     status: "published",
     citations: 15,
-    image: "/research-paper-1.jpg",
+    image: "https://media.istockphoto.com/id/1131300086/photo/newspapers-and-laptop.jpg?s=612x612&w=0&k=20&c=-7JfG0qdqw0euf8kQs-37RXjO7kS7WDiCNqRvKGFoxY=",
     abstract: "This paper presents a comprehensive study on full-stack web development methodologies...",
   },
   {
@@ -34,7 +35,7 @@ const researchPapers = [
     year: 2024,
     status: "under-review",
     citations: 8,
-    image: "/research-paper-2.jpg",
+    image: "https://media.istockphoto.com/id/1131300086/photo/newspapers-and-laptop.jpg?s=612x612&w=0&k=20&c=-7JfG0qdqw0euf8kQs-37RXjO7kS7WDiCNqRvKGFoxY=",
     abstract: "An analysis of modern data science techniques and their applications in industry...",
   },
   {
@@ -45,7 +46,7 @@ const researchPapers = [
     year: 2023,
     status: "published",
     citations: 23,
-    image: "/research-paper-3.jpg",
+    image: "https://media.istockphoto.com/id/1131300086/photo/newspapers-and-laptop.jpg?s=612x612&w=0&k=20&c=-7JfG0qdqw0euf8kQs-37RXjO7kS7WDiCNqRvKGFoxY=",
     abstract: "Exploring advanced machine learning algorithms for predictive analytics...",
   },
   {
@@ -56,7 +57,7 @@ const researchPapers = [
     year: 2023,
     status: "published",
     citations: 12,
-    image: "/research-paper-4.jpg",
+    image: "https://media.istockphoto.com/id/1131300086/photo/newspapers-and-laptop.jpg?s=612x612&w=0&k=20&c=-7JfG0qdqw0euf8kQs-37RXjO7kS7WDiCNqRvKGFoxY=",
     abstract: "User experience design principles for modern web applications...",
   },
 ]
@@ -69,7 +70,7 @@ const projects = [
     status: "completed",
     duration: "6 months",
     team: 4,
-    image: "/project-ecommerce.jpg",
+    image: "https://img.freepik.com/free-photo/document-marketing-strategy-business-concept_53876-132231.jpg?semt=ais_incoming&w=740&q=80",
     description: "Complete redesign of an e-commerce platform with modern UI/UX principles and improved performance.",
   },
   {
@@ -79,7 +80,7 @@ const projects = [
     status: "in-progress",
     duration: "4 months",
     team: 3,
-    image: "/project-mobile.jpg",
+    image: "https://img.freepik.com/free-photo/document-marketing-strategy-business-concept_53876-132231.jpg?semt=ais_incoming&w=740&q=80",
     description: "Cross-platform mobile application for task management with real-time collaboration features.",
   },
   {
@@ -89,7 +90,7 @@ const projects = [
     status: "completed",
     duration: "3 months",
     team: 2,
-    image: "/project-data.jpg",
+    image: "https://img.freepik.com/free-photo/document-marketing-strategy-business-concept_53876-132231.jpg?semt=ais_incoming&w=740&q=80",
     description: "Statistical analysis of customer behavior patterns using machine learning algorithms.",
   },
   {
@@ -99,7 +100,7 @@ const projects = [
     status: "completed",
     duration: "2 months",
     team: 5,
-    image: "/project-cloud.jpg",
+    image: "https://img.freepik.com/free-photo/document-marketing-strategy-business-concept_53876-132231.jpg?semt=ais_incoming&w=740&q=80",
     description: "AWS cloud infrastructure setup for scalable web applications with automated deployment.",
   },
 ]
@@ -143,6 +144,7 @@ export default function ResearchPage() {
     }
   }
 
+
   const handleSubmit = () => {
     console.log("Form data:", formData)
     console.log("Uploaded file:", uploadedFile)
@@ -160,30 +162,71 @@ export default function ResearchPage() {
     setUploadedFile(null)
   }
 
-  return (
-    <div className="p-6 space-y-6">
+
+
+return (
+  <>
+    <motion.div
+      className="p-6 space-y-6"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <motion.div
+        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <div>
-          <h1 className="text-3xl font-bold">My Research Papers</h1>
-          <p className="text-muted-foreground">Explore your academic publications and research projects</p>
+          <motion.h1
+            className="text-3xl font-bold"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            My Research Papers
+          </motion.h1>
+          <motion.p
+            className="text-muted-foreground"
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            Explore your academic publications and research projects
+          </motion.p>
         </div>
         <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
           <DialogTrigger asChild>
-            <Button className="gap-2 bg-yellow-400 text-black hover:bg-yellow-500">
-              <Plus className="h-4 w-4" />
-              Add Research Paper
-            </Button>
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Button className="gap-2 bg-yellow-400 text-black hover:bg-yellow-500">
+                <Plus className="h-4 w-4" />
+                Add Research Paper
+              </Button>
+            </motion.div>
           </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Add Research Paper</DialogTitle>
             </DialogHeader>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-4">
+            <motion.div
+              className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               {/* Left Column - Paper Upload */}
               <div className="space-y-4">
-                <div>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                >
                   <Label htmlFor="file-upload" className="text-sm font-medium">
                     Upload Research Paper
                   </Label>
@@ -201,19 +244,29 @@ export default function ResearchPage() {
                       Browse File
                     </Button>
                     {uploadedFile && (
-                      <div className="mt-4 p-3 bg-yellow-50 rounded-lg flex items-center justify-between">
+                      <motion.div
+                        className="mt-4 p-3 bg-yellow-50 rounded-lg flex items-center justify-between"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                      >
                         <span className="text-sm text-gray-700">{uploadedFile.name}</span>
                         <Button type="button" variant="ghost" size="sm" onClick={() => setUploadedFile(null)}>
                           <X className="h-4 w-4" />
                         </Button>
-                      </div>
+                      </motion.div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Right Column - Paper Details */}
-              <div className="space-y-4">
+              <motion.div
+                className="space-y-4"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+              >
                 <div>
                   <Label htmlFor="title">Paper Title *</Label>
                   <Input
@@ -290,10 +343,16 @@ export default function ResearchPage() {
                     onChange={(e) => handleInputChange("keywords", e.target.value)}
                   />
                 </div>
-              </div>
+              </motion.div>
 
               {/* Full Width - Abstract */}
-              <div className="lg:col-span-2">
+              <motion.div
+                className="lg:col-span-2"
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                viewport={{ once: true }}
+              >
                 <Label htmlFor="abstract">Abstract *</Label>
                 <Textarea
                   id="abstract"
@@ -302,23 +361,35 @@ export default function ResearchPage() {
                   value={formData.abstract}
                   onChange={(e) => handleInputChange("abstract", e.target.value)}
                 />
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="flex justify-end gap-3 pt-4 border-t">
+            <motion.div
+              className="flex justify-end gap-3 pt-4 border-t"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <Button type="button" variant="outline" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </Button>
               <Button type="button" className="bg-yellow-400 text-black hover:bg-yellow-500" onClick={handleSubmit}>
                 Save Research Paper
               </Button>
-            </div>
+            </motion.div>
           </DialogContent>
         </Dialog>
-      </div>
+      </motion.div>
 
       {/* Search */}
-      <div className="flex gap-4">
+      <motion.div
+        className="flex gap-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+      >
         <div className="relative flex-1 max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -328,9 +399,10 @@ export default function ResearchPage() {
             className="pl-10"
           />
         </div>
-      </div>
-
-      {/* Tabs */}
+      </motion.div>
+    </motion.div>
+  
+        
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList>
           <TabsTrigger value="papers">Research Papers</TabsTrigger>
@@ -339,176 +411,220 @@ export default function ResearchPage() {
 
         <TabsContent value="papers" className="space-y-6">
           {/* Research Papers Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             {filteredPapers.map((paper) => (
-              <Card key={paper.id} className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-4">
-                  <div className="aspect-[3/4] bg-muted rounded-lg mb-4 overflow-hidden">
-                    <img
-                      src={paper.image || "/placeholder.svg"}
-                      alt={paper.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2 line-clamp-2">{paper.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-2">
-                    {paper.authors.join(", ")} • {paper.year}
-                  </p>
-                  <p className="text-xs text-muted-foreground mb-3">{paper.journal}</p>
-                  <div className="flex items-center justify-between mb-3">
-                    <Badge
-                      variant={paper.status === "published" ? "default" : "secondary"}
-                      className={
-                        paper.status === "published"
-                          ? "bg-green-100 text-green-800 hover:bg-green-100"
-                          : "bg-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                      }
-                    >
-                      {paper.status}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">{paper.citations} citations</span>
-                  </div>
-                  <div className="flex gap-1">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 text-xs bg-yellow-400 text-black border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500"
-                    >
-                      <Eye className="h-3 w-3 mr-1" />
-                      View
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 text-xs bg-yellow-400 text-black border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500"
-                    >
-                      <Download className="h-3 w-3 mr-1" />
-                      PDF
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <motion.div
+                key={paper.id}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="group hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="aspect-[3/4] bg-muted rounded-lg mb-4 overflow-hidden">
+                      <motion.img
+                        src={paper.image || "/placeholder.svg"}
+                        alt={paper.title}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                    </div>
+                    <h3 className="font-semibold text-sm mb-2 line-clamp-2">{paper.title}</h3>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      {paper.authors.join(", ")} • {paper.year}
+                    </p>
+                    <p className="text-xs text-muted-foreground mb-3">{paper.journal}</p>
+                    <div className="flex items-center justify-between mb-3">
+                      <Badge
+                        variant={paper.status === "published" ? "default" : "secondary"}
+                        className={
+                          paper.status === "published"
+                            ? "bg-green-100 text-green-800 hover:bg-green-100"
+                            : "bg-yellow-100 text-yellow-800 hover:bg-yellow-100"
+                        }
+                      >
+                        {paper.status}
+                      </Badge>
+                      <span className="text-xs text-muted-foreground">{paper.citations} citations</span>
+                    </div>
+                    <div className="flex gap-1">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 text-xs bg-yellow-400 text-black border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500"
+                      >
+                        <Eye className="h-3 w-3 mr-1" />
+                        View
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 text-xs bg-yellow-400 text-black border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500"
+                      >
+                        <Download className="h-3 w-3 mr-1" />
+                        PDF
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </TabsContent>
 
         <TabsContent value="projects" className="space-y-6">
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-4">
-                  <div className="aspect-[4/3] bg-muted rounded-lg mb-4 overflow-hidden">
-                    <img
-                      src={project.image || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                    />
-                  </div>
-                  <h3 className="font-semibold text-sm mb-2">{project.title}</h3>
-                  <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <BookOpen className="h-3 w-3" />
-                      {project.type}
+              <motion.div
+                key={project.id}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Card className="group hover:shadow-lg transition-shadow">
+                  <CardContent className="p-4">
+                    <div className="aspect-[4/3] bg-muted rounded-lg mb-4 overflow-hidden">
+                      <motion.img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                      />
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Calendar className="h-3 w-3" />
-                      {project.duration}
+                    <h3 className="font-semibold text-sm mb-2">{project.title}</h3>
+                    <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
+                    <div className="space-y-2 mb-4">
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <BookOpen className="h-3 w-3" />
+                        {project.type}
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Calendar className="h-3 w-3" />
+                        {project.duration}
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                        <Users className="h-3 w-3" />
+                        {project.team} team members
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Users className="h-3 w-3" />
-                      {project.team} team members
+                    <div className="flex items-center justify-between">
+                      <Badge
+                        variant={project.status === "completed" ? "default" : "secondary"}
+                        className={
+                          project.status === "completed"
+                            ? "bg-green-100 text-green-800 hover:bg-green-100"
+                            : "bg-blue-100 text-blue-800 hover:bg-blue-100"
+                        }
+                      >
+                        {project.status}
+                      </Badge>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-yellow-600 hover:text-yellow-700 hover:bg-yellow-50"
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                      </Button>
                     </div>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <Badge
-                      variant={project.status === "completed" ? "default" : "secondary"}
-                      className={
-                        project.status === "completed"
-                          ? "bg-green-100 text-green-800 hover:bg-green-100"
-                          : "bg-blue-100 text-blue-800 hover:bg-blue-100"
-                      }
-                    >
-                      {project.status}
-                    </Badge>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-8 w-8 p-0 text-yellow-600 hover:text-yellow-700 hover:bg-yellow-50"
-                    >
-                      <ExternalLink className="h-3 w-3" />
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </TabsContent>
       </Tabs>
 
       {/* Statistics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <BookOpen className="h-6 w-6 text-blue-600" />
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-4 gap-4"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-blue-100 rounded-lg">
+                  <BookOpen className="h-6 w-6 text-blue-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-blue-600">{researchPapers.length}</p>
+                  <p className="text-sm text-muted-foreground">Total Papers</p>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-blue-600">{researchPapers.length}</p>
-                <p className="text-sm text-muted-foreground">Total Papers</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <Users className="h-6 w-6 text-green-600" />
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-green-100 rounded-lg">
+                  <Users className="h-6 w-6 text-green-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-green-600">
+                    {researchPapers.reduce((sum, paper) => sum + paper.citations, 0)}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Total Citations</p>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-green-600">
-                  {researchPapers.reduce((sum, paper) => sum + paper.citations, 0)}
-                </p>
-                <p className="text-sm text-muted-foreground">Total Citations</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <Calendar className="h-6 w-6 text-purple-600" />
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-purple-100 rounded-lg">
+                  <Calendar className="h-6 w-6 text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-purple-600">{projects.length}</p>
+                  <p className="text-sm text-muted-foreground">Active Projects</p>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-purple-600">{projects.length}</p>
-                <p className="text-sm text-muted-foreground">Active Projects</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </motion.div>
 
-        <Card>
-          <CardContent className="p-6">
-            <div className="flex items-center gap-4">
-              <div className="p-2 bg-orange-100 rounded-lg">
-                <ExternalLink className="h-6 w-6 text-orange-600" />
+        <motion.div whileHover={{ scale: 1.05 }}>
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center gap-4">
+                <div className="p-2 bg-orange-100 rounded-lg">
+                  <ExternalLink className="h-6 w-6 text-orange-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-orange-600">
+                    {researchPapers.filter((p) => p.status === "published").length}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Published</p>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-orange-600">
-                  {researchPapers.filter((p) => p.status === "published").length}
-                </p>
-                <p className="text-sm text-muted-foreground">Published</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
-  )
+            </CardContent>
+          </Card>
+        </motion.div>
+      </motion.div>
+      </>
+)
 }
+
+
