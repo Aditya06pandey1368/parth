@@ -51,7 +51,7 @@ export function LoginForm() {
           <button
             onClick={() => setAccountType("Student")}
             className={`flex-1 py-3 px-6 rounded-full font-semibold transition-colors ${
-              accountType === "Student" ? "bg-yellow-600 text-white" : "bg-white text-gray-700"
+              accountType === "Student" ? "bg-white text-gray-700": "bg-yellow-600 text-white"
             }`}
           >
             Student
@@ -59,7 +59,7 @@ export function LoginForm() {
           <button
             onClick={() => setAccountType("Faculty")}
             className={`flex-1 py-3 px-6 rounded-full font-semibold transition-colors ${
-              accountType === "Faculty" ? "bg-yellow-600 text-white" : "bg-white text-gray-700"
+              accountType === "Faculty" ?"bg-white text-gray-700": "bg-yellow-600 text-white" 
             }`}
           >
             Faculty
