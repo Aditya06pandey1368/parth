@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes"; // 👈 1. Import the provider
+import Footer from "@/components/footer";
 // import { ThemeToggle } from "@/components/theme-toggle"; // If you need ThemeToggle elsewhere, fix the import name
 
 const geistSans = Geist({
@@ -38,6 +39,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          
         </ThemeProvider>
       </body>
     </html>
