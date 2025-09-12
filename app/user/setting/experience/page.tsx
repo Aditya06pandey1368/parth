@@ -63,7 +63,7 @@ export default function ExperienceDetails() {
       {/* Step Indicator */}
       <div className="flex items-center justify-center mb-8">
         <div className="flex items-center space-x-8">
-          <Link href="/settings" className="flex items-center space-x-2 text-gray-400">
+          <Link href="user/setting/settings" className="flex items-center space-x-2 text-gray-400">
             <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium">
               1
             </div>

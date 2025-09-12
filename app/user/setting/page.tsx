@@ -18,14 +18,14 @@ export default function SettingsPage() {
             <span className="text-sm font-medium">Basic Details</span>
           </div>
           <div className="w-8 h-0.5 bg-gray-300"></div>
-          <Link href="/settings/experience" className="flex items-center space-x-2">
+          <Link href="user/setting/experience" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               2
             </div>
             <span className="text-sm text-gray-500">Experience Details</span>
           </Link>
           <div className="w-8 h-0.5 bg-gray-300"></div>
-          <Link href="/settings/personal" className="flex items-center space-x-2">
+          <Link href="user/setting/personal" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               3
             </div>
@@ -120,7 +120,7 @@ export default function SettingsPage() {
 
           <div className="flex justify-between pt-6">
             <div></div>
-            <Link href="/settings/experience">
+            <Link href="/user/setting/experience">
               <Button className="bg-yellow-400 text-black hover:bg-yellow-500 px-8 py-3">
                 Next: Experience Details
               </Button>

@@ -24,12 +24,12 @@ import {
 } from "lucide-react"
 
 const primaryNavigation = [
-  { name: "Dashboard", href: "portfolio", icon: LayoutDashboard },
-  { name: "Research Papers", href: "research", icon: FileText },
-  { name: "Certificates", href: "certificate", icon: Award },
-  { name: "Clubs", href: "clubs", icon: Users },
-  { name: "Events", href: "events", icon: Calendar },
-  { name: "Settings", href: "settings", icon: Settings },
+  { name: "Dashboard", href: "/user/portfolio", icon: LayoutDashboard },
+  { name: "Research Papers", href: "/user/research", icon: FileText },
+  { name: "Certificates", href: "/user/certificate", icon: Award },
+  { name: "Clubs", href: "/user/clubs", icon: Users },
+  { name: "Events", href: "/user/events", icon: Calendar },
+  { name: "Settings", href: "/user/setting", icon: Settings },
 ]
 
 const secondaryNavigation = [
