@@ -1,14 +1,14 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion,easeOut } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 1.2, ease: "easeOut" },
+    transition: { duration: 1.2, ease: easeOut },
   },
 };
 

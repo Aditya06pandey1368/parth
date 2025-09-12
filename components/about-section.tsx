@@ -116,20 +116,16 @@ function AboutSection() {
             </h2>
             <p className="mt-6 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
               <span className="font-semibold text-yellow-600 dark:text-yellow-400">
-                Achievo
+                At Parth,
               </span>{" "}
-              was born from a powerful idea: every student&apos;s achievements
-              deserve recognition. We’re a passionate team of educators,
-              technologists, and designers committed to bridging the gap
-              between academic accomplishments and professional success.
+              we believe every student’s story is more than just grades on paper—it’s a journey of skills, passion, and achievements waiting to be recognized. Too often, these milestones stay hidden or unverified, limiting both students and institutions. That’s why we built Parth: a platform where colleges validate, students showcase, and the world discovers trusted talent. 
             </p>
             <p className="mt-4 text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-              Our mission is to create a transparent ecosystem where students
-              confidently showcase their skills while employers discover{" "}
+              It’s not just about records; it’s about bridging classrooms to careers, activities to opportunities, and efforts to impact. With Parth, we’re reimagining recognition—making it transparent,{" "}
               <span className="font-semibold text-yellow-600 dark:text-yellow-400">
-                verified talent
+                verifiable
               </span>{" "}
-              with ease.
+            , and future-ready.
             </p>
             {/* The button's high contrast design works well in both modes, so no changes are needed. */}
             <motion.button

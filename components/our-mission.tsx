@@ -2,13 +2,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, easeOut } from "framer-motion";
 
 // Animation helper
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
-  transition: { duration: 1.2, delay, ease: "easeOut" },
+  transition: { duration: 1.2, delay, ease: easeOut },
   viewport: { once: false, amount: 0.2 },
 });
 
@@ -47,7 +47,7 @@ function OurMission() {
             {...fadeUp(0)}
             className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-16 tracking-tight"
           >
-            The Achievo Advantage
+            The Parth Advantage
           </motion.h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

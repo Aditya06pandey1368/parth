@@ -29,10 +29,9 @@ const fadeInUp = {
 }
 
 const floatingAnimation = {
-  y: [0, -10, 0],
+  y: [0, -15, 0],
   transition: {
-    
-    duration: 4,
+    duration: 3,
     repeat: Number.POSITIVE_INFINITY,
     ease: easeInOut,
   },
