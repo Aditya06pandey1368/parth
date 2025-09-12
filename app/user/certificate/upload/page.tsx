@@ -69,7 +69,7 @@ export default function UploadCertificatePage() {
               {/* Form Fields */}
               <div className="space-y-6">
                 <div>
-                  <Label htmlFor="title" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="title" className="text-sm font-medium text-gray-400">
                     Certificate Title :
                   </Label>
                   <Input
@@ -82,7 +82,7 @@ export default function UploadCertificatePage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="issuer" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="issuer" className="text-sm font-medium text-gray-400">
                     Issued By :
                   </Label>
                   <Input
@@ -95,7 +95,7 @@ export default function UploadCertificatePage() {
                 </div>
 
                 <div>
-                  <Label htmlFor="clubs" className="text-sm font-medium text-gray-700">
+                  <Label htmlFor="clubs" className="text-sm font-medium text-gray-400">
                     Clubs :
                   </Label>
                   <Input
@@ -114,7 +114,7 @@ export default function UploadCertificatePage() {
                       checked={formData.writeExperience}
                       onCheckedChange={(checked) => setFormData({ ...formData, writeExperience: checked as boolean })}
                     />
-                    <Label htmlFor="writeExperience" className="text-sm font-medium text-gray-700">
+                    <Label htmlFor="writeExperience" className="text-sm font-medium text-gray-400">
                       Want to write Experience?
                     </Label>
                   </div>
