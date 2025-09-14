@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, easeOut, easeInOut } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -50,7 +50,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -61,7 +61,7 @@ const cardHoverVariants = {
     y: -5,
     transition: {
       duration: 0.2,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
@@ -73,7 +73,7 @@ const headerVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -114,8 +114,8 @@ export default function FacultyTimetablePage() {
 
   const handleFileUpload = (file: File) => {
     const url = URL.createObjectURL(file)
-    const type = file.type.includes("pdf") ? "pdf" : "image"
-    const newTimetableFile = { file, url, type }
+    const type: "pdf" | "image" = file.type.includes("pdf") ? "pdf" : "image"
+    const newTimetableFile: TimetableFile = { file, url, type }
     setTimetableFile(newTimetableFile)
 
     const newTimetable: SavedTimetable = {

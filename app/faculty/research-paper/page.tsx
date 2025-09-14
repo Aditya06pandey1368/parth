@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Search, BookOpen, User, Download, Eye, CheckCircle, XCircle, Clock, Star } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { motion } from "framer-motion"
+import { easeInOut, easeOut, motion } from "framer-motion"
 
 const researchPapers = [
   {
@@ -151,7 +151,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -162,7 +162,7 @@ const cardHoverVariants = {
     y: -5,
     transition: {
       duration: 0.2,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
@@ -174,7 +174,7 @@ const statsCardVariants = {
     scale: 1,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease:easeOut,
     },
   },
   hover: {

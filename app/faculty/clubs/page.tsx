@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Search, Users, Calendar, Star, Camera, Cpu, Leaf, MessageCircle, Check, X } from "lucide-react"
-import { motion } from "framer-motion"
+import { easeInOut, easeOut, motion } from "framer-motion"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,7 +27,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -38,7 +38,7 @@ const cardHoverVariants = {
     y: -10,
     transition: {
       duration: 0.3,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
@@ -50,7 +50,7 @@ const heroVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }

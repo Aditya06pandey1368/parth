@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Calendar, Clock, MapPin, Users, Search } from "lucide-react"
-import { motion } from "framer-motion"
+import { easeInOut, easeOut, motion } from "framer-motion"
 
 interface Event {
   id: string
@@ -115,7 +115,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -126,7 +126,7 @@ const cardHoverVariants = {
     y: -5,
     transition: {
       duration: 0.2,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
@@ -138,7 +138,7 @@ const headerVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }

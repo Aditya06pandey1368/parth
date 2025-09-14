@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Search, Eye, Trash2, Mail, Phone, MapPin } from "lucide-react"
-import { motion } from "framer-motion"
+import { easeInOut, easeOut, motion } from "framer-motion"
 
 const facultyMembers = [
   {
@@ -81,7 +81,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -92,7 +92,7 @@ const cardHoverVariants = {
     y: -8,
     transition: {
       duration: 0.3,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
@@ -104,7 +104,7 @@ const headerVariants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }

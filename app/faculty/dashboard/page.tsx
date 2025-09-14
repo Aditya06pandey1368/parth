@@ -22,7 +22,7 @@ import {
   Clock,
   Building2,
 } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion,easeOut,easeInOut} from "framer-motion"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,7 +42,7 @@ const itemVariants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: easeOut,
     },
   },
 }
@@ -52,7 +52,7 @@ const cardHoverVariants = {
     scale: 1.02,
     transition: {
       duration: 0.2,
-      ease: "easeInOut",
+      ease: easeInOut,
     },
   },
 }
