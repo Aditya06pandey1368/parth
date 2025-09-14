@@ -1,8 +1,9 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 import { useState, useEffect } from "react"
-
+import Projectsbg from "@/public/projectsbg.png"
 const projects = [
   {
     id: 1,
@@ -104,61 +105,76 @@ export default function Portfolio() {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFFBF4" }}>
       <motion.section
-        className="w-full py-20 px-6"
-        style={{ backgroundColor: "#4A4A4A" }}
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            className="text-5xl font-bold mb-6 text-white"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Explore <ChangingText /> Directory
-          </motion.h1>
-          <motion.p
-            className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-white"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Discover, connect, and grow with the vibrant clubs at our university.
-            <br />
-            Your next adventure starts here.
-          </motion.p>
+  className="w-full py-20 px-6 relative overflow-hidden"
+  style={{ backgroundColor: "#4A4A4A" }}
+  initial={{ opacity: 0, y: -50 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8, ease: "easeOut" }}
+>
+  {/* Background Image */}
+  <div className="absolute inset-0 z-0">
+    <Image
+      src={Projectsbg.src} // place inside /public folder
+      alt="Smart Student Hub Projects"
+      layout="fill"
+      objectFit="cover"
+      className="opacity-80"
+    />
+    {/* Glass overlay */}
+    <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
+  </div>
 
-          <motion.div
-            className="max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <motion.div
-              className="flex items-center px-6 py-4 rounded-full bg-white"
-              whileFocus={{ scale: 1.02 }}
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.2 }}
-            >
-              <input
-                type="text"
-                placeholder="Search clubs by keyword, topic, or author..."
-                className="flex-1 bg-transparent outline-none text-base text-gray-600 placeholder-gray-400"
-              />
-            </motion.div>
-          </motion.div>
-        </div>
-      </motion.section>
+  {/* Foreground Content */}
+  <div className="relative z-10 max-w-4xl mx-auto text-center">
+    <motion.h1
+      className="text-5xl font-bold mb-6 text-white"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.2 }}
+    >
+      Explore <ChangingText /> Directory
+    </motion.h1>
+    <motion.p
+      className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-white"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.4 }}
+    >
+      Discover, connect, and grow with the vibrant clubs at our university.
+      <br />
+      Your next adventure starts here.
+    </motion.p>
+
+    <motion.div
+      className="max-w-2xl mx-auto"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 0.6 }}
+    >
+      <motion.div
+        className="flex items-center px-6 py-4 rounded-full bg-white shadow-lg"
+        whileFocus={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.2 }}
+      >
+        <input
+          type="text"
+          placeholder="Search clubs by keyword, topic, or author..."
+          className="flex-1 bg-transparent outline-none text-base text-gray-600 placeholder-gray-400"
+        />
+      </motion.div>
+    </motion.div>
+  </div>
+</motion.section>
+
 
       <motion.nav
-        className="w-full py-6 px-6 dark:bg-black"
+        className="w-full py-6 px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <div className="max-w-6xl mx-auto ">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             className="flex items-center justify-center flex-wrap gap-3"
             variants={{
@@ -198,7 +214,7 @@ export default function Portfolio() {
       </motion.nav>
 
       <motion.main
-        className="w-full py-12 px-6 dark:bg-black"
+        className="w-full py-12 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}

@@ -20,7 +20,7 @@ export default function UserLayout({
       
 
       {/* Main Content - updated background to match the wrapper */}
-      <main className="flex-1 p-6 lg:p-8 bg-gray-200 
+      <main className="flex-1 bg-gray-200 
  dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {children}
       </main>
