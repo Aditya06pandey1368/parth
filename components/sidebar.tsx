@@ -57,7 +57,6 @@ const facultySecondaryNavigation = [
   { name: "Time Table", href: "/faculty/timetable", icon: Clock },
   { name: "Faculty Members", href: "/faculty/faculty-members", icon: UserCheck },
   { name: "Add Faculty Members", href: "/faculty/add-faculty", icon: Plus },
-  { name: "Add Institutional Data", href: "/faculty/add-institutional", icon: FileText },
 ]
 
 // -------------------- SIDEBAR COMPONENT --------------------

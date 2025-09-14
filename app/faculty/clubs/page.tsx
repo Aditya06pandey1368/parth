@@ -66,7 +66,7 @@ export default function ClubsPage() {
       name: "Photography Club",
       description: "Capture moments and express creativity through the lens of photography",
       category: "Creative",
-      categoryColor: "bg-purple-100 text-purple-800",
+      categoryColor: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
       icon: Camera,
       iconBg: "bg-purple-500",
       tags: ["Photography", "Art", "Creative"],
@@ -80,7 +80,7 @@ export default function ClubsPage() {
       name: "Robotics Team",
       description: "Build, program, and compete with cutting-edge robotics technology",
       category: "Technical",
-      categoryColor: "bg-green-100 text-green-800",
+      categoryColor: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
       icon: Cpu,
       iconBg: "bg-green-500",
       tags: ["Engineering", "Programming", "Innovation"],
@@ -94,9 +94,9 @@ export default function ClubsPage() {
       name: "Environmental Action",
       description: "Work together to create a sustainable future for our campus and community",
       category: "Social",
-      categoryColor: "bg-green-100 text-green-800",
+      categoryColor: "bg-teal-100 text-teal-800 dark:bg-teal-900/50 dark:text-teal-300",
       icon: Leaf,
-      iconBg: "bg-green-500",
+      iconBg: "bg-teal-500",
       tags: ["Sustainability", "Community", "Environment"],
       members: 95,
       founded: 2016,
@@ -108,7 +108,7 @@ export default function ClubsPage() {
       name: "Debate Society",
       description: "Sharpen your argumentative skills and engage in intellectual discourse",
       category: "Academic",
-      categoryColor: "bg-blue-100 text-blue-800",
+      categoryColor: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
       icon: Users,
       iconBg: "bg-blue-500",
       tags: ["Debate", "Public Speaking", "Critical Thinking"],
@@ -122,7 +122,7 @@ export default function ClubsPage() {
       name: "Music Ensemble",
       description: "Create beautiful harmonies and perform for the university community",
       category: "Creative",
-      categoryColor: "bg-purple-100 text-purple-800",
+      categoryColor: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
       icon: Users,
       iconBg: "bg-purple-500",
       tags: ["Music", "Performance", "Collaboration"],
@@ -136,7 +136,7 @@ export default function ClubsPage() {
       name: "Entrepreneurship Club",
       description: "Foster innovation and business acumen among aspiring entrepreneurs",
       category: "Business",
-      categoryColor: "bg-yellow-100 text-yellow-800",
+      categoryColor: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300",
       icon: Users,
       iconBg: "bg-yellow-500",
       tags: ["Business", "Innovation", "Networking"],
@@ -157,9 +157,9 @@ export default function ClubsPage() {
   })
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       <motion.div
-        className="bg-gray-700 text-white py-20 px-4"
+        className="bg-gray-700 dark:bg-slate-800 text-white py-20 px-4"
         variants={heroVariants}
         initial="hidden"
         animate="visible"
@@ -174,7 +174,7 @@ export default function ClubsPage() {
             Explore Our Clubs Directory
           </motion.h1>
           <motion.p
-            className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto text-pretty"
+            className="text-xl text-gray-300 dark:text-slate-300 mb-10 max-w-2xl mx-auto text-pretty"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -190,13 +190,13 @@ export default function ClubsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-slate-500 h-5 w-5" />
             <Input
               type="text"
               placeholder="Search clubs by keyword, topic, or author..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-12 py-4 bg-white text-gray-900 border-0 rounded-xl text-lg shadow-lg"
+              className="pl-12 py-4 bg-white text-gray-900 border-0 rounded-xl text-lg shadow-lg dark:bg-slate-700 dark:text-slate-100 dark:placeholder-slate-400"
             />
           </motion.div>
         </div>
@@ -214,10 +214,10 @@ export default function ClubsPage() {
         >
           <div className="flex flex-col sm:flex-row gap-4">
             <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-              <SelectTrigger className="w-48 border-2 border-gray-200 focus:border-yellow-400">
+              <SelectTrigger className="w-48 border-2 border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 focus:border-yellow-400">
                 <SelectValue placeholder="All Categories" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="creative">Creative</SelectItem>
                 <SelectItem value="technical">Technical</SelectItem>
@@ -228,10 +228,10 @@ export default function ClubsPage() {
             </Select>
 
             <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-32 border-2 border-yellow-400 bg-yellow-50">
+              <SelectTrigger className="w-32 border-2 border-yellow-400 bg-yellow-50 dark:bg-slate-800 dark:border-yellow-600/50 dark:text-slate-100">
                 <SelectValue placeholder="Newest" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                 <SelectItem value="newest">Newest</SelectItem>
                 <SelectItem value="oldest">Oldest</SelectItem>
                 <SelectItem value="popular">Most Popular</SelectItem>
@@ -240,7 +240,7 @@ export default function ClubsPage() {
             </Select>
           </div>
 
-          <p className="text-gray-600 font-medium">
+          <p className="text-gray-600 dark:text-slate-400 font-medium">
             Showing {filteredClubs.length} of {clubs.length} clubs
           </p>
         </motion.div>
@@ -251,7 +251,7 @@ export default function ClubsPage() {
             return (
               <motion.div key={club.id} variants={itemVariants} whileHover="hover" custom={index}>
                 <motion.div variants={cardHoverVariants}>
-                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+                  <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md dark:bg-slate-800 dark:border dark:border-slate-700">
                     <div className="relative">
                       <motion.img
                         src={club.image || "/placeholder.svg?height=200&width=400"}
@@ -287,8 +287,8 @@ export default function ClubsPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 + index * 0.1 }}
                       >
-                        <CardTitle className="text-xl font-bold text-gray-900 mb-2">{club.name}</CardTitle>
-                        <CardDescription className="text-gray-600 text-sm leading-relaxed">
+                        <CardTitle className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2">{club.name}</CardTitle>
+                        <CardDescription className="text-gray-600 dark:text-slate-400 text-sm leading-relaxed">
                           {club.description}
                         </CardDescription>
                       </motion.div>
@@ -311,7 +311,7 @@ export default function ClubsPage() {
                           >
                             <Badge
                               variant="outline"
-                              className="text-yellow-700 border-yellow-300 hover:bg-yellow-50 text-xs px-2 py-1"
+                              className="text-yellow-700 border-yellow-300 hover:bg-yellow-50 text-xs px-2 py-1 dark:text-yellow-300 dark:border-yellow-700/50 dark:hover:bg-yellow-900/20"
                             >
                               {tag}
                             </Badge>
@@ -326,25 +326,25 @@ export default function ClubsPage() {
                         transition={{ delay: 0.7 + index * 0.1 }}
                       >
                         <motion.div className="flex flex-col items-center" whileHover={{ scale: 1.1 }}>
-                          <div className="flex items-center gap-1 text-blue-600 mb-1">
+                          <div className="flex items-center gap-1 text-blue-600 dark:text-blue-400 mb-1">
                             <Users className="h-4 w-4" />
                           </div>
-                          <span className="text-lg font-bold text-gray-900">{club.members}</span>
-                          <span className="text-xs text-gray-500">Members</span>
+                          <span className="text-lg font-bold text-gray-900 dark:text-slate-100">{club.members}</span>
+                          <span className="text-xs text-gray-500 dark:text-slate-400">Members</span>
                         </motion.div>
                         <motion.div className="flex flex-col items-center" whileHover={{ scale: 1.1 }}>
-                          <div className="flex items-center gap-1 text-green-600 mb-1">
+                          <div className="flex items-center gap-1 text-green-600 dark:text-green-400 mb-1">
                             <Calendar className="h-4 w-4" />
                           </div>
-                          <span className="text-lg font-bold text-gray-900">{club.founded}</span>
-                          <span className="text-xs text-gray-500">Est.</span>
+                          <span className="text-lg font-bold text-gray-900 dark:text-slate-100">{club.founded}</span>
+                          <span className="text-xs text-gray-500 dark:text-slate-400">Est.</span>
                         </motion.div>
                         <motion.div className="flex flex-col items-center" whileHover={{ scale: 1.1 }}>
-                          <div className="flex items-center gap-1 text-yellow-600 mb-1">
+                          <div className="flex items-center gap-1 text-yellow-600 dark:text-yellow-400 mb-1">
                             <Star className="h-4 w-4 fill-current" />
                           </div>
-                          <span className="text-lg font-bold text-gray-900">{club.rating}</span>
-                          <span className="text-xs text-gray-500">Rating</span>
+                          <span className="text-lg font-bold text-gray-900 dark:text-slate-100">{club.rating}</span>
+                          <span className="text-xs text-gray-500 dark:text-slate-400">Rating</span>
                         </motion.div>
                       </motion.div>
 
@@ -363,7 +363,7 @@ export default function ClubsPage() {
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
                           <Button
                             variant="outline"
-                            className="w-full border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 font-semibold py-2.5 bg-transparent"
+                            className="w-full border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 font-semibold py-2.5 bg-transparent dark:border-red-700/50 dark:text-red-400 dark:hover:bg-red-900/20 dark:hover:text-red-300"
                           >
                             <X className="h-4 w-4 mr-2" />
                             Reject
@@ -373,9 +373,9 @@ export default function ClubsPage() {
                           <Button
                             variant="outline"
                             size="icon"
-                            className="border-gray-300 hover:bg-gray-50 bg-transparent"
+                            className="border-gray-300 hover:bg-gray-50 bg-transparent dark:border-slate-700 dark:hover:bg-slate-700"
                           >
-                            <MessageCircle className="h-4 w-4" />
+                            <MessageCircle className="h-4 w-4 text-gray-600 dark:text-slate-400" />
                           </Button>
                         </motion.div>
                       </motion.div>
@@ -395,7 +395,7 @@ export default function ClubsPage() {
             transition={{ duration: 0.5 }}
           >
             <motion.div
-              className="text-gray-400 mb-4"
+              className="text-gray-400 dark:text-slate-600 mb-4"
               animate={{
                 rotate: [0, 10, -10, 0],
                 transition: { duration: 2, repeat: Number.POSITIVE_INFINITY, repeatDelay: 3 },
@@ -403,8 +403,8 @@ export default function ClubsPage() {
             >
               <Users className="h-16 w-16 mx-auto" />
             </motion.div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No clubs found</h3>
-            <p className="text-gray-600 max-w-md mx-auto">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-100 mb-2">No clubs found</h3>
+            <p className="text-gray-600 dark:text-slate-400 max-w-md mx-auto">
               Try adjusting your search terms or filters to discover more clubs that match your interests.
             </p>
           </motion.div>

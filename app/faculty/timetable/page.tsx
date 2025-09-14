@@ -190,7 +190,7 @@ export default function FacultyTimetablePage() {
 
   return (
     <motion.div
-      className="min-h-screen bg-gray-50 p-4 md:p-6"
+      className="min-h-screen bg-gray-50 dark:bg-slate-900 p-4 md:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -198,7 +198,7 @@ export default function FacultyTimetablePage() {
       <div className="max-w-6xl mx-auto">
         <motion.div className="mb-8" variants={headerVariants} initial="hidden" animate="visible">
           <motion.h1
-            className="text-3xl font-bold text-gray-900 mb-2"
+            className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-2"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
@@ -206,7 +206,7 @@ export default function FacultyTimetablePage() {
             Faculty Timetable Management
           </motion.h1>
           <motion.p
-            className="text-gray-600"
+            className="text-gray-600 dark:text-slate-400"
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -218,7 +218,7 @@ export default function FacultyTimetablePage() {
         {savedTimetables.length > 0 && (
           <motion.div variants={itemVariants} initial="hidden" animate="visible">
             <motion.div whileHover="hover" variants={cardHoverVariants}>
-              <Card className="shadow-lg mb-6">
+              <Card className="shadow-lg mb-6 dark:bg-slate-800 dark:border-slate-700">
                 <CardHeader className="bg-yellow-400 text-gray-900">
                   <CardTitle className="text-xl">Manage Saved Timetables</CardTitle>
                 </CardHeader>
@@ -226,12 +226,12 @@ export default function FacultyTimetablePage() {
                   <motion.div className="space-y-4" variants={containerVariants} initial="hidden" animate="visible">
                     <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
                       <div className="flex-1">
-                        <Label className="text-sm font-medium text-gray-700 mb-2 block">Select Branch</Label>
+                        <Label className="text-sm font-medium text-gray-700 dark:text-slate-300 mb-2 block">Select Branch</Label>
                         <Select value={selectedBranch} onValueChange={setSelectedBranch}>
-                          <SelectTrigger className="border-gray-300 focus:border-yellow-400">
+                          <SelectTrigger className="border-gray-300 focus:border-yellow-400 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200">
                             <SelectValue placeholder="Choose a branch to view timetables" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                             {branches.map((branch) => (
                               <SelectItem key={branch} value={branch}>
                                 {branch} ({getTimetablesByBranch(branch).length})
@@ -257,7 +257,7 @@ export default function FacultyTimetablePage() {
                         animate={{ opacity: 1, height: "auto" }}
                         transition={{ duration: 0.3 }}
                       >
-                        <h4 className="font-medium text-gray-700">
+                        <h4 className="font-medium text-gray-700 dark:text-slate-300">
                           {selectedBranch} Timetables ({getTimetablesByBranch(selectedBranch).length})
                         </h4>
                         <motion.div
@@ -273,8 +273,8 @@ export default function FacultyTimetablePage() {
                               whileHover={{ scale: 1.02, y: -2 }}
                               className={`p-4 border rounded-lg cursor-pointer transition-all ${
                                 currentTimetableId === timetable.id
-                                  ? "border-yellow-400 bg-yellow-50"
-                                  : "border-gray-200 hover:border-yellow-300 hover:bg-gray-50"
+                                  ? "border-yellow-400 bg-yellow-50 dark:border-yellow-500 dark:bg-yellow-900/20"
+                                  : "border-gray-200 hover:border-yellow-300 hover:bg-gray-50 dark:border-slate-700 dark:hover:border-yellow-600/50 dark:hover:bg-slate-700/50"
                               }`}
                             >
                               <div className="flex justify-between items-start mb-2">
@@ -284,13 +284,13 @@ export default function FacultyTimetablePage() {
                                   whileHover={{ x: 5 }}
                                   transition={{ duration: 0.2 }}
                                 >
-                                  <h5 className="font-medium text-gray-900 truncate">
+                                  <h5 className="font-medium text-gray-900 dark:text-slate-100 truncate">
                                     {timetable.facultyDetails.name}
                                   </h5>
-                                  <p className="text-sm text-gray-600">
+                                  <p className="text-sm text-gray-600 dark:text-slate-400">
                                     {timetable.facultyDetails.year} • {timetable.facultyDetails.session}
                                   </p>
-                                  <p className="text-xs text-gray-500 mt-1">
+                                  <p className="text-xs text-gray-500 dark:text-slate-500 mt-1">
                                     {timetable.createdAt.toLocaleDateString()}
                                   </p>
                                 </motion.div>
@@ -302,13 +302,13 @@ export default function FacultyTimetablePage() {
                                     }}
                                     variant="ghost"
                                     size="sm"
-                                    className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1"
+                                    className="text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/30 dark:hover:text-red-400 p-1"
                                   >
                                     <Trash2 className="w-4 h-4" />
                                   </Button>
                                 </motion.div>
                               </div>
-                              <div className="flex items-center text-xs text-gray-500">
+                              <div className="flex items-center text-xs text-gray-500 dark:text-slate-400">
                                 {timetable.timetableFile.type === "pdf" ? (
                                   <FileText className="w-3 h-3 mr-1" />
                                 ) : (
@@ -331,8 +331,8 @@ export default function FacultyTimetablePage() {
         {!timetableFile ? (
           <motion.div variants={itemVariants} initial="hidden" animate="visible">
             <motion.div whileHover="hover" variants={cardHoverVariants}>
-              <Card className="shadow-lg">
-                <CardHeader className="bg-yellow-400 text-gray-900">
+              <Card className="shadow-lg dark:bg-slate-800 dark:border-slate-700">
+                <CardHeader className=" text-gray-900 dark:text-white">
                   <CardTitle className="text-xl">Faculty Basic Details</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
@@ -367,7 +367,7 @@ export default function FacultyTimetablePage() {
                         },
                       ].map((field, index) => (
                         <motion.div key={field.id} className="space-y-2" variants={itemVariants} custom={index}>
-                          <Label htmlFor={field.id} className="text-sm font-medium text-gray-700">
+                          <Label htmlFor={field.id} className="text-sm font-medium text-gray-700 dark:text-slate-300">
                             {field.label}
                           </Label>
                           <Input
@@ -377,13 +377,13 @@ export default function FacultyTimetablePage() {
                             onChange={(e) => setFacultyDetails((prev) => ({ ...prev, [field.key]: e.target.value }))}
                             placeholder={field.placeholder}
                             required
-                            className="border-gray-300 focus:border-yellow-400 focus:ring-yellow-400"
+                            className="border-gray-300 focus:border-yellow-400 focus:ring-yellow-400 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200 dark:placeholder-slate-400"
                           />
                         </motion.div>
                       ))}
 
                       <motion.div className="space-y-2" variants={itemVariants} custom={1}>
-                        <Label htmlFor="branch" className="text-sm font-medium text-gray-700">
+                        <Label htmlFor="branch" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                           Branch *
                         </Label>
                         <Select
@@ -391,10 +391,10 @@ export default function FacultyTimetablePage() {
                           onValueChange={(value) => setFacultyDetails((prev) => ({ ...prev, branch: value }))}
                           required
                         >
-                          <SelectTrigger className="border-gray-300 focus:border-yellow-400">
+                          <SelectTrigger className="border-gray-300 focus:border-yellow-400 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200">
                             <SelectValue placeholder="Select branch" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                             {branches.map((branch) => (
                               <SelectItem key={branch} value={branch}>
                                 {branch}
@@ -405,7 +405,7 @@ export default function FacultyTimetablePage() {
                       </motion.div>
 
                       <motion.div className="space-y-2 md:col-span-2" variants={itemVariants} custom={4}>
-                        <Label htmlFor="specialization" className="text-sm font-medium text-gray-700">
+                        <Label htmlFor="specialization" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                           Specialization
                         </Label>
                         <Input
@@ -414,7 +414,7 @@ export default function FacultyTimetablePage() {
                           value={facultyDetails.specialization}
                           onChange={(e) => setFacultyDetails((prev) => ({ ...prev, specialization: e.target.value }))}
                           placeholder="e.g., Machine Learning, Data Structures"
-                          className="border-gray-300 focus:border-yellow-400 focus:ring-yellow-400"
+                          className="border-gray-300 focus:border-yellow-400 focus:ring-yellow-400 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200 dark:placeholder-slate-400"
                         />
                       </motion.div>
                     </motion.div>
@@ -444,7 +444,7 @@ export default function FacultyTimetablePage() {
             {/* Faculty Details Display */}
             <motion.div variants={itemVariants}>
               <motion.div whileHover="hover" variants={cardHoverVariants}>
-                <Card className="shadow-lg">
+                <Card className="shadow-lg dark:bg-slate-800 dark:border-slate-700">
                   <CardHeader className="bg-yellow-400 text-gray-900 flex flex-row items-center justify-between">
                     <div>
                       <CardTitle className="text-xl">{facultyDetails.name}</CardTitle>
@@ -457,7 +457,7 @@ export default function FacultyTimetablePage() {
                         onClick={handleEdit}
                         variant="outline"
                         size="sm"
-                        className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-yellow-400 bg-transparent"
+                        className="border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-yellow-400 bg-transparent dark:border-slate-200 dark:text-slate-200 dark:hover:bg-slate-200 dark:hover:text-slate-900"
                       >
                         <Edit className="w-4 h-4 mr-2" />
                         Edit
@@ -472,13 +472,13 @@ export default function FacultyTimetablePage() {
                       transition={{ delay: 0.3, duration: 0.6 }}
                     >
                       <div>
-                        <span className="font-medium text-gray-700">Session:</span>
-                        <p className="text-gray-600">{facultyDetails.session}</p>
+                        <span className="font-medium text-gray-700 dark:text-slate-300">Session:</span>
+                        <p className="text-gray-600 dark:text-slate-400">{facultyDetails.session}</p>
                       </div>
                       {facultyDetails.specialization && (
                         <div className="md:col-span-3">
-                          <span className="font-medium text-gray-700">Specialization:</span>
-                          <p className="text-gray-600">{facultyDetails.specialization}</p>
+                          <span className="font-medium text-gray-700 dark:text-slate-300">Specialization:</span>
+                          <p className="text-gray-600 dark:text-slate-400">{facultyDetails.specialization}</p>
                         </div>
                       )}
                     </motion.div>
@@ -490,20 +490,20 @@ export default function FacultyTimetablePage() {
             {/* Timetable Display */}
             <motion.div variants={itemVariants}>
               <motion.div whileHover="hover" variants={cardHoverVariants}>
-                <Card className="shadow-lg">
-                  <CardHeader className="bg-gray-100">
-                    <CardTitle className="text-xl text-gray-900 flex items-center">
+                <Card className="shadow-lg dark:bg-slate-800 dark:border-slate-700">
+                  <CardHeader className="bg-gray-100 dark:bg-slate-700/50">
+                    <CardTitle className="text-xl text-gray-900 dark:text-slate-100 flex items-center">
                       {timetableFile.type === "pdf" ? (
                         <FileText className="w-5 h-5 mr-2 text-red-600" />
                       ) : (
-                        <ImageIcon className="w-5 h-5 mr-2 text-blue-600" />
+                        <ImageIcon className="w-5 h-5 mr-2 text-blue-600 dark:text-blue-400" />
                       )}
                       Faculty Timetable
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-6">
                     <motion.div
-                      className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden"
+                      className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden dark:bg-slate-700 dark:border-slate-600"
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.4, duration: 0.6 }}
@@ -528,14 +528,14 @@ export default function FacultyTimetablePage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.6, duration: 0.6 }}
                     >
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark:text-slate-400">
                         File: {timetableFile.file.name} ({(timetableFile.file.size / 1024 / 1024).toFixed(2)} MB)
                       </p>
                       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                         <Button
                           onClick={resetForm}
                           variant="outline"
-                          className="text-red-600 border-red-600 hover:bg-red-600 hover:text-white bg-transparent"
+                          className="text-red-600 border-red-600 hover:bg-red-600 hover:text-white bg-transparent dark:text-red-500 dark:border-red-500 dark:hover:bg-red-500 dark:hover:text-white"
                         >
                           Reset All
                         </Button>
@@ -563,11 +563,11 @@ export default function FacultyTimetablePage() {
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 50 }}
                 transition={{ type: "spring", duration: 0.4 }}
-                className="bg-white rounded-lg shadow-xl max-w-md w-full p-6"
+                className="bg-white dark:bg-slate-800 rounded-lg shadow-xl max-w-md w-full p-6"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-100">
                     {isEditing ? "Update Timetable" : "Upload Timetable"}
                   </h3>
                   <motion.div whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }}>
@@ -575,20 +575,18 @@ export default function FacultyTimetablePage() {
                       onClick={() => setShowModal(false)}
                       variant="ghost"
                       size="sm"
-                      className="text-gray-500 hover:text-gray-700"
+                      className="text-gray-500 hover:text-gray-700 dark:text-slate-400 dark:hover:text-slate-200"
                     >
                       <X className="w-4 h-4" />
                     </Button>
                   </motion.div>
                 </div>
 
-                {/* ... existing modal content with enhanced animations ... */}
-
                 <motion.div
                   className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
                     dragActive
-                      ? "border-yellow-400 bg-yellow-50"
-                      : "border-gray-300 hover:border-yellow-400 hover:bg-yellow-50"
+                      ? "border-yellow-400 bg-yellow-50 dark:border-yellow-500 dark:bg-yellow-900/20"
+                      : "border-gray-300 hover:border-yellow-400 hover:bg-yellow-50 dark:border-slate-600 dark:hover:border-yellow-500 dark:hover:bg-slate-700"
                   }`}
                   onDragEnter={handleDrag}
                   onDragLeave={handleDrag}
@@ -603,9 +601,9 @@ export default function FacultyTimetablePage() {
                       transition: { duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" },
                     }}
                   >
-                    <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                    <Upload className="w-12 h-12 text-gray-400 dark:text-slate-500 mx-auto mb-4" />
                   </motion.div>
-                  <p className="text-gray-600 mb-2">Drag and drop your timetable file here, or</p>
+                  <p className="text-gray-600 dark:text-slate-400 mb-2">Drag and drop your timetable file here, or</p>
                   <input
                     type="file"
                     accept=".pdf,.jpg,.jpeg,.png"
@@ -625,7 +623,7 @@ export default function FacultyTimetablePage() {
                   >
                     Browse Files
                   </motion.label>
-                  <p className="text-xs text-gray-500 mt-2">Supports PDF, JPG, PNG (Max 10MB)</p>
+                  <p className="text-xs text-gray-500 dark:text-slate-500 mt-2">Supports PDF, JPG, PNG (Max 10MB)</p>
                 </motion.div>
               </motion.div>
             </motion.div>

@@ -90,11 +90,11 @@ const events: Event[] = [
 ]
 
 const categoryColors = {
-  Academic: "bg-blue-100 text-blue-800",
-  Creative: "bg-purple-100 text-purple-800",
-  Technical: "bg-green-100 text-green-800",
-  Cultural: "bg-pink-100 text-pink-800",
-  Business: "bg-orange-100 text-orange-800",
+  Academic: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+  Creative: "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+  Technical: "bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300",
+  Cultural: "bg-pink-100 text-pink-800 dark:bg-pink-900/50 dark:text-pink-300",
+  Business: "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
 }
 
 const containerVariants = {
@@ -171,26 +171,26 @@ export default function EventsPage() {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "approved":
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Approved</Badge>
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/50 dark:text-green-300">Approved</Badge>
       case "rejected":
-        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Rejected</Badge>
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100 dark:bg-red-900/50 dark:text-red-300">Rejected</Badge>
       default:
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pending</Badge>
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100 dark:bg-yellow-900/50 dark:text-yellow-300">Pending</Badge>
     }
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
       {/* Header */}
       <motion.div
-        className="bg-white border-b border-gray-200 px-6 py-8"
+        className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-700 px-6 py-8"
         variants={headerVariants}
         initial="hidden"
         animate="visible"
       >
         <div className="max-w-7xl mx-auto">
           <motion.h1
-            className="text-3xl font-bold text-gray-900 mb-2"
+            className="text-3xl font-bold text-gray-900 dark:text-slate-100 mb-2"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -198,7 +198,7 @@ export default function EventsPage() {
             Event Management
           </motion.h1>
           <motion.p
-            className="text-gray-600 mb-6"
+            className="text-gray-600 dark:text-slate-400 mb-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -214,19 +214,19 @@ export default function EventsPage() {
             transition={{ delay: 0.4, duration: 0.5 }}
           >
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-slate-500 h-4 w-4" />
               <Input
                 placeholder="Search events by name or category..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
+                className="pl-10 bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200"
               />
             </div>
             <div className="flex gap-2">
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="px-3 py-2 border border-gray-300 rounded-md bg-white text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 dark:bg-slate-700 dark:border-slate-600 dark:text-slate-200"
               >
                 <option value="all">All Status</option>
                 <option value="pending">Pending</option>
@@ -246,7 +246,7 @@ export default function EventsPage() {
         animate="visible"
       >
         <motion.div className="flex justify-between items-center mb-6" variants={itemVariants}>
-          <p className="text-sm text-gray-600">
+          <p className="text-sm text-gray-600 dark:text-slate-400">
             Showing {filteredEvents.length} of {eventList.length} events
           </p>
         </motion.div>
@@ -255,10 +255,10 @@ export default function EventsPage() {
           {filteredEvents.map((event, index) => (
             <motion.div key={event.id} variants={itemVariants} whileHover="hover" custom={index}>
               <motion.div variants={cardHoverVariants}>
-                <Card className="hover:shadow-lg transition-shadow duration-200">
+                <Card className="hover:shadow-lg transition-shadow duration-200 bg-white dark:bg-slate-800 dark:border-slate-700">
                   <CardHeader className="pb-4">
                     <div className="flex justify-between items-start mb-2">
-                      <CardTitle className="text-lg font-semibold text-gray-900 line-clamp-2">{event.title}</CardTitle>
+                      <CardTitle className="text-lg font-semibold text-gray-900 dark:text-slate-100 line-clamp-2">{event.title}</CardTitle>
                       <Badge className={categoryColors[event.category as keyof typeof categoryColors]}>
                         {event.category}
                       </Badge>
@@ -267,7 +267,7 @@ export default function EventsPage() {
                   </CardHeader>
 
                   <CardContent className="space-y-4">
-                    <div className="space-y-2 text-sm text-gray-600">
+                    <div className="space-y-2 text-sm text-gray-600 dark:text-slate-400">
                       <motion.div
                         className="flex items-center gap-2"
                         whileHover={{ x: 5 }}
@@ -302,7 +302,7 @@ export default function EventsPage() {
                       </motion.div>
                     </div>
 
-                    {event.description && <p className="text-sm text-gray-600 line-clamp-2">{event.description}</p>}
+                    {event.description && <p className="text-sm text-gray-600 dark:text-slate-400 line-clamp-2">{event.description}</p>}
 
                     {/* Action Buttons */}
                     {event.status === "pending" && (
@@ -324,7 +324,7 @@ export default function EventsPage() {
                           <Button
                             onClick={() => handleReject(event.id)}
                             variant="outline"
-                            className="w-full border-red-300 text-red-600 hover:bg-red-50"
+                            className="w-full border-red-300 text-red-600 hover:bg-red-50 dark:border-red-700/50 dark:text-red-400 dark:hover:bg-red-900/20 dark:hover:text-red-300"
                           >
                             Reject
                           </Button>
@@ -337,7 +337,7 @@ export default function EventsPage() {
                         <Button
                           onClick={() => handleReject(event.id)}
                           variant="outline"
-                          className="w-full border-red-300 text-red-600 hover:bg-red-50"
+                          className="w-full border-red-300 text-red-600 hover:bg-red-50 dark:border-red-700/50 dark:text-red-400 dark:hover:bg-red-900/20 dark:hover:text-red-300"
                         >
                           Revoke Approval
                         </Button>
@@ -369,7 +369,7 @@ export default function EventsPage() {
             transition={{ duration: 0.5 }}
           >
             <motion.div
-              className="text-gray-400 mb-4"
+              className="text-gray-400 dark:text-slate-600 mb-4"
               animate={{
                 rotate: [0, 10, -10, 0],
                 transition: { duration: 2, repeat: Number.POSITIVE_INFINITY, repeatDelay: 3 },
@@ -377,8 +377,8 @@ export default function EventsPage() {
             >
               <Calendar className="h-12 w-12 mx-auto" />
             </motion.div>
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No events found</h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria.</p>
+            <h3 className="text-lg font-medium text-gray-900 dark:text-slate-100 mb-2">No events found</h3>
+            <p className="text-gray-600 dark:text-slate-400">Try adjusting your search or filter criteria.</p>
           </motion.div>
         )}
       </motion.div>
