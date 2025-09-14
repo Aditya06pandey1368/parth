@@ -141,32 +141,15 @@ const ChangingText = () => {
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("All")
-  const [theme, setTheme] = useState("light")
 
   // Effect to handle theme initialization and updates
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme")
     const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
-    if (savedTheme) {
-      setTheme(savedTheme)
-    } else {
-      setTheme(prefersDark ? "dark" : "light")
-    }
+    
   }, [])
 
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("theme", "light")
-    }
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
-  }
+ 
 
   const filteredProjects =
     activeFilter === "All" ? projects : projects.filter((project) => project.category === activeFilter)
