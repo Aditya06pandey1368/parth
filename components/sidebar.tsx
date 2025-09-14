@@ -36,12 +36,12 @@ const primaryNavigation = [
 ]
 
 const secondaryNavigation = [
-  { name: "Time Table", href: "/timetable", icon: Clock },
-  { name: "Result", href: "/result", icon: BarChart3 },
-  { name: "My Research Papers", href: "/my-research", icon: FileText },
-  { name: "Faculty Members", href: "/faculty", icon: UserCheck },
-  { name: "Add Events", href: "/add-events", icon: Plus },
-  { name: "Community Services", href: "/community", icon: Heart },
+  { name: "Time Table", href: "/user//timetable", icon: Clock },
+  { name: "Result", href: "/user//result", icon: BarChart3 },
+  { name: "My Research Papers", href: "/user//my-research", icon: FileText },
+  { name: "Faculty Members", href: "/user//faculty", icon: UserCheck },
+  { name: "Add Events", href: "/user//add-events", icon: Plus },
+  { name: "Community Services", href: "/user//community", icon: Heart },
 ]
 
 interface SidebarProps {
