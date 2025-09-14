@@ -25,26 +25,42 @@ import {
   PanelLeftOpen,
 } from "lucide-react"
 
-
-const primaryNavigation = [
+// -------------------- STUDENT NAVIGATION --------------------
+const studentPrimaryNavigation = [
   { name: "Dashboard", href: "/user/portfolio", icon: LayoutDashboard },
   { name: "Research Papers", href: "/user/research", icon: FileText },
   { name: "Projects", href: "/user/projects", icon: Award },
   { name: "Certificates", href: "/user/certificate", icon: Award },
   { name: "Clubs", href: "/user/clubs", icon: Users },
   { name: "Events", href: "/user/events", icon: Calendar },
-  
 ]
 
-const secondaryNavigation = [
-  { name: "Time Table", href: "/user//timetable", icon: Clock },
-  { name: "Result", href: "/user//result", icon: BarChart3 },
-  { name: "My Research Papers", href: "/user//my-research", icon: FileText },
-  { name: "Faculty Members", href: "/user//faculty", icon: UserCheck },
-  { name: "Add Events", href: "/user//add-events", icon: Plus },
-  { name: "Community Services", href: "/user//community", icon: Heart },
+const studentSecondaryNavigation = [
+  { name: "Time Table", href: "/user/timetable", icon: Clock },
+  { name: "Result", href: "/user/result", icon: BarChart3 },
+  { name: "My Research Papers", href: "/user/my-research", icon: FileText },
+  { name: "Faculty Members", href: "/user/faculty", icon: UserCheck },
+  { name: "Add Events", href: "/user/add-events", icon: Plus },
+  { name: "Community Services", href: "/user/community", icon: Heart },
 ]
 
+// -------------------- FACULTY NAVIGATION --------------------
+const facultyPrimaryNavigation = [
+  { name: "Dashboard", href: "/faculty/dashboard", icon: LayoutDashboard },
+  { name: "Projects", href: "/faculty/projects", icon: Award },
+  { name: "Research Papers", href: "/faculty/research", icon: FileText },
+  { name: "Events", href: "/faculty/events", icon: Calendar },
+  { name: "Clubs", href: "/faculty/clubs", icon: Users },
+]
+
+const facultySecondaryNavigation = [
+  { name: "Time Table", href: "/faculty/timetable", icon: Clock },
+  { name: "Faculty Members", href: "/faculty/faculty-members", icon: UserCheck },
+  { name: "Add Faculty Members", href: "/faculty/add-faculty", icon: Plus },
+  { name: "Add Institutional Data", href: "/faculty/add-institutional", icon: FileText },
+]
+
+// -------------------- SIDEBAR COMPONENT --------------------
 interface SidebarProps {
   isOpen: boolean
   isCollapsed: boolean
@@ -56,11 +72,15 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
   const pathname = usePathname()
   const [isMobile, setIsMobile] = useState(false)
 
+  // Detect role from pathname
+  const isFaculty = pathname.startsWith("/faculty")
+  const activePrimaryNav = isFaculty ? facultyPrimaryNavigation : studentPrimaryNavigation
+  const activeSecondaryNav = isFaculty ? facultySecondaryNavigation : studentSecondaryNavigation
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768)
     }
-
     checkMobile()
     window.addEventListener("resize", checkMobile)
     return () => window.removeEventListener("resize", checkMobile)
@@ -72,17 +92,11 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
         className={cn(
           "fixed inset-y-0 left-0 z-40 bg-sidebar border-r border-sidebar-border transition-all duration-300 ease-in-out shadow-xl h-screen",
           isCollapsed && !isMobile ? "w-20" : "w-64",
-          // Mobile behavior
-          isMobile
-            ? isOpen
-              ? "translate-x-0"
-              : "-translate-x-full"
-            : // Desktop behavior - always visible
-            "translate-x-0",
+          isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : "translate-x-0",
         )}
       >
         <div className="flex flex-col h-full">
-          {/* Header - Fixed height to prevent shifting */}
+          {/* ---------------- HEADER ---------------- */}
           <div className="flex items-center h-20 px-4 border-b border-sidebar-border dark:bg-black bg-white backdrop-blur-md flex-shrink-0">
             {isMobile && (
               <Button
@@ -96,11 +110,10 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
             )}
 
             <div className={cn("flex items-center gap-3", isMobile ? "pr-10" : "flex-1")}>
-              <div className="w-12 h-12  flex items-center justify-center transition-all duration-300 hover:ring-primary/40 hover:shadow-xl hover:scale-105 relative overflow-hidden group flex-shrink-0">
+              <div className="w-12 h-12 flex items-center justify-center transition-all duration-300 hover:ring-primary/40 hover:shadow-xl hover:scale-105 relative overflow-hidden group flex-shrink-0">
                 <Image
-                  src={Logo}  // put your logo in /public folder
+                  src={Logo}
                   alt="Logo"
-
                   className="rounded-full"
                 />
               </div>
@@ -112,9 +125,11 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                 )}
               >
                 <span className="font-bold text-sidebar-foreground text-xl tracking-tight bg-gradient-to-r from-sidebar-foreground to-sidebar-foreground/80 bg-clip-text whitespace-nowrap">
-                  Parth
+                  {isFaculty ? "Faculty" : "Student"}
                 </span>
-                <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">Career Catalyst</span>
+                <span className="text-sm text-muted-foreground font-medium whitespace-nowrap">
+                  Career Catalyst
+                </span>
               </div>
             </div>
 
@@ -130,18 +145,20 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                 <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <div className="relative z-10 transition-all duration-300 ease-in-out">
                   {isCollapsed ? (
-                    <PanelLeftOpen className="h-5 w-5 text-sidebar-foreground transition-all duration-300 group-hover:scale-125" />
+                    <PanelLeftOpen className="h-5 w-5 text-sidebar-foreground" />
                   ) : (
-                    <PanelLeftClose className="h-5 w-5 text-sidebar-foreground transition-all duration-300 group-hover:scale-125" />
+                    <PanelLeftClose className="h-5 w-5 text-sidebar-foreground" />
                   )}
                 </div>
               </Button>
             )}
           </div>
 
+          {/* ---------------- NAVIGATION ---------------- */}
           <nav className="flex-1 overflow-y-auto py-4 px-3 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-thumb-rounded-full transition-all duration-300">
             <div className="space-y-1">
-              {primaryNavigation.map((item, index) => {
+              {/* Primary Nav */}
+              {activePrimaryNav.map((item) => {
                 const isActive = pathname === item.href
                 return (
                   <Link
@@ -158,9 +175,7 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                     title={isCollapsed && !isMobile ? item.name : undefined}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    <item.icon className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-125 relative z-10" />
-
+                    <item.icon className="h-5 w-5 flex-shrink-0" />
                     <span
                       className={cn(
                         "font-medium tracking-wide relative z-10 transition-all duration-300 overflow-hidden whitespace-nowrap",
@@ -169,7 +184,6 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                     >
                       {item.name}
                     </span>
-
                     {isActive && (
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-primary to-secondary rounded-r-full animate-pulse shadow-lg" />
                     )}
@@ -181,7 +195,8 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                 <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
               </div>
 
-              {secondaryNavigation.map((item, index) => {
+              {/* Secondary Nav */}
+              {activeSecondaryNav.map((item) => {
                 const isActive = pathname === item.href
                 return (
                   <Link
@@ -198,9 +213,7 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                     title={isCollapsed && !isMobile ? item.name : undefined}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                    <item.icon className="h-5 w-5 flex-shrink-0 transition-all duration-300 group-hover:scale-125 relative z-10" />
-
+                    <item.icon className="h-5 w-5 flex-shrink-0" />
                     <span
                       className={cn(
                         "font-medium tracking-wide relative z-10 transition-all duration-300 overflow-hidden whitespace-nowrap",
@@ -209,7 +222,6 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
                     >
                       {item.name}
                     </span>
-
                     {isActive && (
                       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-primary to-secondary rounded-r-full animate-pulse shadow-lg" />
                     )}
@@ -219,24 +231,24 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
             </div>
           </nav>
 
+          {/* ---------------- FOOTER (LOGOUT) ---------------- */}
           <div className="h-16 border-t border-sidebar-border dark:bg-gray-800 bg-gray-200 backdrop-blur-md p-3 flex-shrink-0">
             <Button
-  size="sm"
-  className={cn(
-    "w-full h-10 flex items-center gap-3 px-4 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-900 transition-transform duration-200 hover:scale-105",
-    isCollapsed && !isMobile ? "px-0 justify-center" : "justify-start"
-  )}
-  title={isCollapsed && !isMobile ? "Logout" : undefined}
->
-  <LogOut className="h-4 w-4" />
-  {!isCollapsed && <span>Logout</span>}
-</Button>
-
-
+              size="sm"
+              className={cn(
+                "w-full h-10 flex items-center gap-3 px-4 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-900 transition-transform duration-200 hover:scale-105",
+                isCollapsed && !isMobile ? "px-0 justify-center" : "justify-start"
+              )}
+              title={isCollapsed && !isMobile ? "Logout" : undefined}
+            >
+              <LogOut className="h-4 w-4" />
+              {!isCollapsed && <span>Logout</span>}
+            </Button>
           </div>
         </div>
       </div>
 
+      {/* Mobile overlay */}
       {isMobile && isOpen && <div className="fixed inset-0 z-30 bg-black/50 backdrop-blur-sm" onClick={onClose} />}
     </>
   )

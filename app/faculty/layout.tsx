@@ -1,4 +1,6 @@
-import { FacultySidebar } from "@/components/faculty-sidebar";
+"use client"
+
+import { Sidebar } from "@/components/sidebar";
 import { ReactNode } from "react";
 
 export default function FacultyLayout({ children }: { children: ReactNode }) {
@@ -6,7 +8,12 @@ export default function FacultyLayout({ children }: { children: ReactNode }) {
     <div className="flex min-h-screen">
       {/* Sidebar (fixed) */}
       <div className="fixed top-0 left-0 h-full w-1/5">
-        <FacultySidebar  />
+        <Sidebar
+          isOpen={true}
+          isCollapsed={false}
+          onClose={() => {}}
+          onToggleCollapse={() => {}}
+        />
       </div>
 
       {/* Main Content */}
