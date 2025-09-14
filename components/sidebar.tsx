@@ -29,6 +29,7 @@ import {
 const primaryNavigation = [
   { name: "Dashboard", href: "/user/portfolio", icon: LayoutDashboard },
   { name: "Research Papers", href: "/user/research", icon: FileText },
+  { name: "Projects", href: "/user/projects", icon: Award },
   { name: "Certificates", href: "/user/certificate", icon: Award },
   { name: "Clubs", href: "/user/clubs", icon: Users },
   { name: "Events", href: "/user/events", icon: Calendar },
