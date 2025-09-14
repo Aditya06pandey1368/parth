@@ -73,10 +73,6 @@ export default function Dashboard() {
         <div>
           <h1 className="text-xl lg:text-2xl font-bold text-foreground">Dashboard</h1>
         </div>
-        <Avatar className="h-10 w-10 lg:h-12 lg:w-12">
-          <AvatarImage src="/professional-woman-profile.jpg" />
-          <AvatarFallback>P</AvatarFallback>
-        </Avatar>
       </motion.div>
 
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6" variants={containerVariants}>

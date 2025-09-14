@@ -1,25 +1,32 @@
-"use client"
+import { LayoutWrapper } from "@/components/layout-wrapper";
+import { Sidebar } from "../../components/sidebar"; // Corrected import path
+import type { Metadata } from "next";
 
-import { Sidebar } from "@/components/sidebar";
-import { ReactNode } from "react";
+export const metadata: Metadata = {
+  title: "Faculty Dashboard",
+  description: "Faculty profile and activities",
+};
 
-export default function FacultyLayout({ children }: { children: ReactNode }) {
+export default function UserLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className="flex min-h-screen">
-      {/* Sidebar (fixed) */}
-      <div className="fixed top-0 left-0 h-full w-1/5">
-        <Sidebar
-          isOpen={true}
-          isCollapsed={false}
-          onClose={() => {}}
-          onToggleCollapse={() => {}}
-        />
-      </div>
+    // Updated the background color for the main layout wrapper
+    <LayoutWrapper>
+<div className="flex min-h-screen bg-gray-300 dark:bg-gray-900">
+      {/* Fixed Sidebar - kept white for contrast and added a subtle shadow */}
+      
 
-      {/* Main Content */}
-      <main className="ml-[20%] w-[80%] p-8">
+      {/* Main Content - updated background to match the wrapper */}
+      <main className="flex-1 bg-gray-200 
+ dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         {children}
       </main>
     </div>
+    </LayoutWrapper>
+    
   );
 }
+
