@@ -153,12 +153,12 @@ export default function Portfolio() {
       </motion.section>
 
       <motion.nav
-        className="w-full py-6 px-6"
+        className="w-full py-6 px-6 dark:bg-black"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto ">
           <motion.div
             className="flex items-center justify-center flex-wrap gap-3"
             variants={{
@@ -198,7 +198,7 @@ export default function Portfolio() {
       </motion.nav>
 
       <motion.main
-        className="w-full py-12 px-6"
+        className="w-full py-12 px-6 dark:bg-black"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
