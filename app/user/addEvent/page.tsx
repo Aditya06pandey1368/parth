@@ -177,7 +177,7 @@ export default function ProjectDocumentation() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-stone-50 p-6"
+      className="min-h-screen bg-stone-50 dark:bg-slate-900 p-6"
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -189,8 +189,8 @@ export default function ProjectDocumentation() {
             className="lg:col-span-2 space-y-6"
           >
             <div className="space-y-2">
-              <h1 className="text-2xl font-semibold text-gray-900">Add Event</h1>
-              <p className="text-sm text-gray-600">Update your personal information and social links.</p>
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-slate-100">Add Event</h1>
+              <p className="text-sm text-gray-600 dark:text-slate-400">Update your personal information and social links.</p>
             </div>
 
             <div className="space-y-4">
@@ -199,7 +199,7 @@ export default function ProjectDocumentation() {
                   placeholder="Your Title Here..."
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="text-lg font-medium h-12 bg-white border-gray-200"
+                  className="text-lg font-medium h-12 bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-400"
                 />
               </motion.div>
 
@@ -208,13 +208,13 @@ export default function ProjectDocumentation() {
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
-                className="flex items-center gap-1 p-2 bg-white border border-gray-200 rounded-md"
+                className="flex items-center gap-1 p-2 bg-white border border-gray-200 rounded-md dark:bg-slate-800 dark:border-slate-700"
               >
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("bold")}
                   >
                     <Bold className="h-4 w-4" />
@@ -224,7 +224,7 @@ export default function ProjectDocumentation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("italic")}
                   >
                     <Italic className="h-4 w-4" />
@@ -234,7 +234,7 @@ export default function ProjectDocumentation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("underline")}
                   >
                     <Underline className="h-4 w-4" />
@@ -244,18 +244,18 @@ export default function ProjectDocumentation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 w-8 p-0 hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("strikethrough")}
                   >
                     <Strikethrough className="h-4 w-4" />
                   </Button>
                 </motion.div>
-                <div className="w-px h-6 bg-gray-200 mx-2" />
+                <div className="w-px h-6 bg-gray-200 dark:bg-slate-600 mx-2" />
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 px-2 text-sm font-medium hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 px-2 text-sm font-medium hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("h1")}
                   >
                     H1
@@ -265,14 +265,14 @@ export default function ProjectDocumentation() {
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 px-2 text-sm font-medium hover:bg-gray-100 active:bg-gray-200"
+                    className="h-8 px-2 text-sm font-medium hover:bg-gray-100 active:bg-gray-200 dark:text-slate-300 dark:hover:bg-slate-700 dark:active:bg-slate-600"
                     onClick={() => formatText("h2")}
                   >
                     H2
                   </Button>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-gray-100">
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-gray-100 dark:text-slate-300 dark:hover:bg-slate-700">
                     <Type className="h-4 w-4" />
                   </Button>
                 </motion.div>
@@ -284,7 +284,7 @@ export default function ProjectDocumentation() {
                   placeholder="Start writing your article here..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  className="min-h-[400px] bg-white border-gray-200 resize-none font-mono text-sm leading-relaxed"
+                  className="min-h-[400px] bg-white border-gray-200 resize-none font-mono text-sm leading-relaxed dark:bg-slate-800 dark:border-slate-700 dark:text-slate-200 dark:placeholder-slate-400"
                 />
               </motion.div>
             </div>
@@ -301,8 +301,8 @@ export default function ProjectDocumentation() {
             <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
               <Card
                 className={cn(
-                  "p-6 border-2 border-dashed bg-white transition-colors cursor-pointer",
-                  isDragging ? "border-blue-400 bg-blue-50" : "border-gray-300",
+                  "p-6 border-2 border-dashed bg-white transition-colors cursor-pointer dark:bg-slate-800",
+                  isDragging ? "border-blue-400 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20" : "border-gray-300 dark:border-slate-600",
                 )}
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
@@ -318,11 +318,11 @@ export default function ProjectDocumentation() {
                     transition={{ duration: 0.2 }}
                   >
                     <Upload
-                      className={cn("h-8 w-8 transition-colors", isDragging ? "text-blue-500" : "text-gray-400")}
+                      className={cn("h-8 w-8 transition-colors", isDragging ? "text-blue-500 dark:text-blue-400" : "text-gray-400 dark:text-slate-500")}
                     />
                   </motion.div>
-                  <p className="text-sm font-medium text-gray-600">Drag & Drop Event Image</p>
-                  <p className="text-xs text-gray-500">or click to browse</p>
+                  <p className="text-sm font-medium text-gray-600 dark:text-slate-300">Drag & Drop Event Image</p>
+                  <p className="text-xs text-gray-500 dark:text-slate-400">or click to browse</p>
                 </div>
                 <input
                   ref={fileInputRef}
@@ -349,13 +349,13 @@ export default function ProjectDocumentation() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: 20 }}
-                      className="flex items-center justify-between p-2 bg-white border border-gray-200 rounded-md"
+                      className="flex items-center justify-between p-2 bg-white border border-gray-200 rounded-md dark:bg-slate-800 dark:border-slate-700"
                     >
                       <div className="flex items-center space-x-2">
-                        <FileText className="h-4 w-4 text-gray-500" />
-                        <span className="text-sm text-gray-700 truncate">{file.name}</span>
+                        <FileText className="h-4 w-4 text-gray-500 dark:text-slate-400" />
+                        <span className="text-sm text-gray-700 dark:text-slate-300 truncate">{file.name}</span>
                       </div>
-                      <Button variant="ghost" size="sm" onClick={() => removeFile(index)} className="h-6 w-6 p-0">
+                      <Button variant="ghost" size="sm" onClick={() => removeFile(index)} className="h-6 w-6 p-0 dark:text-slate-300 dark:hover:bg-slate-700">
                         <X className="h-3 w-3" />
                       </Button>
                     </motion.div>
@@ -372,21 +372,21 @@ export default function ProjectDocumentation() {
               className="space-y-4"
             >
               <div className="space-y-2">
-                <Label htmlFor="event-title" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="event-title" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   Event Title
                 </Label>
-                <Input id="event-title" placeholder="Enter event title" className="bg-white border-gray-200" />
+                <Input id="event-title" placeholder="Enter event title" className="bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-400" />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="clubs" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="clubs" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   Clubs
                 </Label>
                 <Select>
-                  <SelectTrigger className="bg-white border-gray-200">
+                  <SelectTrigger className="bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                     <SelectValue placeholder="Select club" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100">
                     <SelectItem value="tech">Tech Club</SelectItem>
                     <SelectItem value="sports">Sports Club</SelectItem>
                     <SelectItem value="arts">Arts Club</SelectItem>
@@ -396,13 +396,13 @@ export default function ProjectDocumentation() {
               </div>
 
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">Date & Time</Label>
+                <Label className="text-sm font-medium text-gray-700 dark:text-slate-300">Date & Time</Label>
                 <Popover>
                   <PopoverTrigger asChild>
                     <Button
                       variant="outline"
                       className={cn(
-                        "w-full justify-start text-left font-normal bg-white border-gray-200",
+                        "w-full justify-start text-left font-normal bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100",
                         !date && "text-muted-foreground",
                       )}
                     >
@@ -410,34 +410,34 @@ export default function ProjectDocumentation() {
                       {date ? format(date, "PPP") : <span>Pick a date</span>}
                     </Button>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+                  <PopoverContent className="w-auto p-0 dark:bg-slate-800 dark:border-slate-700" align="start">
+                    <Calendar mode="single" selected={date} onSelect={setDate} initialFocus className="dark:bg-slate-800 dark:text-slate-100" />
                   </PopoverContent>
                 </Popover>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="venue" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="venue" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   Venue
                 </Label>
-                <Input id="venue" placeholder="Enter venue" className="bg-white border-gray-200" />
+                <Input id="venue" placeholder="Enter venue" className="bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-400" />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="send-requests" className="text-sm font-medium text-gray-700">
+                <Label htmlFor="send-requests" className="text-sm font-medium text-gray-700 dark:text-slate-300">
                   Send Request's
                 </Label>
-                <Input id="send-requests" placeholder="Enter request details" className="bg-white border-gray-200" />
+                <Input id="send-requests" placeholder="Enter request details" className="bg-white border-gray-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100 dark:placeholder-slate-400" />
               </div>
 
               {/* Supporting Document Upload */}
               <div className="space-y-2">
-                <Label className="text-sm font-medium text-gray-700">Upload Supporting Document</Label>
+                <Label className="text-sm font-medium text-gray-700 dark:text-slate-300">Upload Supporting Document</Label>
                 <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
                   <Card
                     className={cn(
-                      "p-4 border-2 border-dashed bg-white transition-colors cursor-pointer",
-                      isSupportingDragging ? "border-blue-400 bg-blue-50" : "border-gray-300",
+                      "p-4 border-2 border-dashed bg-white transition-colors cursor-pointer dark:bg-slate-800",
+                      isSupportingDragging ? "border-blue-400 bg-blue-50 dark:border-blue-500 dark:bg-blue-900/20" : "border-gray-300 dark:border-slate-600",
                     )}
                     onDragOver={handleSupportingDragOver}
                     onDragLeave={handleSupportingDragLeave}
@@ -454,11 +454,11 @@ export default function ProjectDocumentation() {
                         <Upload
                           className={cn(
                             "h-5 w-5 mr-2 transition-colors",
-                            isSupportingDragging ? "text-blue-500" : "text-gray-400",
+                            isSupportingDragging ? "text-blue-500 dark:text-blue-400" : "text-gray-400 dark:text-slate-500",
                           )}
                         />
                       </motion.div>
-                      <p className="text-xs text-gray-500">Choose file or drag here</p>
+                      <p className="text-xs text-gray-500 dark:text-slate-400">Choose file or drag here</p>
                     </div>
                     <input
                       ref={supportingFileInputRef}
@@ -475,13 +475,13 @@ export default function ProjectDocumentation() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
-                      className="flex items-center justify-between p-2 bg-white border border-gray-200 rounded-md"
+                      className="flex items-center justify-between p-2 bg-white border border-gray-200 rounded-md dark:bg-slate-800 dark:border-slate-700"
                     >
                       <div className="flex items-center space-x-2">
-                        <FileText className="h-4 w-4 text-gray-500" />
-                        <span className="text-sm text-gray-700 truncate">{supportingDoc.name}</span>
+                        <FileText className="h-4 w-4 text-gray-500 dark:text-slate-400" />
+                        <span className="text-sm text-gray-700 dark:text-slate-300 truncate">{supportingDoc.name}</span>
                       </div>
-                      <Button variant="ghost" size="sm" onClick={removeSupportingDoc} className="h-6 w-6 p-0">
+                      <Button variant="ghost" size="sm" onClick={removeSupportingDoc} className="h-6 w-6 p-0 dark:text-slate-300 dark:hover:bg-slate-700">
                         <X className="h-3 w-3" />
                       </Button>
                     </motion.div>
