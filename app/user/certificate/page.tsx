@@ -117,7 +117,7 @@ export default function CertificatesPage() {
           <h1 className="text-3xl font-bold">My Certificates & Projects</h1>
           <p className="text-muted-foreground">Manage your academic achievements and project portfolio</p>
         </div>
-        <Link href="/certificates/upload">
+        <Link href="/user/certificate/upload">
           <Button className="gap-2 bg-yellow-400 hover:bg-yellow-500 text-black">
             <Plus className="h-4 w-4" />
             Add Certificate
