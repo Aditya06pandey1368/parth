@@ -20,7 +20,7 @@ import { Menu } from "lucide-react"
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(true) // change this on login
+  const [isLoggedIn, setIsLoggedIn] = useState(false) // change this on login
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)

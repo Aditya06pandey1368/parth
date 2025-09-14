@@ -9,19 +9,23 @@ import Footer from '@/components/footer';
 
 export default function HomePage() {
   return (
-    // 👇 This is the line that was changed
     <div className="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
       <div className="relative min-h-screen overflow-x-hidden">
         
-        <Navbar></Navbar>
-        <main className="relative">
-          <Hero></Hero>
-          <FeatureSection></FeatureSection>
-          <AboutSection></AboutSection>
-          <OurMission></OurMission>
+        {/* 👇 Fixed Navbar */}
+        <div className="fixed top-0 left-0 w-full z-50 bg-gray-50 dark:bg-gray-900 shadow-md">
+          <Navbar />
+        </div>
+
+        {/* 👇 Add top padding equal to navbar height */}
+        <main className="relative pt-20">
+          <Hero />
+          <FeatureSection />
+          <AboutSection />
+          <OurMission />
         </main>
 
-        <Footer></Footer>
+        <Footer />
       </div>
     </div>
   );
