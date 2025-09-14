@@ -40,7 +40,7 @@ const studentSecondaryNavigation = [
   { name: "Result", href: "/user/result", icon: BarChart3 },
   { name: "My Research Papers", href: "/user/my-research", icon: FileText },
   { name: "Faculty Members", href: "/user/faculty", icon: UserCheck },
-  { name: "Add Events", href: "/user/add-events", icon: Plus },
+  { name: "Add Events", href: "/user/addEvent", icon: Plus },
   { name: "Community Services", href: "/user/community", icon: Heart },
 ]
 
