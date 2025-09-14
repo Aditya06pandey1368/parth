@@ -48,7 +48,7 @@ const studentSecondaryNavigation = [
 const facultyPrimaryNavigation = [
   { name: "Dashboard", href: "/faculty/dashboard", icon: LayoutDashboard },
   { name: "Projects", href: "/faculty/projects", icon: Award },
-  { name: "Research Papers", href: "/faculty/research", icon: FileText },
+  { name: "Research Papers", href: "/faculty/research-paper", icon: FileText },
   { name: "Events", href: "/faculty/events", icon: Calendar },
   { name: "Clubs", href: "/faculty/clubs", icon: Users },
 ]
