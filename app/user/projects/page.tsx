@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Projectsbg from "@/public/projectsbg.png"
+
 const projects = [
   {
     id: 1,
@@ -103,244 +104,220 @@ export default function Portfolio() {
     activeFilter === "All" ? projects : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FFFBF4" }}>
-      <motion.section
-  className="w-full py-20 px-6 relative overflow-hidden"
-  style={{ backgroundColor: "#4A4A4A" }}
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
->
-  {/* Background Image */}
-  <div className="absolute inset-0 z-0">
-    <Image
-      src={Projectsbg.src} // place inside /public folder
-      alt="Smart Student Hub Projects"
-      layout="fill"
-      objectFit="cover"
-      className="opacity-80"
-    />
-    {/* Glass overlay */}
-    <div className="absolute inset-0 bg-white/10 backdrop-blur-md" />
-  </div>
+    <div className={`"dark" : ""`}>
+      <div className="min-h-screen bg-[#FFFBF4] dark:bg-gray-900 transition-colors duration-500">
+        {/* Hero Section */}
+        <motion.section
+          className="w-full py-20 px-6 relative overflow-hidden bg-gray-700 dark:bg-gray-800"
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={Projectsbg.src}
+              alt="Smart Student Hub Projects"
+              layout="fill"
+              objectFit="cover"
+              className="opacity-80"
+            />
+            <div className="absolute inset-0 bg-white/10 dark:bg-black/30 backdrop-blur-md" />
+          </div>
 
-  {/* Foreground Content */}
-  <div className="relative z-10 max-w-4xl mx-auto text-center">
-    <motion.h1
-      className="text-5xl font-bold mb-6 text-white"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-    >
-      Explore <ChangingText /> Directory
-    </motion.h1>
-    <motion.p
-      className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-white"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.4 }}
-    >
-      Discover, connect, and grow with the vibrant clubs at our university.
-      <br />
-      Your next adventure starts here.
-    </motion.p>
+          {/* Foreground Content */}
+          <div className="relative z-10 max-w-4xl mx-auto text-center">
 
-    <motion.div
-      className="max-w-2xl mx-auto"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.6 }}
-    >
-      <motion.div
-        className="flex items-center px-6 py-4 rounded-full bg-white shadow-lg"
-        whileFocus={{ scale: 1.02 }}
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.2 }}
-      >
-        <input
-          type="text"
-          placeholder="Search clubs by keyword, topic, or author..."
-          className="flex-1 bg-transparent outline-none text-base text-gray-600 placeholder-gray-400"
-        />
-      </motion.div>
-    </motion.div>
-  </div>
-</motion.section>
+            <motion.h1
+              className="text-5xl font-bold mb-6 text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Explore <ChangingText /> Directory
+            </motion.h1>
+            <motion.p
+              className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Discover, connect, and grow with the vibrant clubs at our university.
+              <br />
+              Your next adventure starts here.
+            </motion.p>
 
-
-      <motion.nav
-        className="w-full py-6 px-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            className="flex items-center justify-center flex-wrap gap-3"
-            variants={{
-              hidden: { opacity: 0 },
-              show: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                },
-              },
-            }}
-            initial="hidden"
-            animate="show"
-          >
-            {filterCategories.map((category) => (
-              <motion.button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80"
-                style={{
-                  backgroundColor: activeFilter === category ? "#FFC107" : "#F0F0F0",
-                  color: activeFilter === category ? "#242424" : "#6B7280",
-                }}
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0 },
-                }}
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
+            <motion.div
+              className="max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <motion.div
+                className="flex items-center px-6 py-4 rounded-full bg-white dark:bg-gray-700 shadow-lg"
+                whileFocus={{ scale: 1.02 }}
+                whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
-                {category}
-              </motion.button>
-            ))}
-          </motion.div>
-        </div>
-      </motion.nav>
+                <input
+                  type="text"
+                  placeholder="Search clubs by keyword, topic, or author..."
+                  className="flex-1 bg-transparent outline-none text-base text-gray-600 dark:text-gray-200 placeholder-gray-400"
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.section>
 
-      <motion.main
-        className="w-full py-12 px-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1 }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <AnimatePresence mode="wait">
+        {/* Filter Categories */}
+        <motion.nav
+          className="w-full py-6 px-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <div className="max-w-6xl mx-auto">
             <motion.div
-              key={activeFilter}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="flex items-center justify-center flex-wrap gap-3"
               variants={{
                 hidden: { opacity: 0 },
                 show: {
                   opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                  },
+                  transition: { staggerChildren: 0.1 },
                 },
               }}
               initial="hidden"
               animate="show"
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
             >
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className="rounded-lg overflow-hidden border hover:shadow-md transition-shadow cursor-pointer"
-                  style={{
-                    backgroundColor: "#FDFDFD",
-                    borderColor: "#E0E0E0",
-                  }}
+              {filterCategories.map((category) => (
+                <motion.button
+                  key={category}
+                  onClick={() => setActiveFilter(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80 ${
+                    activeFilter === category
+                      ? "bg-yellow-400 text-gray-900"
+                      : "bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300"
+                  }`}
                   variants={{
-                    hidden: { opacity: 0, y: 30, scale: 0.9 },
-                    show: {
-                      opacity: 1,
-                      y: 0,
-                      scale: 1,
-                      transition: {
-                        delay: index * 0.1,
-                        duration: 0.4,
-                        ease: "easeOut",
-                      },
-                    },
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0 },
                   }}
-                  whileHover={{
-                    scale: 1.03,
-                    y: -5,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
-                  }}
-                  transition={{ duration: 0.3 }}
-                  layout
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <div className="relative aspect-video overflow-hidden">
-                    <motion.img
-                      src={project.thumbnail || "/placeholder.svg"}
-                      alt={project.title}
-                      className="w-full h-full object-cover rounded-t-lg"
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  </div>
-
-                  <div className="p-5">
-                    <motion.h2
-                      className="text-xl font-bold mb-3"
-                      style={{ color: "#242424" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.2 }}
-                    >
-                      {project.title}
-                    </motion.h2>
-                    <motion.p
-                      className="text-sm mb-4 leading-relaxed"
-                      style={{ color: "#6B7280" }}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                    >
-                      {project.description}
-                    </motion.p>
-
-                    <div className="flex items-center justify-end">
-                      <motion.button
-                        className="px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:opacity-80"
-                        style={{
-                          backgroundColor: "#FFC107",
-                          color: "#242424",
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        View
-                      </motion.button>
-                    </div>
-                  </div>
-                </motion.div>
+                  {category}
+                </motion.button>
               ))}
             </motion.div>
-          </AnimatePresence>
+          </div>
+        </motion.nav>
 
-          {filteredProjects.length === 0 && (
-            <motion.div
-              className="text-center py-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <p className="text-lg text-gray-500 mb-4">No projects found for "{activeFilter}"</p>
-              <motion.button
-                onClick={() => setActiveFilter("All")}
-                className="px-6 py-2 rounded-lg text-sm font-medium"
-                style={{
-                  backgroundColor: "#FFC107",
-                  color: "#242424",
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+        {/* Project Cards */}
+        <motion.main
+          className="w-full py-12 px-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1 }}
+        >
+          <div className="max-w-6xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeFilter}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                initial="hidden"
+                animate="show"
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
               >
-                View All Projects
-              </motion.button>
-            </motion.div>
-          )}
-        </div>
-      </motion.main>
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    className="rounded-lg overflow-hidden border hover:shadow-md transition-shadow cursor-pointer bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                    variants={{
+                      hidden: { opacity: 0, y: 30, scale: 0.9 },
+                      show: {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        transition: { delay: index * 0.1, duration: 0.4, ease: "easeOut" },
+                      },
+                    }}
+                    whileHover={{
+                      scale: 1.03,
+                      y: -5,
+                      boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
+                    }}
+                    transition={{ duration: 0.3 }}
+                    layout
+                  >
+                    <div className="relative aspect-video overflow-hidden">
+                      <motion.img
+                        src={project.thumbnail || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover rounded-t-lg"
+                        whileHover={{ scale: 1.1 }}
+                        transition={{ duration: 0.4 }}
+                      />
+                    </div>
+
+                    <div className="p-5">
+                      <motion.h2
+                        className="text-xl font-bold mb-3 text-gray-900 dark:text-white"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        {project.title}
+                      </motion.h2>
+                      <motion.p
+                        className="text-sm mb-4 leading-relaxed text-gray-600 dark:text-gray-300"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                      >
+                        {project.description}
+                      </motion.p>
+
+                      <div className="flex items-center justify-end">
+                        <motion.button
+                          className="px-4 py-2 rounded-lg text-sm font-medium bg-yellow-400 text-gray-900 dark:bg-yellow-500 dark:text-gray-900 hover:opacity-90 transition"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          View
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+
+            {filteredProjects.length === 0 && (
+              <motion.div
+                className="text-center py-16"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <p className="text-lg text-gray-500 dark:text-gray-400 mb-4">
+                  No projects found for "{activeFilter}"
+                </p>
+                <motion.button
+                  onClick={() => setActiveFilter("All")}
+                  className="px-6 py-2 rounded-lg text-sm font-medium bg-yellow-400 text-gray-900 hover:opacity-90 transition"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  View All Projects
+                </motion.button>
+              </motion.div>
+            )}
+          </div>
+        </motion.main>
+      </div>
     </div>
   )
 }

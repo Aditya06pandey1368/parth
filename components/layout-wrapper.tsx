@@ -67,7 +67,7 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
           isMobile ? "ml-0" : isSidebarCollapsed ? "ml-16" : "ml-64",
         )}
       >
-        <div className="p-6">{children}</div>
+        <div className="mt-3">{children}</div>
       </main>
     </div>
   )

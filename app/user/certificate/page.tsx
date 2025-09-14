@@ -1,14 +1,14 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
-import { Eye, Trash2, Plus, Search } from "lucide-react"
+import { Eye, Trash2, Plus, Search, Sun, Moon } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
 const certificates = [
   {
@@ -87,11 +87,37 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 60 } },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 60 } },
 }
 
 export default function CertificatesPage() {
   const [searchTerm, setSearchTerm] = useState("")
+  const [theme, setTheme] = useState("light")
+
+  // Effect to handle theme initialization and updates
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme")
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    if (savedTheme) {
+      setTheme(savedTheme)
+    } else {
+      setTheme(prefersDark ? "dark" : "light")
+    }
+  }, [])
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+      localStorage.setItem("theme", "light")
+    }
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+  }
 
   const filteredCertificates = certificates.filter(
     (cert) =>
@@ -101,7 +127,7 @@ export default function CertificatesPage() {
 
   return (
     <motion.div
-      className="p-6 space-y-6"
+      className="bg-background text-foreground p-6 space-y-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
@@ -117,12 +143,18 @@ export default function CertificatesPage() {
           <h1 className="text-3xl font-bold">My Certificates & Projects</h1>
           <p className="text-muted-foreground">Manage your academic achievements and project portfolio</p>
         </div>
-        <Link href="/user/certificate/upload">
-          <Button className="gap-2 bg-yellow-400 hover:bg-yellow-500 text-black">
-            <Plus className="h-4 w-4" />
-            Add Certificate
+        <div className="flex items-center gap-2">
+          <Link href="/user/certificate/upload">
+            <Button className="gap-2 bg-yellow-400 hover:bg-yellow-500 text-black">
+              <Plus className="h-4 w-4" />
+              Add Certificate
+            </Button>
+          </Link>
+          <Button onClick={toggleTheme} variant="outline" size="icon" aria-label="Toggle theme">
+            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           </Button>
-        </Link>
+        </div>
       </motion.div>
 
       {/* Search */}
@@ -154,7 +186,7 @@ export default function CertificatesPage() {
         >
           {filteredCertificates.map((cert) => (
             <motion.div key={cert.id} variants={itemVariants}>
-              <Card className="bg-gray-100 group hover:shadow-lg transition-shadow">
+              <Card className="group hover:shadow-lg transition-shadow">
                 <CardContent className="p-4">
                   <div className="aspect-[3/2] bg-muted rounded-lg mb-3 overflow-hidden">
                     <motion.img
@@ -168,19 +200,19 @@ export default function CertificatesPage() {
                   <p className="text-xs text-muted-foreground mb-2">{cert.issuer}</p>
                   <div className="flex items-center justify-between">
                     <Badge
-                      variant={cert.status === "verified" ? "default" : "secondary"}
                       className={cn(
-                        cert.status === "verified" && "bg-green-100 text-green-800 hover:bg-green-100",
-                        cert.status === "pending" && "bg-yellow-100 text-yellow-800 hover:bg-yellow-100",
+                        "border-transparent", // To avoid double borders on dark mode
+                        cert.status === "verified" && "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300",
+                        cert.status === "pending" && "bg-yellow-100 text-yellow-800 dark:bg-yellow-950 dark:text-yellow-300",
                       )}
                     >
                       {cert.status}
                     </Badge>
                     <div className="flex gap-1">
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-muted">
                         <Eye className="h-3 w-3" />
                       </Button>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-destructive hover:text-destructive-foreground">
                         <Trash2 className="h-3 w-3" />
                       </Button>
                     </div>
@@ -203,7 +235,7 @@ export default function CertificatesPage() {
         >
           {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
-              <Card className="bg-gray-100 group hover:shadow-lg transition-shadow">
+              <Card className="group hover:shadow-lg transition-shadow">
                 <CardContent className="p-4">
                   <div className="aspect-[4/3] bg-muted rounded-lg mb-3 overflow-hidden">
                     <motion.img
@@ -217,19 +249,19 @@ export default function CertificatesPage() {
                   <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
                   <div className="flex items-center justify-between">
                     <Badge
-                      variant={project.status === "completed" ? "default" : "secondary"}
-                      className={cn(
-                        project.status === "completed" && "bg-green-100 text-green-800 hover:bg-green-100",
-                        project.status === "in-progress" && "bg-blue-100 text-blue-800 hover:bg-blue-100",
+                       className={cn(
+                        "border-transparent",
+                        project.status === "completed" && "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300",
+                        project.status === "in-progress" && "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300",
                       )}
                     >
                       {project.status}
                     </Badge>
                     <div className="flex gap-1">
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-yellow-100 hover:text-yellow-700">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-muted">
                         <Eye className="h-3 w-3" />
                       </Button>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-red-100">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-destructive hover:text-destructive-foreground">
                         <Trash2 className="h-3 w-3" />
                       </Button>
                     </div>

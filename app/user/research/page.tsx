@@ -3,6 +3,50 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
 
+// --- ICONS for the theme toggle button ---
+const SunIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+)
+
+const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+)
+// --- END ICONS ---
+
 const projects = [
   {
     id: 1,
@@ -79,7 +123,7 @@ const ChangingText = () => {
       setCurrentIndex((prev) => (prev + 1) % words.length)
     }, 2000)
     return () => clearInterval(interval)
-  }, [])
+  }, [words.length])
 
   return (
     <motion.span
@@ -97,15 +141,62 @@ const ChangingText = () => {
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("All")
+  const [theme, setTheme] = useState("light")
+
+  // Effect to handle theme initialization and updates
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme")
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+    if (savedTheme) {
+      setTheme(savedTheme)
+    } else {
+      setTheme(prefersDark ? "dark" : "light")
+    }
+  }, [])
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+    } else {
+      document.documentElement.classList.remove("dark")
+      localStorage.setItem("theme", "light")
+    }
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+  }
 
   const filteredProjects =
     activeFilter === "All" ? projects : projects.filter((project) => project.category === activeFilter)
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FFFBF4" }}>
+    <div className="min-h-screen bg-[#FFFBF4] dark:bg-gray-900 transition-colors duration-300">
+      {/* --- THEME TOGGLE BUTTON --- */}
+      <motion.button
+        onClick={toggleTheme}
+        className="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-gray-800 dark:text-gray-200 shadow-md"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        aria-label="Toggle theme"
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {theme === "light" ? (
+            <motion.div key="sun" initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}>
+              <SunIcon />
+            </motion.div>
+          ) : (
+            <motion.div key="moon" initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 20, opacity: 0 }}>
+              <MoonIcon />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.button>
+      {/* --- END THEME TOGGLE BUTTON --- */}
+
       <motion.section
-        className="w-full py-20 px-6"
-        style={{ backgroundColor: "#4A4A4A" }}
+        className="w-full py-20 px-6 bg-[#4A4A4A] dark:bg-gray-800"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -120,7 +211,7 @@ export default function Portfolio() {
             Explore <ChangingText /> Directory
           </motion.h1>
           <motion.p
-            className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-white"
+            className="text-lg mb-8 max-w-3xl mx-auto leading-relaxed text-gray-200"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -137,15 +228,14 @@ export default function Portfolio() {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <motion.div
-              className="flex items-center px-6 py-4 rounded-full bg-white"
-              whileFocus={{ scale: 1.02 }}
+              className="flex items-center px-6 py-4 rounded-full bg-white dark:bg-gray-700"
               whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.2 }}
             >
               <input
                 type="text"
                 placeholder="Search clubs by keyword, topic, or author..."
-                className="flex-1 bg-transparent outline-none text-base text-gray-600 placeholder-gray-400"
+                className="flex-1 bg-transparent outline-none text-base text-gray-600 dark:text-gray-200 placeholder-gray-400 dark:placeholder-gray-400"
               />
             </motion.div>
           </motion.div>
@@ -153,7 +243,7 @@ export default function Portfolio() {
       </motion.section>
 
       <motion.nav
-        className="w-full py-6 px-6 dark:bg-black"
+        className="w-full py-6 px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
@@ -165,9 +255,7 @@ export default function Portfolio() {
               hidden: { opacity: 0 },
               show: {
                 opacity: 1,
-                transition: {
-                  staggerChildren: 0.1,
-                },
+                transition: { staggerChildren: 0.1 },
               },
             }}
             initial="hidden"
@@ -177,11 +265,11 @@ export default function Portfolio() {
               <motion.button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className="px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80"
-                style={{
-                  backgroundColor: activeFilter === category ? "#FFC107" : "#F0F0F0",
-                  color: activeFilter === category ? "#242424" : "#6B7280",
-                }}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors hover:opacity-80 ${
+                  activeFilter === category
+                    ? "bg-[#FFC107] text-[#242424]"
+                    : "bg-[#F0F0F0] text-[#6B7280] dark:bg-gray-700 dark:text-gray-300"
+                }`}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   show: { opacity: 1, y: 0 },
@@ -198,7 +286,7 @@ export default function Portfolio() {
       </motion.nav>
 
       <motion.main
-        className="w-full py-12 px-6 dark:bg-black"
+        className="w-full py-12 px-6"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1 }}
@@ -212,9 +300,7 @@ export default function Portfolio() {
                 hidden: { opacity: 0 },
                 show: {
                   opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                  },
+                  transition: { staggerChildren: 0.1 },
                 },
               }}
               initial="hidden"
@@ -225,28 +311,19 @@ export default function Portfolio() {
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
-                  className="rounded-lg overflow-hidden border hover:shadow-md transition-shadow cursor-pointer"
-                  style={{
-                    backgroundColor: "#FDFDFD",
-                    borderColor: "#E0E0E0",
-                  }}
+                  className="rounded-lg overflow-hidden border bg-[#FDFDFD] border-[#E0E0E0] dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg dark:hover:shadow-yellow-500/10 transition-shadow cursor-pointer"
                   variants={{
                     hidden: { opacity: 0, y: 30, scale: 0.9 },
                     show: {
                       opacity: 1,
                       y: 0,
                       scale: 1,
-                      transition: {
-                        delay: index * 0.1,
-                        duration: 0.4,
-                        ease: "easeOut",
-                      },
+                      transition: { delay: index * 0.1, duration: 0.4, ease: "easeOut" },
                     },
                   }}
                   whileHover={{
                     scale: 1.03,
                     y: -5,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.1)",
                   }}
                   transition={{ duration: 0.3 }}
                   layout
@@ -263,8 +340,7 @@ export default function Portfolio() {
 
                   <div className="p-5">
                     <motion.h2
-                      className="text-xl font-bold mb-3"
-                      style={{ color: "#242424" }}
+                      className="text-xl font-bold mb-3 text-[#242424] dark:text-white"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 }}
@@ -272,8 +348,7 @@ export default function Portfolio() {
                       {project.title}
                     </motion.h2>
                     <motion.p
-                      className="text-sm mb-4 leading-relaxed"
-                      style={{ color: "#6B7280" }}
+                      className="text-sm mb-4 leading-relaxed text-[#6B7280] dark:text-gray-400"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.3 }}
@@ -283,11 +358,7 @@ export default function Portfolio() {
 
                     <div className="flex items-center justify-end">
                       <motion.button
-                        className="px-4 py-2 rounded-lg text-sm font-medium transition-colors hover:opacity-80"
-                        style={{
-                          backgroundColor: "#FFC107",
-                          color: "#242424",
-                        }}
+                        className="px-4 py-2 rounded-lg text-sm font-medium transition-colors bg-[#FFC107] text-[#242424] hover:opacity-80"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.2 }}
@@ -308,14 +379,10 @@ export default function Portfolio() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-lg text-gray-500 mb-4">No projects found for "{activeFilter}"</p>
+              <p className="text-lg text-gray-500 dark:text-gray-400 mb-4">No projects found for "{activeFilter}"</p>
               <motion.button
                 onClick={() => setActiveFilter("All")}
-                className="px-6 py-2 rounded-lg text-sm font-medium"
-                style={{
-                  backgroundColor: "#FFC107",
-                  color: "#242424",
-                }}
+                className="px-6 py-2 rounded-lg text-sm font-medium bg-[#FFC107] text-[#242424]"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
