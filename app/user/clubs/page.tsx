@@ -118,7 +118,7 @@ export default function ClubsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div
-        className="relative h-64 bg-cover bg-center flex items-center justify-center"
+        className="relative h-64 bg-cover  bg-center flex items-center justify-center"
         style={{
           backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/club-hero-bg.jpg')`,
         }}
@@ -290,72 +290,7 @@ export default function ClubsPage() {
           ))}
         </div>
 
-        {/* Statistics */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-12"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0, y: 40 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { staggerChildren: 0.2 },
-            },
-          }}
-        >
-          {[ 
-            {
-              icon: <Users className="h-6 w-6 text-yellow-600" />,
-              bg: "bg-yellow-100",
-              value: clubs.length,
-              label: "Active Clubs",
-              color: "text-yellow-600",
-            },
-            {
-              icon: <Users className="h-6 w-6 text-blue-600" />,
-              bg: "bg-blue-100",
-              value: clubs.reduce((sum, club) => sum + club.members, 0).toLocaleString(),
-              label: "Total Members",
-              color: "text-blue-600",
-            },
-            {
-              icon: <Star className="h-6 w-6 text-green-600" />,
-              bg: "bg-green-100",
-              value: (clubs.reduce((sum, club) => sum + club.rating, 0) / clubs.length).toFixed(1),
-              label: "Avg Rating",
-              color: "text-green-600",
-            },
-            {
-              icon: <Calendar className="h-6 w-6 text-purple-600" />,
-              bg: "bg-purple-100",
-              value: categories.length - 1,
-              label: "Categories",
-              color: "text-purple-600",
-            },
-          ].map((stat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.2, duration: 0.6 }}
-            >
-              <Card className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className={`p-3 ${stat.bg} rounded-xl`}>{stat.icon}</div>
-                    <div>
-                      <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
-                      <p className="text-sm text-muted-foreground">{stat.label}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+      
       </div>
     </div>
   )

@@ -32,7 +32,7 @@ const primaryNavigation = [
   { name: "Certificates", href: "/user/certificate", icon: Award },
   { name: "Clubs", href: "/user/clubs", icon: Users },
   { name: "Events", href: "/user/events", icon: Calendar },
-  { name: "Settings", href: "/user/setting", icon: Settings },
+  
 ]
 
 const secondaryNavigation = [

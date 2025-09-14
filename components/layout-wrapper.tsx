@@ -50,7 +50,8 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
   return (
     <div className="min-h-screen bg-background">
       <TopNavbar onMenuClick={handleMenuClick} isCollapsed={isSidebarCollapsed} />
-
+    {/* Pass isCollapsed to TopNavbar */}
+    <TopNavbar onMenuClick={handleMenuClick} isCollapsed={isSidebarCollapsed} />
       <Sidebar
         isOpen={isSidebarOpen}
         isCollapsed={isSidebarCollapsed}
