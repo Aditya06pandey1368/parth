@@ -45,7 +45,7 @@ export default function Dashboard() {
 
   return (
     <div className="">
-        <main className="p-6">
+        <main className="p-3">
           {/* Header Section */}
        
 
@@ -63,7 +63,7 @@ export default function Dashboard() {
                   />
                   <AvatarFallback>RM</AvatarFallback>
                 </Avatar>
-                <div className="flex gap-2 mb-4 border-2">
+                <div className="flex gap-2 mb-4 ">
                   <div className="p-2 bg-blue-100 rounded">
                     <Linkedin className="h-4 w-4 text-blue-600" />
                   </div>

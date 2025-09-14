@@ -95,7 +95,7 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
             )}
 
             <div className={cn("flex items-center gap-3", isMobile ? "pr-10" : "flex-1")}>
-              <div className="w-12 h-12  rounded-xl flex items-center justify-center shadow-lg ring-2 ring-primary/20 transition-all duration-300 hover:ring-primary/40 hover:shadow-xl hover:scale-105 relative overflow-hidden group flex-shrink-0">
+              <div className="w-12 h-12  flex items-center justify-center transition-all duration-300 hover:ring-primary/40 hover:shadow-xl hover:scale-105 relative overflow-hidden group flex-shrink-0">
                 <Image 
           src={Logo}  // put your logo in /public folder
           alt="Logo"
@@ -138,7 +138,7 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
             )}
           </div>
 
-          <nav className="flex-1 overflow-y-auto py-4 px-3">
+          <nav className="flex-1 overflow-y-auto py-4 px-3 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 scrollbar-thumb-rounded-full transition-all duration-300">
             <div className="space-y-1">
               {primaryNavigation.map((item, index) => {
                 const isActive = pathname === item.href

@@ -167,7 +167,7 @@ export default function ResearchPage() {
 return (
   <>
     <motion.div
-      className="p-6 space-y-6"
+      className="p-3 space-y-3"
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
