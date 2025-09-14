@@ -189,7 +189,7 @@ export default function ProjectDocumentation() {
             className="lg:col-span-2 space-y-6"
           >
             <div className="space-y-2">
-              <h1 className="text-2xl font-semibold text-gray-900">Project Documentation</h1>
+              <h1 className="text-2xl font-semibold text-gray-900">Add Event</h1>
               <p className="text-sm text-gray-600">Update your personal information and social links.</p>
             </div>
 
