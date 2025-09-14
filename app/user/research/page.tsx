@@ -212,6 +212,7 @@ return (
               <DialogTitle>Add Research Paper</DialogTitle>
             </DialogHeader>
 
+          
             <motion.div
               className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-4"
               initial={{ opacity: 0 }}
@@ -548,81 +549,7 @@ return (
       </Tabs>
 
       {/* Statistics */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-4 gap-4"
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <motion.div whileHover={{ scale: 1.05 }}>
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <BookOpen className="h-6 w-6 text-blue-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-blue-600">{researchPapers.length}</p>
-                  <p className="text-sm text-muted-foreground">Total Papers</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <motion.div whileHover={{ scale: 1.05 }}>
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-green-100 rounded-lg">
-                  <Users className="h-6 w-6 text-green-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-green-600">
-                    {researchPapers.reduce((sum, paper) => sum + paper.citations, 0)}
-                  </p>
-                  <p className="text-sm text-muted-foreground">Total Citations</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <motion.div whileHover={{ scale: 1.05 }}>
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Calendar className="h-6 w-6 text-purple-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-purple-600">{projects.length}</p>
-                  <p className="text-sm text-muted-foreground">Active Projects</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        <motion.div whileHover={{ scale: 1.05 }}>
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="p-2 bg-orange-100 rounded-lg">
-                  <ExternalLink className="h-6 w-6 text-orange-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-orange-600">
-                    {researchPapers.filter((p) => p.status === "published").length}
-                  </p>
-                  <p className="text-sm text-muted-foreground">Published</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-      </motion.div>
+      
       </>
 )
 }

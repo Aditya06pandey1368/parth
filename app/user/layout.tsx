@@ -1,3 +1,4 @@
+import { LayoutWrapper } from "@/components/layout-wrapper";
 import { Sidebar } from "../../components/sidebar"; // Corrected import path
 import type { Metadata } from "next";
 
@@ -13,11 +14,10 @@ export default function UserLayout({
 }) {
   return (
     // Updated the background color for the main layout wrapper
-    <div className="flex min-h-screen bg-gray-300 dark:bg-gray-900">
+    <LayoutWrapper>
+<div className="flex min-h-screen bg-gray-300 dark:bg-gray-900">
       {/* Fixed Sidebar - kept white for contrast and added a subtle shadow */}
-      <aside className="w-64 flex-shrink-0 bg-white dark:bg-gray-800 shadow-md">
-        <Sidebar />
-      </aside>
+      
 
       {/* Main Content - updated background to match the wrapper */}
       <main className="flex-1 p-6 lg:p-8 bg-gray-200 
@@ -25,6 +25,8 @@ export default function UserLayout({
         {children}
       </main>
     </div>
+    </LayoutWrapper>
+    
   );
 }
 
