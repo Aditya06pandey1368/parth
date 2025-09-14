@@ -40,7 +40,7 @@ export default function UploadCertificatePage() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <Link href="/certificates">
+        <Link href="/user/certificate">
           <Button variant="ghost" size="sm" className="gap-2">
             <ArrowLeft className="h-4 w-4" />
             Back to Certificates

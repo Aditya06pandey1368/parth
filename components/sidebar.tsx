@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import  Image  from "next/image"
+import Image from "next/image"
 import Logo from '@/public/logo.png'
 import {
   LayoutDashboard,
@@ -77,12 +77,12 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
               ? "translate-x-0"
               : "-translate-x-full"
             : // Desktop behavior - always visible
-              "translate-x-0",
+            "translate-x-0",
         )}
       >
         <div className="flex flex-col h-full">
           {/* Header - Fixed height to prevent shifting */}
-          <div className="flex items-center h-20 px-4 border-b border-sidebar-border bg-gradient-to-r from-white/60 to-white/40 backdrop-blur-md flex-shrink-0">
+          <div className="flex items-center h-20 px-4 border-b border-sidebar-border dark:bg-black bg-white backdrop-blur-md flex-shrink-0">
             {isMobile && (
               <Button
                 variant="ghost"
@@ -96,12 +96,12 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
 
             <div className={cn("flex items-center gap-3", isMobile ? "pr-10" : "flex-1")}>
               <div className="w-12 h-12  flex items-center justify-center transition-all duration-300 hover:ring-primary/40 hover:shadow-xl hover:scale-105 relative overflow-hidden group flex-shrink-0">
-                <Image 
-          src={Logo}  // put your logo in /public folder
-          alt="Logo"
-          
-          className="rounded-full"
-        />
+                <Image
+                  src={Logo}  // put your logo in /public folder
+                  alt="Logo"
+
+                  className="rounded-full"
+                />
               </div>
 
               <div
@@ -218,48 +218,20 @@ export function Sidebar({ isOpen, isCollapsed, onClose, onToggleCollapse }: Side
             </div>
           </nav>
 
-          <div className="h-16 border-t border-sidebar-border bg-gradient-to-r from-white/40 to-white/20 backdrop-blur-md p-3 flex-shrink-0">
+          <div className="h-16 border-t border-sidebar-border dark:bg-gray-800 bg-gray-200 backdrop-blur-md p-3 flex-shrink-0">
             <Button
-              variant="ghost"
-              size="sm"
-              className={cn(
-                "w-full h-10 text-sidebar-foreground hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600 hover:text-white transition-all duration-500 rounded-xl font-semibold relative overflow-hidden group border border-transparent hover:border-red-400/30 hover:shadow-lg hover:shadow-red-500/20",
-                isCollapsed && !isMobile ? "px-0 justify-center" : "justify-start gap-3 px-4",
-              )}
-              title={isCollapsed && !isMobile ? "Logout" : undefined}
-            >
-              {/* Enhanced background animation layers */}
-              <div className="absolute inset-0 bg-gradient-to-r from-red-500/0 via-red-500/10 to-red-500/0 opacity-0 group-hover:opacity-100 transition-all duration-500 animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/20 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out origin-center"></div>
+  size="sm"
+  className={cn(
+    "w-full h-10 flex items-center gap-3 px-4 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-900 transition-transform duration-200 hover:scale-105",
+    isCollapsed && !isMobile ? "px-0 justify-center" : "justify-start"
+  )}
+  title={isCollapsed && !isMobile ? "Logout" : undefined}
+>
+  <LogOut className="h-4 w-4" />
+  {!isCollapsed && <span>Logout</span>}
+</Button>
 
-              {/* Ripple wave effect */}
-              <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute top-1/2 left-1/2 w-0 h-0 bg-white/30 rounded-full group-hover:w-32 group-hover:h-32 group-hover:-translate-x-1/2 group-hover:-translate-y-1/2 transition-all duration-1000 ease-out"></div>
-              </div>
 
-              {/* Enhanced glow effect */}
-              <div className="absolute -inset-2 bg-gradient-to-r from-red-500/30 to-red-600/30 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse"></div>
-
-              {/* Icon with creative animations */}
-              <LogOut className="h-4 w-4 transition-all duration-500 group-hover:scale-125 group-hover:rotate-180 relative z-10 flex-shrink-0 group-hover:text-white drop-shadow-sm" />
-
-              {/* Text with enhanced slide animation */}
-              <span
-                className={cn(
-                  "relative z-10 transition-all duration-500 overflow-hidden whitespace-nowrap group-hover:text-white font-bold tracking-wide",
-                  isCollapsed && !isMobile ? "w-0 opacity-0 translate-x-4" : "w-auto opacity-100 translate-x-0",
-                )}
-              >
-                Logout
-              </span>
-
-              {/* Particle effect simulation */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                <div className="absolute top-2 left-4 w-1 h-1 bg-white/60 rounded-full animate-bounce delay-100"></div>
-                <div className="absolute top-4 right-6 w-1 h-1 bg-white/40 rounded-full animate-bounce delay-300"></div>
-                <div className="absolute bottom-3 left-8 w-1 h-1 bg-white/50 rounded-full animate-bounce delay-500"></div>
-              </div>
-            </Button>
           </div>
         </div>
       </div>
