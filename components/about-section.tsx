@@ -15,9 +15,9 @@ function AboutSection() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="font-semibold text-lg text-medium-gray dark:text-gray-400"
+            className="font-semibold text-2xl text-medium-gray dark:text-gray-400"
           >
-            ABOUT ACHIEVO
+            ABOUT PARTH
           </motion.p>
 
           {/* Typing Animation in Heading */}

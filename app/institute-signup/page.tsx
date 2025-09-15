@@ -365,7 +365,7 @@ export default function InstitutionRegistrationForm() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FDFBF6] py-12 px-4">
+    <div className="min-h-screen bg-[#FDFBF6] dark:bg-gray-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Page Header */}
         <div className="text-center mb-12">
