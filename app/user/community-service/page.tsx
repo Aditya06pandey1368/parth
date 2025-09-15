@@ -201,7 +201,53 @@ export default function CommunityService() {
       </div>
 
       {/* Projects Grid */}
-     
+      <div>
+        <h2 className="text-xl font-bold mb-3">Projects</h2>
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          {projects.map((project) => (
+            <motion.div key={project.id} variants={itemVariants}>
+              <Card className="group hover:shadow-lg transition-shadow">
+                <CardContent className="p-4">
+                  <div className="aspect-[4/3] bg-muted rounded-lg mb-3 overflow-hidden">
+                    <motion.img
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                      whileHover={{ scale: 1.05 }}
+                    />
+                  </div>
+                  <h3 className="font-medium text-sm mb-2">{project.title}</h3>
+                  <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
+                  <div className="flex items-center justify-between">
+                    <Badge
+                       className={cn(
+                        "border-transparent",
+                        project.status === "completed" && "bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-300",
+                        project.status === "in-progress" && "bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300",
+                      )}
+                    >
+                      {project.status}
+                    </Badge>
+                    <div className="flex gap-1">
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-muted">
+                        <Eye className="h-3 w-3" />
+                      </Button>
+                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-destructive hover:bg-destructive hover:text-destructive-foreground">
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </motion.div>
   )
 }

@@ -13,8 +13,6 @@ import {
   Users,
   Calendar,
   Settings,
-  SquareKanban,
-  ChartNoAxesCombined,
   LogOut,
   X,
   GraduationCap,
@@ -31,7 +29,7 @@ import {
 const studentPrimaryNavigation = [
   { name: "Dashboard", href: "/user/portfolio", icon: LayoutDashboard },
   { name: "Research Papers", href: "/user/research", icon: FileText },
-  { name: "Projects", href: "/user/projects", icon: SquareKanban },
+  { name: "Projects", href: "/user/projects", icon: Award },
   { name: "Certificates", href: "/user/certificate", icon: Award },
   { name: "Clubs", href: "/user/clubs", icon: Users },
   { name: "Events", href: "/user/events", icon: Calendar },
@@ -40,7 +38,6 @@ const studentPrimaryNavigation = [
 const studentSecondaryNavigation = [
   { name: "Time Table", href: "/user/timetable", icon: Clock },
   { name: "Result", href: "/user/result", icon: BarChart3 },
-  { name: "Attendence", href: "/user/my-attendance", icon: ChartNoAxesCombined },
   { name: "My Research Papers", href: "/user/my-research", icon: FileText },
   { name: "My Projects", href: "/user/my-projects", icon: FileText },
   { name: "Faculty Members", href: "/user/faculty", icon: UserCheck },
