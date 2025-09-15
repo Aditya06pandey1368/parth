@@ -31,6 +31,13 @@ export default function SettingsPage() {
             </div>
             <span className="text-sm text-gray-500">Personal Details</span>
           </Link>
+          <div className="w-8 h-0.5 bg-gray-300"></div>
+          <Link href="/user/setting/personal" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
+              4
+            </div>
+            <span className="text-sm text-gray-500">Positon of Responsibility</span>
+          </Link>
         </div>
       </div>
 
