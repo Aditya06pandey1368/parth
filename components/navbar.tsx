@@ -113,16 +113,16 @@ function Navbar() {
               {/* Before login */}
               <div className="hidden lg:flex items-center gap-4">
                 <Link
-                  href="#"
+                  href="login"
                   className="px-4 py-2 text-sm font-semibold rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-gray-800 transition-all"
                 >
                   Faculty Login
                 </Link>
                 <Link
-                  href="#"
+                  href="login"
                   className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
                 >
-                  Student Signup
+                  Student Login
                 </Link>
               </div>
 

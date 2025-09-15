@@ -219,12 +219,12 @@ function OurMission() {
               </h2>
               <p className="mt-4 text-lg text-gray-800 dark:text-gray-100">
                 Join thousands of students and leading universities who trust
-                Achievo to validate success and unlock opportunities.
+                Parth to validate success and unlock opportunities.
               </p>
             </div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
-                href="#"
+                href="institute-signup"
                 className="cta-button inline-block bg-gray-900 dark:bg-gray-800 text-white font-bold text-lg px-10 py-4 rounded-full shadow-lg"
               >
                 Sign Up for Free
