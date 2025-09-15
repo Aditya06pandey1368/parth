@@ -90,7 +90,7 @@ const itemVariants = {
   show: { opacity: 1, y: 0, transition: { stiffness: 60 } },
 }
 
-export default function CommunityService() {
+export default function MyProjects() {
   const [searchTerm, setSearchTerm] = useState("")
   
 
