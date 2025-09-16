@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Bell, Menu, Moon, Sun, User, Settings, LogOut, X, ChevronDown } from "lucide-react"
 import { useTheme } from "next-themes"
+import Link from "next/link"
 
 interface NavbarProps {
   onMenuClick: () => void
@@ -157,28 +158,28 @@ export function TopNavbar({ onMenuClick, isCollapsed }: NavbarProps) {
                 {/* Menu Items */}
                 <div className="p-2">
                   <div className="space-y-1">
-                    <button className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent/80 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
-                      <div className="p-1.5 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition-colors">
-                        <User className="h-4 w-4 text-blue-500" />
-                      </div>
-                      <span className="font-medium">View Portfolio</span>
-                    </button>
+                   <Link href="/user/portfolio" className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent/80 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
+  <div className="p-1.5 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition-colors">
+    <User className="h-4 w-4 text-blue-500" />
+  </div>
+  <span className="font-medium">View Portfolio</span>
+</Link>
 
-                    <button className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent/80 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
-                      <div className="p-1.5 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-colors">
-                        <Settings className="h-4 w-4 text-purple-500" />
-                      </div>
-                      <span className="font-medium">Edit Profile</span>
-                    </button>
+                   <Link href="/user/edit-profile" className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-foreground hover:bg-accent/80 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
+  <div className="p-1.5 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-colors">
+    <Settings className="h-4 w-4 text-purple-500" />
+  </div>
+  <span className="font-medium">Edit Profile</span>
+</Link>
 
                     <div className="my-2 border-t border-border/50"></div>
 
-                    <button className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-red-500 hover:bg-red-500/10 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
-                      <div className="p-1.5 bg-red-500/10 rounded-lg group-hover:bg-red-500/20 transition-colors">
-                        <LogOut className="h-4 w-4" />
-                      </div>
-                      <span className="font-medium">Sign Out</span>
-                    </button>
+                   <Link href="/logout" className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-red-500 hover:bg-red-500/10 rounded-xl transition-all duration-300 hover:scale-[1.02] group">
+  <div className="p-1.5 bg-red-500/10 rounded-lg group-hover:bg-red-500/20 transition-colors">
+    <LogOut className="h-4 w-4" />
+  </div>
+  <span className="font-medium">Sign Out</span>
+</Link>
                   </div>
                 </div>
               </div>
