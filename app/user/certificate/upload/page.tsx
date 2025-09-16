@@ -67,25 +67,25 @@ export default function UploadCertificatePage() {
         <Card>
           <CardContent className="p-8">
             <form onSubmit={handleSubmit}>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className=" grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Upload Area */}
                 <motion.div
                   className="space-y-4"
                   whileHover={{ scale: 1.02 }}
                   transition={{ type: "spring", stiffness: 200 }}
                 >
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:border-yellow-400 transition-colors bg-gray-50">
+                  <div className="border-2 border-dashed dark:bg-gray-700 border-gray-300 rounded-lg p-12 text-center hover:border-yellow-400 transition-colors bg-gray-50">
                     <motion.div
                       className="flex flex-col items-center justify-center space-y-4"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                      <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center">
+                      <div className="w-16 h-16 dark:bg-gray-900 bg-gray-200 rounded-full flex items-center justify-center">
                         <Upload className="h-8 w-8 text-gray-400" />
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-600 mb-3">select your file or drag and drop</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">select your file or drag and drop</p>
                         <Button type="button" className="bg-blue-400 hover:bg-blue-500 text-white px-6">
                           Browse file
                         </Button>

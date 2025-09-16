@@ -226,285 +226,264 @@ export default function ProjectDocumentationPage() {
   ]
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#FFFBF5" }}>
-      <motion.div
-        className="p-8"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {/* Left Column - Main Content */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Header */}
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold" style={{ color: "#333333" }}>
-                 Add Research Paper
-              </h1>
-              <div className="flex items-center justify-between">
-                <p className="text-sm" style={{ color: "#888888" }}>
-                  Update your personal information and social links.
-                </p>
-                {lastSaved && (
-                  <p className="text-xs" style={{ color: "#888888" }}>
-                    Last saved: {lastSaved.toLocaleTimeString()}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            {/* Title Input */}
-            <div>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="Your Title Here..."
-                className="w-full text-4xl font-bold border-none outline-none bg-transparent transition-all duration-200 focus:ring-2 focus:ring-yellow-400/20 rounded-lg p-2 -ml-2"
-                style={{
-                  color: title ? "#333333" : "#CCCCCC",
-                  fontSize: "2.25rem",
-                }}
-              />
-            </div>
-
-            {/* Rich Text Editor Toolbar */}
-            <div className="bg-white/50 rounded-lg p-3 border" style={{ borderColor: "#EAEAEA" }}>
-              <div className="flex flex-wrap gap-1">
-                {toolbarButtons.map((button, index) => (
-                  <motion.button
-                    key={index}
-                    className="p-2 rounded hover:bg-gray-100 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={button.label}
-                    onClick={() => applyFormatting(button.command)}
-                  >
-                    <button.icon size={16} style={{ color: "#333333" }} />
-                  </motion.button>
-                ))}
-                <motion.button
-                  className="p-2 rounded hover:bg-gray-100 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  title="Insert Image"
-                  onClick={() => {
-                    const url = prompt("Enter image URL:")
-                    if (url) {
-                      applyFormatting("link", url)
-                    }
-                  }}
-                >
-                  <ImageIcon size={16} style={{ color: "#333333" }} />
-                </motion.button>
-              </div>
-            </div>
-
-            {/* Main Text Area */}
-            <div className="flex-1">
-              <textarea
-                ref={contentRef}
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                placeholder="Start writing your article here..."
-                className="w-full h-96 p-4 border rounded-lg resize-none outline-none transition-all duration-200 focus:ring-2 focus:ring-yellow-400/20 focus:border-yellow-400/50"
-                style={{
-                  backgroundColor: "#FEFEFE",
-                  borderColor: "#EAEAEA",
-                  color: "#333333",
-                }}
-              />
-            </div>
-          </div>
-
-          {/* Right Column - Sidebar */}
-          <div className="space-y-6">
-            {/* Publish Button */}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                className="w-full text-white font-medium py-3 rounded-lg shadow-sm"
-                style={{ backgroundColor: "#D4A017" }} // Darker yellow for better contrast
-                onClick={publishDocument}
-                disabled={isPublishing}
-              >
-                {isPublishing ? "Publishing..." : "Publish"}
-              </Button>
-            </motion.div>
-
-            {/* Accordion Sections */}
-            <div className="space-y-4">
-              <Accordion type="single" defaultValue="status" collapsible>
-                <AccordionItem value="status" className="border rounded-lg" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
-                    <span style={{ color: "#333333" }}>Status & Visibility</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <div className="space-y-3 my-2">
-                      <Select value={status} onValueChange={setStatus}>
-                        <SelectTrigger className="w-full" style={{ borderColor: "#EAEAEA" }}>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="public">Public</SelectItem>
-                          <SelectItem value="private">Private</SelectItem>
-                          <SelectItem value="draft">Draft</SelectItem>
-                        </SelectContent>
-                      </Select>
-
-                      <Select value={publishSchedule} onValueChange={setPublishSchedule}>
-                        <SelectTrigger className="w-full" style={{ borderColor: "#EAEAEA" }}>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="immediately">Publish immediately</SelectItem>
-                          <SelectItem value="scheduled">Schedule for later</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="categories" className="border rounded-lg my-2" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3hover:no-underline">
-                    <span style={{ color: "#333333" }}>Categories</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <Select value={category} onValueChange={setCategory}>
-                      <SelectTrigger className="w-full" style={{ borderColor: "#EAEAEA" }}>
-                        <SelectValue placeholder="Select categories..." />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="documentation">Documentation</SelectItem>
-                        <SelectItem value="tutorial">Tutorial</SelectItem>
-                        <SelectItem value="guide">Guide</SelectItem>
-                        <SelectItem value="reference">Reference</SelectItem>
-                        <SelectItem value="api">API</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="tags" className="border rounded-lg my-2" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
-                    <span style={{ color: "#333333" }}>Tags</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <input
-                      type="text"
-                      value={tags}
-                      onChange={(e) => setTags(e.target.value)}
-                      placeholder="Add tags separated by commas..."
-                      className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20"
-                      style={{ borderColor: "#EAEAEA" }}
-                    />
-                    {tags && (
-                      <div className="mt-2 flex flex-wrap gap-1">
-                        {tags.split(",").map((tag, index) => {
-                          const trimmedTag = tag.trim()
-                          return trimmedTag ? (
-                            <span
-                              key={index}
-                              className="px-2 py-1 text-xs rounded"
-                              style={{ backgroundColor: "#D4A017", color: "white" }} // Updated tag color for consistency
-                            >
-                              {trimmedTag}
-                            </span>
-                          ) : null
-                        })}
-                      </div>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="github" className="border rounded-lg my-2" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
-                    <span style={{ color: "#333333" }}>GitHub Link</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <input
-                      type="url"
-                     
-                     
-                      placeholder="Add GitHub repository link..."
-                      className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20"
-                      style={{ borderColor: "#EAEAEA" }}
-                    />
-                   
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="project url" className="border rounded-lg my-2" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
-                    <span style={{ color: "#333333" }}>Deployed Project Link</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <input
-                      type="url"
-                     
-                     
-                      placeholder="Add deployed project link..."
-                      className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20"
-                      style={{ borderColor: "#EAEAEA" }}
-                    />
-                   
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="featured" className="border rounded-lg my-2" style={{ borderColor: "#EAEAEA" }}>
-                  <AccordionTrigger className="px-4 py-3 hover:no-underline">
-                    <span style={{ color: "#333333" }}>Featured Image</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4">
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                    />
-
-                    {imagePreview ? (
-                      <div className="relative">
-                        <img
-                          src={imagePreview || "/placeholder.svg"}
-                          alt="Featured image preview"
-                          className="w-full h-32 object-cover rounded-lg"
-                        />
-                        <button
-                          onClick={removeImage}
-                          className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
-                        >
-                          <X size={12} />
-                        </button>
-                        <p className="text-xs mt-2" style={{ color: "#888888" }}>
-                          {featuredImage?.name}
-                        </p>
-                      </div>
-                    ) : (
-                      <div
-                        className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer hover:border-yellow-400 transition-colors"
-                        style={{ borderColor: "#EAEAEA" }}
-                        onClick={() => fileInputRef.current?.click()}
-                        onDragOver={handleDragOver}
-                        onDrop={handleDrop}
-                      >
-                        <Upload size={24} className="mx-auto mb-2" style={{ color: "#888888" }} />
-                        <p className="text-sm" style={{ color: "#888888" }}>
-                          Click to upload or drag and drop
-                        </p>
-                        <p className="text-xs mt-1" style={{ color: "#AAAAAA" }}>
-                          PNG, JPG, GIF up to 10MB
-                        </p>
-                      </div>
-                    )}
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
+    <div className="min-h-screen bg-[#FFFBF5] dark:bg-gray-900">
+  <motion.div
+    className="p-8"
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {/* Left Column - Main Content */}
+      <div className="lg:col-span-2 space-y-6">
+        {/* Header */}
+        <div className="space-y-2">
+          <h1 className="text-3xl font-bold text-[#333333] dark:text-gray-100">
+            Add Research Paper
+          </h1>
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-[#888888] dark:text-gray-400">
+              Update your personal information and social links.
+            </p>
+            {lastSaved && (
+              <p className="text-xs text-[#888888] dark:text-gray-400">
+                Last saved: {lastSaved.toLocaleTimeString()}
+              </p>
+            )}
           </div>
         </div>
-      </motion.div>
 
-      {/* Fixed Save Changes Button */}
-    
+        {/* Title Input */}
+        <div>
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Your Title Here..."
+            className="w-full text-4xl font-bold border-none outline-none bg-transparent transition-all duration-200 focus:ring-2 focus:ring-yellow-400/20 rounded-lg p-2 -ml-2 text-[#333333] placeholder-[#CCCCCC] dark:text-gray-100 dark:placeholder-gray-600"
+            style={{ fontSize: "2.25rem" }}
+          />
+        </div>
+
+        {/* Rich Text Editor Toolbar */}
+        <div className="bg-white/50 dark:bg-gray-800 rounded-lg p-3 border border-[#EAEAEA] dark:border-gray-700">
+          <div className="flex flex-wrap gap-1">
+            {toolbarButtons.map((button, index) => (
+              <motion.button
+                key={index}
+                className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                title={button.label}
+                onClick={() => applyFormatting(button.command)}
+              >
+                <button.icon size={16} className="text-[#333333] dark:text-gray-100" />
+              </motion.button>
+            ))}
+            <motion.button
+              className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              title="Insert Image"
+              onClick={() => {
+                const url = prompt("Enter image URL:")
+                if (url) {
+                  applyFormatting("link", url)
+                }
+              }}
+            >
+              <ImageIcon size={16} className="text-[#333333] dark:text-gray-100" />
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Main Text Area */}
+        <div className="flex-1">
+          <textarea
+            ref={contentRef}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="Start writing your article here..."
+            className="w-full h-96 p-4 border rounded-lg resize-none outline-none transition-all duration-200 focus:ring-2 focus:ring-yellow-400/20 focus:border-yellow-400/50 bg-[#FEFEFE] text-[#333333] border-[#EAEAEA] dark:bg-gray-800 dark:text-gray-100 dark:border-gray-700 dark:placeholder-gray-500"
+          />
+        </div>
+      </div>
+
+      {/* Right Column - Sidebar */}
+      <div className="space-y-6">
+        {/* Publish Button */}
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Button
+            className="w-full text-white font-medium py-3 rounded-lg shadow-sm bg-[#D4A017] dark:bg-yellow-600"
+            onClick={publishDocument}
+            disabled={isPublishing}
+          >
+            {isPublishing ? "Publishing..." : "Publish"}
+          </Button>
+        </motion.div>
+
+        {/* Accordion Sections */}
+        <div className="space-y-4">
+          <Accordion type="single" defaultValue="status" collapsible>
+            <AccordionItem value="status" className="border rounded-lg border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">Status & Visibility</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <div className="space-y-3 my-2">
+                  <Select value={status} onValueChange={setStatus}>
+                    <SelectTrigger className="w-full border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="dark:bg-gray-800 dark:text-gray-100">
+                      <SelectItem value="public">Public</SelectItem>
+                      <SelectItem value="private">Private</SelectItem>
+                      <SelectItem value="draft">Draft</SelectItem>
+                    </SelectContent>
+                  </Select>
+
+                  <Select value={publishSchedule} onValueChange={setPublishSchedule}>
+                    <SelectTrigger className="w-full border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent className="dark:bg-gray-800 dark:text-gray-100">
+                      <SelectItem value="immediately">Publish immediately</SelectItem>
+                      <SelectItem value="scheduled">Schedule for later</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="categories" className="border rounded-lg my-2 border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">Categories</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <Select value={category} onValueChange={setCategory}>
+                  <SelectTrigger className="w-full border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100">
+                    <SelectValue placeholder="Select categories..." />
+                  </SelectTrigger>
+                  <SelectContent className="dark:bg-gray-800 dark:text-gray-100">
+                    <SelectItem value="documentation">Documentation</SelectItem>
+                    <SelectItem value="tutorial">Tutorial</SelectItem>
+                    <SelectItem value="guide">Guide</SelectItem>
+                    <SelectItem value="reference">Reference</SelectItem>
+                    <SelectItem value="api">API</SelectItem>
+                  </SelectContent>
+                </Select>
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="tags" className="border rounded-lg my-2 border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">Tags</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <input
+                  type="text"
+                  value={tags}
+                  onChange={(e) => setTags(e.target.value)}
+                  placeholder="Add tags separated by commas..."
+                  className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20 border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+                />
+                {tags && (
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {tags.split(",").map((tag, index) => {
+                      const trimmedTag = tag.trim()
+                      return trimmedTag ? (
+                        <span
+                          key={index}
+                          className="px-2 py-1 text-xs rounded bg-[#D4A017] text-white dark:bg-yellow-600"
+                        >
+                          {trimmedTag}
+                        </span>
+                      ) : null
+                    })}
+                  </div>
+                )}
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="github" className="border rounded-lg my-2 border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">GitHub Link</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <input
+                  type="url"
+                  placeholder="Add GitHub repository link..."
+                  className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20 border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+                />
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="project url" className="border rounded-lg my-2 border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">Deployed Project Link</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <input
+                  type="url"
+                  placeholder="Add deployed project link..."
+                  className="w-full p-2 border rounded outline-none focus:ring-2 focus:ring-yellow-400/20 border-[#EAEAEA] dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 dark:placeholder-gray-500"
+                />
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem value="featured" className="border rounded-lg my-2 border-[#EAEAEA] dark:border-gray-700">
+              <AccordionTrigger className="px-4 py-3 hover:no-underline">
+                <span className="text-[#333333] dark:text-gray-100">Featured Image</span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 pb-4">
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                />
+
+                {imagePreview ? (
+                  <div className="relative">
+                    <img
+                      src={imagePreview || "/placeholder.svg"}
+                      alt="Featured image preview"
+                      className="w-full h-32 object-cover rounded-lg"
+                    />
+                    <button
+                      onClick={removeImage}
+                      className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                    >
+                      <X size={12} />
+                    </button>
+                    <p className="text-xs mt-2 text-[#888888] dark:text-gray-400">
+                      {featuredImage?.name}
+                    </p>
+                  </div>
+                ) : (
+                  <div
+                    className="border-2 border-dashed rounded-lg p-6 text-center cursor-pointer hover:border-yellow-400 transition-colors border-[#EAEAEA] dark:border-gray-700 dark:hover:border-yellow-500"
+                    onClick={() => fileInputRef.current?.click()}
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                  >
+                    <Upload size={24} className="mx-auto mb-2 text-[#888888] dark:text-gray-400" />
+                    <p className="text-sm text-[#888888] dark:text-gray-400">
+                      Click to upload or drag and drop
+                    </p>
+                    <p className="text-xs mt-1 text-[#AAAAAA] dark:text-gray-500">
+                      PNG, JPG, GIF up to 10MB
+                    </p>
+                  </div>
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
     </div>
+  </motion.div>
+</div>
   )
 }
