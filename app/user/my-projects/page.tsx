@@ -126,7 +126,7 @@ export default function MyProjects() {
           <Link href="/user/my-projects/add-project">
             <Button className="gap-2 bg-yellow-400 hover:bg-yellow-500 text-black">
               <Plus className="h-4 w-4" />
-              Add Certificate
+              Add Projects
             </Button>
           </Link>
           

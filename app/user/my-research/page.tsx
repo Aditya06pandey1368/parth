@@ -126,7 +126,7 @@ export default function ResearchPapers() {
           </p>
         </div>
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Link href="/user/research-paper/upload" className="w-full sm:w-auto">
+          <Link href="/user/my-research/upload" className="w-full sm:w-auto">
             <Button className="gap-2 bg-yellow-700 hover:bg-yellow-800 text-white shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto px-6 py-2.5">
               <Plus className="h-4 w-4" />
               Add Research Paper
