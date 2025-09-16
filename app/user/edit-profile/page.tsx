@@ -18,21 +18,21 @@ export default function SettingsPage() {
             <span className="text-sm font-medium">Basic Details</span>
           </div>
           <div className="w-8 h-0.5 bg-gray-300"></div>
-          <Link href="/user/setting/experience" className="flex items-center space-x-2">
+          <Link href="/user/edit-profile/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               2
             </div>
             <span className="text-sm text-gray-500">Experience Details</span>
           </Link>
           <div className="w-8 h-0.5 bg-gray-300"></div>
-          <Link href="/user/setting/personal" className="flex items-center space-x-2">
+          <Link href="/user/edit-profile/personal" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               3
             </div>
             <span className="text-sm text-gray-500">Personal Details</span>
           </Link>
           <div className="w-8 h-0.5 bg-gray-300"></div>
-          <Link href="/user/setting/personal" className="flex items-center space-x-2">
+          <Link href="/user/edit-profile/position-of-responsibility" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               4
             </div>

@@ -63,30 +63,33 @@ export default function ExperienceDetails() {
       {/* Step Indicator */}
       <div className="flex items-center justify-center mb-8">
         <div className="flex items-center space-x-8">
-          <Link href="/user/setting" className="flex items-center space-x-2 text-gray-400">
-            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-yellow-400 text-black rounded-full flex items-center justify-center text-sm font-semibold">
               1
             </div>
-            <span>Basic Details</span>
-          </Link>
-          <div className="flex items-center space-x-2 text-yellow-500">
-            <div className="w-8 h-8 rounded-full bg-yellow-500 text-white flex items-center justify-center text-sm font-medium">
+            <span className="text-sm font-medium">Basic Details</span>
+          </div>
+          <div className="w-8 h-0.5 bg-gray-300"></div>
+          <Link href="/user/edit-profile/" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               2
             </div>
-            <span className="font-medium">Experience Details</span>
-          </div>
-          <Link href="/user/setting/personal" className="flex items-center space-x-2 text-gray-400">
-            <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium">
+            <span className="text-sm text-gray-500">Experience Details</span>
+          </Link>
+          <div className="w-8 h-0.5 bg-gray-300"></div>
+          <Link href="/user/edit-profile/personal" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               3
             </div>
-            <span>Personal Details</span>
+            <span className="text-sm text-gray-500">Personal Details</span>
           </Link>
-            <div className="flex items-center space-x-2 text-yellow-500">
-            <div className="w-8 h-8 rounded-full bg-yellow-500 text-white flex items-center justify-center text-sm font-medium">
+          <div className="w-8 h-0.5 bg-gray-300"></div>
+          <Link href="/user/edit-profile/position-of-responsibility" className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-sm font-semibold">
               4
             </div>
-            <span className="font-medium">Position of Responsibility</span>
-          </div>
+            <span className="text-sm text-gray-500">Positon of Responsibility</span>
+          </Link>
         </div>
       </div>
 
