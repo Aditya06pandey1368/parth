@@ -188,7 +188,7 @@ function Hero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-[20%] left-[5%] w-28 sm:w-32 lg:w-40 rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-80"
+            className="absolute bottom-[20%] left-[5%] w-28 sm:w-32 lg:w-40 rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-30"
             variants={fadeInUp}
             animate={{ y: [0, -20, 0], rotate: [6, 2, 6] }}
             transition={{ repeat: Number.POSITIVE_INFINITY, duration: 3.5, ease: "easeInOut" }}
@@ -207,7 +207,7 @@ function Hero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-[15%] right-[5%] w-36 sm:w-44 lg:w-52 -rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-80"
+            className="absolute bottom-[15%] right-[5%] w-36 sm:w-44 lg:w-52 -rotate-6 bg-white/90 backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl border border-gray-200/80 shadow-lg z-30"
             variants={fadeInUp}
             animate={{ y: [0, -15, 0], rotate: [-6, -2, -6] }}
             transition={{ repeat: Number.POSITIVE_INFINITY, duration: 4.5, ease: "easeInOut" }}
