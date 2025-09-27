@@ -68,7 +68,7 @@ function Footer() {
                 Features
               </Link>
               <Link
-                href="/universities"
+                href="/contact"
                 className="block hover:text-yellow-500 transition-colors"
               >
                 Contact Us
@@ -101,7 +101,7 @@ function Footer() {
 
           {/* Company */}
           <motion.div variants={fadeUp}>
-            
+
             <div className="mt-4 space-y-3">
               <p className="text-gray-700 dark:text-gray-300">College can register here</p>
               <Link href={"institute-signup"}>
@@ -109,12 +109,16 @@ function Footer() {
                   Register
                 </Button>
               </Link>
-              
+
               <p className="mt-5 text-gray-700 dark:text-gray-300">NAAC & NIRF can view college details here</p>
-              <Button className="w-full bg-gray-500 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white">
-                Get College Details
-              </Button>
-             
+              <Link
+                href="/login"
+                className="block hover:text-yellow-500 transition-colors">
+                <Button className="w-full bg-gray-500 hover:bg-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600 text-white dark:text-white">
+                  Get College Details
+                </Button>
+
+              </Link>
             </div>
           </motion.div>
 

@@ -6,9 +6,9 @@ import { Typewriter } from "react-simple-typewriter";
 
 function AboutSection() {
   return (
-    <div>
+    <div >
       {/* Hero About Section */}
-      <section className="relative bg-light-yellow dark:bg-gray-900 pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
+      <section id="about" className="relative bg-light-yellow dark:bg-gray-900 pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
         <div className="container mx-auto px-6 text-center">
           {/* Subtitle */}
           <motion.p

@@ -163,7 +163,7 @@ function FeatureSection() {
 
   return (
     <div>
-      <section ref={sectionRef} className="py-10 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+      <section id="features" ref={sectionRef} className="py-10 bg-gray-50 dark:bg-gray-900 overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             {/* Column 1: For Students */}
