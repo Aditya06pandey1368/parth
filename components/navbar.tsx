@@ -15,6 +15,7 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
+  SheetTitle,
 } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 
@@ -42,12 +43,10 @@ function Navbar() {
       <nav className="container mx-auto flex items-center justify-between px-6 py-2">
         {/* Left Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          {/* On mobile only image */}
           <div className="relative">
             <Image alt="Logo" src={logo} width={60} height={60} />
             <div className="absolute inset-0 bg-[#f9a806] rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 blur-md" />
           </div>
-          {/* Hide name on mobile */}
           <h2 className="hidden lg:block text-xl font-bold text-gray-900 dark:text-gray-100 transition-colors duration-300 group-hover:text-[#f9a806]">
             Parth
           </h2>
@@ -73,7 +72,6 @@ function Navbar() {
           {/* Dark/Light Mode */}
           <ThemeToggle />
 
-          {/* If logged in */}
           {isLoggedIn ? (
             <>
               {/* Desktop: Avatar */}
@@ -83,34 +81,10 @@ function Navbar() {
                   <AvatarFallback>U</AvatarFallback>
                 </Avatar>
               </div>
-
-              {/* Mobile: Sidebar with Hamburger */}
-              <div className="lg:hidden">
-                <Sheet>
-                  <SheetTrigger asChild>
-                    <button className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800">
-                      <Menu className="h-6 w-6" />
-                    </button>
-                  </SheetTrigger>
-                  <SheetContent side="right" className="bg-white dark:bg-gray-900">
-                    <div className="flex flex-col gap-4 mt-6">
-                      {navLinks.map((item) => (
-                        <Link
-                          key={item}
-                          href="#"
-                          className="py-2 px-4 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-                    </div>
-                  </SheetContent>
-                </Sheet>
-              </div>
             </>
           ) : (
             <>
-              {/* Before login */}
+              {/* Desktop Login Buttons */}
               <div className="hidden lg:flex items-center gap-4">
                 <Link
                   href="login"
@@ -125,18 +99,100 @@ function Navbar() {
                   Student Login
                 </Link>
               </div>
-
-              {/* Mobile: only Get Started button */}
-              <div className="lg:hidden">
-                <Link
-                  href="#"
-                  className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
-                >
-                  Get Started
-                </Link>
-              </div>
             </>
           )}
+
+          {/* Mobile: Burger Menu */}
+          <div className="lg:hidden">
+            <Sheet>
+              <SheetTrigger asChild>
+                <button className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-800">
+                  <Menu className="h-6 w-6" />
+                </button>
+              </SheetTrigger>
+              <SheetContent side="right" className="bg-white dark:bg-gray-900">
+                <div className="flex flex-col gap-6 mt-8">
+                  {navLinks.map((item) => (
+                    <Link
+                      key={item}
+                      href="#"
+                      className="py-2 px-4 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                  <hr></hr>
+                  {!isLoggedIn && (
+                    <div className="flex flex-col gap-4">
+                      <Link
+                        href="login"
+                        className="px-4 py-2 text-sm font-semibold rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-gray-800 transition-all"
+                      >
+                        Faculty Login
+                      </Link>
+                      <Link
+                        href="login"
+                        className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
+                      >
+                        Student Login
+                      </Link>
+                    </div>
+                  )}
+
+                  {isLoggedIn && (
+                    <div className="flex mt-6">
+                      <Avatar className="cursor-pointer">
+                        <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                        <AvatarFallback>U</AvatarFallback>
+                      </Avatar>
+                    </div>
+                  )}
+                </div>
+              </SheetContent><SheetContent side="right" className="bg-white dark:bg-gray-900">
+                {/* Accessibility title (can be visually hidden) */}
+                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+
+                <div className="flex flex-col gap-6 mt-8">
+                  {navLinks.map((item) => (
+                    <Link
+                      key={item}
+                      href="#"
+                      className="py-2 px-4 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-lg font-medium"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                  <hr className="ml-5 mr-5"/>
+                  {!isLoggedIn && (
+                    <div className="flex flex-col gap-4">
+                      <Link
+                        href="login"
+                        className="px-4 py-2 text-sm font-semibold rounded-full text-gray-700 dark:text-gray-200 hover:bg-gray-200/60 dark:hover:bg-gray-800 transition-all"
+                      >
+                        Faculty Login
+                      </Link>
+                      <Link
+                        href="login"
+                        className="px-4 py-2 text-sm font-semibold rounded-full bg-[#f9a806] text-gray-900 hover:bg-yellow-400 transition-all shadow-sm"
+                      >
+                        Student Login
+                      </Link>
+                    </div>
+                  )}
+
+                  {isLoggedIn && (
+                    <div className="flex mt-6">
+                      <Avatar className="cursor-pointer">
+                        <AvatarImage src="https://github.com/shadcn.png" alt="User" />
+                        <AvatarFallback>U</AvatarFallback>
+                      </Avatar>
+                    </div>
+                  )}
+                </div>
+              </SheetContent>
+
+            </Sheet>
+          </div>
         </div>
       </nav>
     </header>
