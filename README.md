@@ -41,8 +41,8 @@ This platform provides an intuitive dashboard for students and robust approval m
 
 ## What This Project Demonstrates
 
-● Strong understanding of Next.js + TypeScript architecture
-● Ability to build clean, modular, scalable UI systems
-● Real-world product thinking for academic institutions
-● Experience designing dashboards, forms, and multi-role interfaces
-● Future-ready architecture for backend expansion
+● Strong understanding of Next.js + TypeScript architecture   
+● Ability to build clean, modular, scalable UI systems   
+● Real-world product thinking for academic institutions   
+● Experience designing dashboards, forms, and multi-role interfaces   
+● Future-ready architecture for backend expansion   
